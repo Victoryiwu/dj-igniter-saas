@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DJ Igniter Studios | Where Beats Meet Technology</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DJ Igniter - Professional DJ Services + Web Development | Book Now">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="logo.jpg">
+</head>
+
+<body>
+    <!-- ================= PRELOADER ================= -->
+    <div id="loader">
+        <div class="loader-content">
+            <img src="logo.jpg" alt="DJ Igniter" class="loader-logo">
+            <h1>DJ IGNITER</h1>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="nav" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <h2>DJ Igniter</h2>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="home" class="hero fade">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-crown"></i> Award Winning DJ
+                </div>
+                <h1 id="typingText"></h1>
+                <p class="hero-subtitle">
+                    Professional DJ • Web Developer • Creative Technologist
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary btn-large">
+                        <i class="fas fa-comments"></i> Get Quote
+                    </a>
+                    <a href="#portfolio" class="btn btn-secondary btn-large">
+                        <i class="fas fa-eye"></i> View Work
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <span>250+ <small>Events</small></span>
+                    <span>4.9⭐ <small>Rating</small></span>
+                    <span>50+ <small>Websites</small></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STATS SECTION ================= -->
+    <section class="stats-section fade">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="250">0</div>
+                    <div class="stat-label">Events Booked</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="4.9">0</div>
+                    <div class="stat-label">⭐ Client Rating</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-label">Websites Built</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SERVICES SECTION ================= -->
+    <section id="services" class="section-padding fade">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Services</h2>
+                <p class="section-subtitle">DJ Services • Web Development • Creative Solutions</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card card">
+                    <div class="service-icon">🎧</div>
+                    <h3>Event DJ</h3>
+                    <p>High-energy DJ sets for weddings, parties, corporate events</p>
+                    <a href="services/event-dj.html" class="btn btn-primary">Book DJ</a>
+                </div>
+                <div class="service-card card">
+                    <div class="service-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Premium websites like this one. Fast, responsive, modern</p>
+                    <a href="#contact" class="btn btn-primary">Get Quote</a>
+                </div>
+                <div class="service-card card">
+                    <div class="service-icon">🎵</div>
+                    <h3>Music Production</h3>
+                    <p>Custom mixtapes, remixes, and production services</p>
+                    <a href="#contact" class="btn btn-primary">Start Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PORTFOLIO ================= -->
+    <section id="portfolio" class="section-padding bg-dark fade">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Work</h2>
+                <p class="section-subtitle">Recent projects & performances</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item card">
+                    <img src="portfolio1.jpg" alt="Wedding DJ">
+                    <div class="portfolio-overlay">
+                        <h3>Wedding DJ Set</h3>
+                        <p>Lagos Wedding 2024</p>
+                    </div>
+                </div>
+                <div class="portfolio-item card">
+                    <img src="portfolio2.jpg" alt="Website">
+                    <div class="portfolio-overlay">
+                        <h3>SAAS Website</h3>
+                        <p>Premium Design System</p>
+                    </div>
+                </div>
+                <div class="portfolio-item card">
+                    <img src="portfolio3.jpg" alt="Club DJ">
+                    <div class="portfolio-overlay">
+                        <h3>Club Night</h3>
+                        <p>Abuja Nightlife 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= AUDIO EXPERIENCE ================= -->
+    <section class="audio-section fade">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🎧 Listen to My Latest Mix</h2>
+            </div>
+            <div class="audio-player-container">
+                <audio id="audioPlayer" controls>
+                    <source src="igniter-mix.mp3" type="audio/mpeg">
+                    Your browser doesn't support audio.
+                </audio>
+                <canvas id="visualizer" width="800" height="200"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CTA SECTION ================= -->
+    <section class="cta-section fade">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="section-title">Ready to Book?</h2>
+                <p class="hero-subtitle">Your perfect DJ experience starts here</p>
+                <div class="cta-buttons">
+                    <a href="booking.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-calendar-check"></i> Book DJ Now
+                    </a>
+                    <a href="#contact" class="btn btn-secondary btn-large">
+                        <i class="fas fa-comments"></i> Get Free Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer fade">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.jpg" alt="DJ Igniter" class="logo-img">
+                    <h3>DJ Igniter Studios</h3>
+                </div>
+                <p>Where beats meet technology. Professional DJ services + premium web development.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-spotify"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 DJ Igniter Studios | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= FLOATING ELEMENTS ================= -->
+    <div class="float" id="chatToggle">
+        <i class="fas fa-comments"></i>
+        <span class="float-label">Ask Ava</span>
+    </div>
+
+    <!-- AUDIO -->
+    <audio id="clickSound" preload="auto">
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+    <script>
+        // ================= BULLETPROOF LOADER + ENHANCEMENTS =================
+        (function () {
+            'use strict';
+
+            // Preloader - BULLETPROOF VERSION
+            let loadTimeout;
+            function hideLoader() {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    document.body.classList.add('loaded');
+                }, 500);
+            }
+
+            // Hide loader after DOM + images load OR timeout
+            window.addEventListener('load', () => {
+                clearTimeout(loadTimeout);
+                hideLoader();
+            });
+
+            // Failsafe timeout (max 4 seconds)
+            loadTimeout = setTimeout(hideLoader, 4000);
+
+            // Typing effect
+            const texts = ['Where Beats Meet Technology', 'DJ • Developer • Creator', 'High-Energy Performances'];
+            let textIndex = 0;
+            let charIndex = 0;
+            const typingElement = document.getElementById('typingText');
+
+            function typeWriter() {
+                if (charIndex < texts[textIndex].length) {
+                    typingElement.textContent += texts[textIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeWriter, 80);
+                } else {
+                    setTimeout(() => {
+                        charIndex = 0;
+                        typingElement.textContent = '';
+                        textIndex = (textIndex + 1) % texts.length;
+                        typeWriter();
+                    }, 2500);
+                }
+            }
+
+            // Start typing after loader
+            setTimeout(typeWriter, 500);
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            document.getElementById('mobileToggle')?.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+
+            // Counter animation
+            function animateCounters() {
+                const counters = document.querySelectorAll('.stat-number[data-target]');
+                counters.forEach(counter => {
+                    const target = parseFloat(counter.getAttribute('data-target'));
+                    const increment = target / 100;
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target + (target === 4.9 ? '⭐' : '');
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current) + (target === 4.9 ? '' : '+');
+                        }
+                    }, 25);
+                });
+            }
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        if (entry.target.classList.contains('stats-section')) {
+                            animateCounters();
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade elements
+            document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+            // Audio visualizer
+            const audio = document.getElementById('audioPlayer');
+            const canvas = document.getElementById('visualizer');
+            const ctx = canvas.getContext('2d');
+
+            let audioContext, analyser, dataArray;
+
+            audio.addEventListener('play', function () {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    analyser = audioContext.createAnalyser();
+                    const source = audioContext.createMediaElementSource(audio);
+
+                    source.connect(analyser);
+                    analyser.connect(audioContext.destination);
+
+                    analyser.fftSize = 256;
+                    const bufferLength = analyser.frequencyBinCount;
+                    dataArray = new Uint8Array(bufferLength);
+                }
+                drawVisualizer();
+            });
+
+            function drawVisualizer() {
+                if (!analyser || !dataArray) return;
+
+                requestAnimationFrame(drawVisualizer);
+
+                analyser.getByteFrequencyData(dataArray);
+
+                ctx.fillStyle = 'rgba(15, 15, 15, 0.1)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                const barWidth = (canvas.width / dataArray.length) * 2.5;
+                let x = 0;
+
+                for (let i = 0; i < dataArray.length; i++) {
+                    const barHeight = (dataArray[i] / 255) * canvas.height;
+
+                    const hue = i / dataArray.length * 360;
+                    ctx.fillStyle = `hsl(${hue}, 70%, 60%)`;
+                    ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+
+                    x += barWidth + 1;
+                }
+            }
+
+            // Click sounds
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('a, button, .btn')) {
+                    const audio = document.getElementById('clickSound');
+                    audio.currentTime = 0;
+                    audio.play().catch(() => { });
+                }
+            });
+
+            // Parallax effect
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroBg = document.querySelector('.hero-bg');
+                if (heroBg) {
+                    heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+
+        })();
+    </script>
+</body>
+
+</html>

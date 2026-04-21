@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ava Assistant | DJ Igniter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ava - DJ Igniter's intelligent assistant for bookings and support">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="logo.jpg">
+</head>
+
+<body>
+    <!-- ================= NAVBAR ================= -->
+    <header class="nav" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <h2>DJ Igniter</h2>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a class="active" href="assistant.html">Ava Assistant</a></li>
+                    <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section class="assistant-hero fade">
+        <div class="container">
+            <div class="hero-content">
+                <div class="section-title" style="font-size: 3.5rem;">🤖 Ava Assistant</div>
+                <p class="hero-subtitle">
+                    Your 24/7 DJ Igniter support. Ask about bookings, services, pricing, or anything!
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large" onclick="focusChat()">
+                        <i class="fas fa-comments"></i> Start Chatting
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CHAT INTERFACE ================= -->
+    <section class="section-padding container fade">
+        <div class="chat-container card" style="max-width: 900px; margin: auto;">
+
+            <!-- CHAT HEADER -->
+            <div class="chat-header">
+                <div class="avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div>
+                    <h3>Ava - DJ Assistant</h3>
+                    <span class="status">Online <i class="fas fa-circle" style="color: var(--success);"></i></span>
+                </div>
+                <div class="chat-actions">
+                    <button class="btn-icon" onclick="toggleVoice()"><i class="fas fa-microphone"></i></button>
+                    <button class="btn-icon" onclick="clearChat()"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+
+            <!-- MESSAGES -->
+            <div id="chatbox" class="chat-messages">
+                <div class="message bot-message welcome-message">
+                    <div class="avatar"><i class="fas fa-robot"></i></div>
+                    <div class="message-content">
+                        <div class="typing-indicator" style="display: none;">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <p>Hi! I'm <strong>Ava</strong>, DJ Igniter's intelligent assistant.
+                            I can help you with bookings, services, pricing, availability, and more!
+                            What would you like to know? 🎧</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INPUT AREA -->
+            <div class="chat-input-area">
+                <div class="input-wrapper">
+                    <input type="text" id="userInput" placeholder="Type your message or press Enter..."
+                        autocomplete="off">
+                    <button class="send-btn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="quick-replies">
+                    <button class="quick-btn" onclick="quickReply('booking')">Book DJ</button>
+                    <button class="quick-btn" onclick="quickReply('pricing')">Pricing</button>
+                    <button class="quick-btn" onclick="quickReply('services')">Services</button>
+                    <button class="quick-btn" onclick="quickReply('availability')">Availability</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer fade">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2026 DJ Igniter Studios | Powered by Ava AI</p>
+                <p style="opacity: 0.6;">Your 24/7 DJ booking assistant</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 🔊 SOUNDS -->
+    <audio id="clickSound" preload="auto">
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sendSound" preload="auto">
+        <source src="send.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

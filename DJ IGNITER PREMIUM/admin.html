@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Admin Dashboard | DJ Igniter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DJ Igniter Admin - Manage bookings professionally">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="logo.jpg">
+</head>
+
+<body>
+    <!-- ================= NAVBAR ================= -->
+    <header class="nav" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <h2>DJ Igniter</h2>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">← Back to Site</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= LOGIN MODAL ================= -->
+    <section class="container fade" id="loginBox"
+        style="padding-top: 140px; min-height: 70vh; display: flex; align-items: center; justify-content: center;">
+        <div class="card login-card" style="max-width: 420px; width: 100%;">
+            <div class="card-icon">🔐</div>
+            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1rem;">Admin Access</h2>
+            <p class="section-subtitle" style="margin-bottom: 2rem;">Enter password to access booking management</p>
+
+            <div class="form-group">
+                <input type="password" id="password" placeholder="••••••••••" class="form-control">
+                <p id="errorMsg" class="error-message"></p>
+            </div>
+
+            <button class="btn btn-primary btn-full" onclick="checkPassword()">
+                <i>🚀</i> Enter Dashboard
+            </button>
+        </div>
+    </section>
+
+    <!-- ================= DASHBOARD ================= -->
+    <section class="container fade" id="adminPanel" style="display: none; padding-top: 140px; padding-bottom: 100px;">
+
+        <!-- HEADER WITH STATS -->
+        <div class="section-header">
+            <h2 class="section-title">📊 Booking Dashboard</h2>
+            <p class="section-subtitle">Manage all incoming bookings and client requests</p>
+        </div>
+
+        <!-- STATS ROW -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <h3 id="totalBookings">0</h3>
+                <p>Total Bookings</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <h3 id="completed">0</h3>
+                <p>Completed</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <h3 id="pending">0</h3>
+                <p>Pending</p>
+            </div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="action-buttons fade"
+            style="display: flex; gap: 1rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="loadBookings()">
+                <i>🔄</i> Refresh Bookings
+            </button>
+            <button class="btn btn-secondary" onclick="exportData()">
+                <i>📤</i> Export CSV
+            </button>
+            <button class="btn btn-danger" onclick="clearBookings()">
+                <i>🗑️</i> Clear All
+            </button>
+        </div>
+
+        <!-- BOOKINGS TABLE -->
+        <div class="card fade">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h3 style="color: var(--primary-gold); margin: 0;">Recent Bookings</h3>
+                <input type="text" id="searchInput" placeholder="🔍 Search bookings..." class="form-control"
+                    style="max-width: 300px;">
+            </div>
+
+            <div class="table-container" id="bookingList">
+                <div class="empty-state">
+                    <div class="empty-icon">📭</div>
+                    <h3>No bookings yet</h3>
+                    <p>Bookings will appear here when clients submit forms</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOGOUT -->
+        <div style="text-align: center; margin-top: 4rem;">
+            <button class="btn btn-secondary" onclick="logout()">
+                <i>🔒</i> Logout
+            </button>
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 DJ Igniter Studios | Admin Dashboard v2.0</p>
+        </div>
+    </footer>
+
+    <!-- 🔊 CLICK SOUND -->
+    <audio id="clickSound" preload="auto">
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
