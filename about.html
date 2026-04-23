@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>About | DJ Igniter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DJ Igniter - Professional DJ services with cutting-edge technology">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="logo.jpg">
+</head>
+
+<body>
+    <!-- ================= NAVBAR ================= -->
+    <header class="nav" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <h2>DJ Igniter</h2>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a class="active" href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="booking.html" class="cta-nav btn-primary btn">Book Now</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <i>☰</i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ================= HERO ABOUT ================= -->
+    <section class="about-hero fade">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="section-title">About DJ Igniter</h1>
+                <p class="hero-subtitle">
+                    Professional DJ blending cutting-edge music production with modern web development.
+                    Creating unforgettable experiences through sound and digital innovation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ABOUT CONTENT ================= -->
+    <section class="section-padding container fade">
+        <div class="section-header">
+            <h2 class="section-title">My Journey</h2>
+            <p class="section-subtitle">
+                From mixing tracks to coding beats - I combine music passion with programming expertise.
+            </p>
+        </div>
+
+        <!-- STATS GRID -->
+        <div class="stats-grid fade">
+            <div class="stat-card">
+                <div class="stat-icon">🎧</div>
+                <h3>500+</h3>
+                <p>Events Booked</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <h3>10+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💻</div>
+                <h3>50+</h3>
+                <p>Websites Built</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <h3>5.0</h3>
+                <p>Client Rating</p>
+            </div>
+        </div>
+
+        <!-- WEEKLY SCHEDULE TABLE -->
+        <div class="card fade" style="max-width: 800px; margin: 4rem auto;">
+            <div class="card-icon">📅</div>
+            <h3 style="margin-bottom: 2rem; color: var(--primary-gold); font-size: 1.8rem;">
+                Weekly Creative Schedule
+            </h3>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Focus Area</th>
+                            <th>Projects</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Monday</strong></td>
+                            <td>HTML Structure</td>
+                            <td>Landing Pages</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tuesday</strong></td>
+                            <td>CSS Design</td>
+                            <td>Animations</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wednesday</strong></td>
+                            <td>UI/UX Design</td>
+                            <td>Prototypes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Thursday</strong></td>
+                            <td>Forms & Logic</td>
+                            <td>Bookings</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Friday</strong></td>
+                            <td>Media Integration</td>
+                            <td>Audio Players</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weekend</strong></td>
+                            <td>DJ Gigs</td>
+                            <td>Live Events</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer fade">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2026 DJ Igniter Studios | All Rights Reserved</p>
+                <p style="margin-top: 0.5rem; opacity: 0.6; font-size: 0.9rem;">
+                    Mixing Code & Beats Since 2016
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= CHAT FLOAT ================= -->
+    <div class="float" id="chatToggle">
+        <i>💬</i>
+        <span class="float-label">Live Chat</span>
+    </div>
+
+    <!-- ================= CHATBOT ================= -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <span><i>🤖</i> DJ Assistant</span>
+            <button class="close-chat" id="closeChat">×</button>
+        </div>
+        <div id="chat-output">
+            <div style="opacity: 0.7; font-style: italic;">DJ Igniter is online! How can I help?</div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="chat-input" placeholder="Ask about bookings, services...">
+            <button class="chat-send-btn" id="chat-send">
+                <i>→</i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 🔊 CLICK SOUND -->
+    <audio id="clickSound" preload="auto">
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
