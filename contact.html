@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact DJ Igniter | Get In Touch</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact DJ Igniter for bookings, web development, or DJ services">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="logo.jpg">
+</head>
+
+<body>
+    <!-- ================= NAVBAR ================= -->
+    <header class="nav" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <h2>DJ Igniter</h2>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="assistant.html">Assistant</a></li>
+                    <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- ================= CONTACT HERO ================= -->
+    <section class="contact-hero fade">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="section-title">📩 Get In Touch</h1>
+                <p class="hero-subtitle">
+                    Ready for your DJ event, website, or creative project?
+                    Let's make it happen!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section class="section-padding container fade">
+        <div class="contact-grid">
+
+            <!-- CONTACT FORM -->
+            <div class="contact-form-card card">
+                <div class="card-header">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Send Message</h3>
+                    <p>Get personalized response within 24 hours</p>
+                </div>
+
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Full Name</label>
+                            <input type="text" id="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label><i class="fas fa-comment"></i> Message</label>
+                        <textarea id="message" rows="6" placeholder="Tell me about your project, event, or question..."
+                            required></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </div>
+                </form>
+
+                <div id="formFeedback" class="form-feedback"></div>
+            </div>
+
+            <!-- CONTACT INFO -->
+            <div class="contact-info">
+                <div class="contact-card card">
+                    <h3><i class="fas fa-phone"></i> Quick Contact</h3>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:Iwuchukwuchinosom@gmail.com" class="contact-link"
+                                data-copy="Iwuchukwuchinosom@gmail.com">
+                                Iwuchukwuchinosom@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <a href="tel:+2349021368638" class="contact-link" data-copy="09021368638">
+                                0902 136 8638
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/2349021368638" target="_blank" class="contact-link whatsapp">
+                                Message on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SOCIAL PROOF -->
+                <div class="testimonials card">
+                    <h3><i class="fas fa-star"></i> What Clients Say</h3>
+                    <div class="testimonial">
+                        <p>"DJ Igniter transformed our wedding! 5⭐"</p>
+                        <span>— Sarah M.</span>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Professional DJ + amazing developer!"</p>
+                        <span>— TechCorp CEO</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= FLOATING CHAT ================= -->
+    <div class="float" id="chatToggle">
+        <i class="fas fa-comments"></i>
+        <span class="float-label">Live Chat</span>
+    </div>
+
+    <!-- ================= NOTIFICATION ================= -->
+    <div id="notification" class="notification" style="display: none;"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer fade">
+        <div class="container">
+            <p>© 2026 DJ Igniter Studios | Let's Create Something Amazing</p>
+        </div>
+    </footer>
+
+    <!-- AUDIO -->
+    <audio id="clickSound" preload="auto">
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="successSound" preload="auto">
+        <source src="success.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
