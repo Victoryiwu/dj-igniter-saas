@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Portfolio | DJ Igniter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DJ Igniter Portfolio - Event Performances, Mixtapes, Web Development Projects">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="logo.jpg">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header class="nav" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <h2>DJ Igniter</h2>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="booking.html" class="cta-nav btn-primary btn">Book Now</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="portfolio-hero fade">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-trophy"></i> Featured Work
+                </div>
+                <h1 class="section-title">My Portfolio</h1>
+                <p class="hero-subtitle">
+                    250+ events performed • 50+ websites built • 100+ mixtapes produced.
+                    Real results from real clients.
+                </p>
+                <div class="hero-stats">
+                    <span>250+ <small>Events</small></span>
+                    <span>50+ <small>Websites</small></span>
+                    <span>4.9⭐ <small>Rating</small></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TABS -->
+    <section class="section-padding container fade">
+        <div class="section-header">
+            <h2 class="section-title">Explore My Work</h2>
+            <p class="section-subtitle">DJ Performances • Web Development • Mixtape Production</p>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="dj">🎧 DJ Events</button>
+                <button class="tab-btn" data-tab="web">💻 Web Projects</button>
+                <button class="tab-btn" data-tab="music">🎵 Mixtapes</button>
+            </div>
+
+            <!-- DJ EVENTS -->
+            <div class="tab-content active" id="dj">
+                <div class="portfolio-grid">
+                    <div class="portfolio-item card">
+                        <img src="wedding-dj.jpg" alt="Wedding DJ Performance">
+                        <div class="portfolio-overlay">
+                            <h3>Lagos Wedding 2024</h3>
+                            <p>300+ guests • 8 hours • Full lighting setup</p>
+                            <div class="portfolio-tags">
+                                <span>Wedding</span>
+                                <span>Premium</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item card">
+                        <img src="club-night.jpg" alt="Club DJ Set">
+                        <div class="portfolio-overlay">
+                            <h3>Abuja Club Night</h3>
+                            <p>Non-stop 6 hours • High-energy mix</p>
+                            <div class="portfolio-tags">
+                                <span>Club</span>
+                                <span>Live</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item card">
+                        <img src="corporate-event.jpg" alt="Corporate Event">
+                        <div class="portfolio-overlay">
+                            <h3>TechCorp Launch</h3>
+                            <p>500 guests • Professional setup</p>
+                            <div class="portfolio-tags">
+                                <span>Corporate</span>
+                                <span>Large Scale</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEB PROJECTS -->
+            <div class="tab-content" id="web">
+                <div class="portfolio-grid">
+                    <div class="portfolio-item card">
+                        <div class="portfolio-web">
+                            <i class="fas fa-globe"></i>
+                            <h3>SAAS Dashboard</h3>
+                            <p>React + Node.js • Live Demo</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item card">
+                        <div class="portfolio-web">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3>Ecommerce Store</h3>
+                            <p>Next.js + Stripe • Full Stack</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item card">
+                        <div class="portfolio-web current-site">
+                            <i class="fas fa-crown"></i>
+                            <h3>This Website</h3>
+                            <p>Premium Design System • DJ Igniter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MUSIC PRODUCTION -->
+            <div class="tab-content" id="music">
+                <div class="portfolio-grid">
+                    <div class="portfolio-item card audio-item">
+                        <div class="audio-preview">
+                            <audio controls preload="metadata">
+                                <source src="afrobeats-mix.mp3" type="audio/mpeg">
+                            </audio>
+                            <h3>Afrobeats Party Mix</h3>
+                            <p>45 mins • 25 tracks • 10k+ streams</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item card audio-item">
+                        <div class="audio-preview">
+                            <audio controls preload="metadata">
+                                <source src="hiphop-mix.mp3" type="audio/mpeg">
+                            </audio>
+                            <h3>Hip-Hop Flow Mix</h3>
+                            <p>60 mins • Studio mastered</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item card audio-item">
+                        <div class="audio-preview">
+                            <audio controls preload="metadata">
+                                <source src="wedding-mix.mp3" type="audio/mpeg">
+                            </audio>
+                            <h3>Wedding Special Mix</h3>
+                            <p>Custom client mix • Multiple revisions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section fade">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="section-title">Ready to Work Together?</h2>
+                <p class="hero-subtitle">Book your DJ event or web project today</p>
+                <div class="cta-buttons">
+                    <a href="booking.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-calendar-check"></i> Book Service
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-comments"></i> Get Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer fade">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2026 DJ Igniter Studios | Portfolio of Real Results</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING CHAT -->
+    <div class="float" id="chatToggle">
+        <i class="fas fa-comments"></i>
+        <span class="float-label">Portfolio Help</span>
+    </div>
+
+    <!-- AUDIO -->
+    <audio id="clickSound" preload="auto">
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+    <script>
+        // Portfolio tab functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetTab = btn.dataset.tab;
+
+                    // Update active tab
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    btn.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
