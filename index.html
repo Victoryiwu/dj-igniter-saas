@@ -35,12 +35,12 @@
             </div>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Work</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="admin.html">Admin</a></li>
                     <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
                 </ul>
             </nav>
@@ -61,11 +61,11 @@
                     Professional DJ • Web Developer • Creative Technologist
                 </p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary btn-large">
-                        <i class="fas fa-comments"></i> Get Quote
+                    <a href="booking.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-calendar-check"></i> Book Now
                     </a>
-                    <a href="#portfolio" class="btn btn-secondary btn-large">
-                        <i class="fas fa-eye"></i> View Work
+                    <a href="#services" class="btn btn-secondary btn-large">
+                        <i class="fas fa-eye"></i> View Services
                     </a>
                 </div>
                 <div class="hero-stats">
@@ -110,24 +110,33 @@
             </div>
 
             <div class="services-grid">
-                <div class="service-card card">
+                <a href="event-dj.html" class="service-card card">
                     <div class="service-icon">🎧</div>
                     <h3>Event DJ</h3>
                     <p>High-energy DJ sets for weddings, parties, corporate events</p>
-                    <a href="services/event-dj.html" class="btn btn-primary">Book DJ</a>
-                </div>
-                <div class="service-card card">
+                    <div class="service-meta">
+                        <span class="service-price">From ₦800k</span>
+                        <span class="service-rating">⭐ 5.0</span>
+                    </div>
+                </a>
+                <a href="programming.html" class="service-card card">
                     <div class="service-icon">💻</div>
                     <h3>Web Development</h3>
                     <p>Premium websites like this one. Fast, responsive, modern</p>
-                    <a href="#contact" class="btn btn-primary">Get Quote</a>
-                </div>
-                <div class="service-card card">
+                    <div class="service-meta">
+                        <span class="service-price">From ₦500k</span>
+                        <span class="service-rating">⭐ 5.0</span>
+                    </div>
+                </a>
+                <a href="mixtape.html" class="service-card card">
                     <div class="service-icon">🎵</div>
                     <h3>Music Production</h3>
                     <p>Custom mixtapes, remixes, and production services</p>
-                    <a href="#contact" class="btn btn-primary">Start Project</a>
-                </div>
+                    <div class="service-meta">
+                        <span class="service-price">From ₦150k</span>
+                        <span class="service-rating">⭐ 4.9</span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -142,21 +151,21 @@
 
             <div class="portfolio-grid">
                 <div class="portfolio-item card">
-                    <img src="portfolio1.jpg" alt="Wedding DJ">
+                    <img src="logo.jpg" alt="Wedding DJ" style="object-fit: cover;">
                     <div class="portfolio-overlay">
                         <h3>Wedding DJ Set</h3>
                         <p>Lagos Wedding 2024</p>
                     </div>
                 </div>
                 <div class="portfolio-item card">
-                    <img src="portfolio2.jpg" alt="Website">
+                    <img src="logo.jpg" alt="Website" style="object-fit: cover;">
                     <div class="portfolio-overlay">
                         <h3>SAAS Website</h3>
                         <p>Premium Design System</p>
                     </div>
                 </div>
                 <div class="portfolio-item card">
-                    <img src="portfolio3.jpg" alt="Club DJ">
+                    <img src="logo.jpg" alt="Club DJ" style="object-fit: cover;">
                     <div class="portfolio-overlay">
                         <h3>Club Night</h3>
                         <p>Abuja Nightlife 2024</p>
@@ -173,11 +182,14 @@
                 <h2 class="section-title">🎧 Listen to My Latest Mix</h2>
             </div>
             <div class="audio-player-container">
-                <audio id="audioPlayer" controls>
+                <audio id="audioPlayer" controls preload="metadata">
+                    <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/mpeg">
+                    <!-- Replace with your real mix file -->
                     <source src="igniter-mix.mp3" type="audio/mpeg">
                     Your browser doesn't support audio.
                 </audio>
                 <canvas id="visualizer" width="800" height="200"></canvas>
+                <p style="opacity: 0.6; margin-top: 1rem;"></p>
             </div>
         </div>
     </section>
@@ -192,7 +204,7 @@
                     <a href="booking.html" class="btn btn-primary btn-large">
                         <i class="fas fa-calendar-check"></i> Book DJ Now
                     </a>
-                    <a href="#contact" class="btn btn-secondary btn-large">
+                    <a href="contact.html" class="btn btn-secondary btn-large">
                         <i class="fas fa-comments"></i> Get Free Quote
                     </a>
                 </div>
@@ -210,9 +222,9 @@
                 </div>
                 <p>Where beats meet technology. Professional DJ services + premium web development.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-spotify"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -221,7 +233,7 @@
         </div>
     </footer>
 
-    <!-- ================= FLOATING ELEMENTS ================= -->
+    <!-- ================= FLOATING CHAT ================= -->
     <div class="float" id="chatToggle">
         <i class="fas fa-comments"></i>
         <span class="float-label">Ask Ava</span>
@@ -234,37 +246,39 @@
 
     <script src="script.js"></script>
     <script>
-        // ================= BULLETPROOF LOADER + ENHANCEMENTS =================
+        // ================= BULLETPROOF HOMEPAGE SCRIPT =================
         (function () {
             'use strict';
 
-            // Preloader - BULLETPROOF VERSION
+            // Preloader
             let loadTimeout;
             function hideLoader() {
                 const loader = document.getElementById('loader');
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    document.body.classList.add('loaded');
-                }, 500);
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        document.body.classList.add('loaded');
+                    }, 500);
+                }
             }
 
-            // Hide loader after DOM + images load OR timeout
             window.addEventListener('load', () => {
                 clearTimeout(loadTimeout);
                 hideLoader();
             });
 
-            // Failsafe timeout (max 4 seconds)
             loadTimeout = setTimeout(hideLoader, 4000);
 
-            // Typing effect
+            // Typing effect - FIXED
             const texts = ['Where Beats Meet Technology', 'DJ • Developer • Creator', 'High-Energy Performances'];
             let textIndex = 0;
             let charIndex = 0;
             const typingElement = document.getElementById('typingText');
 
             function typeWriter() {
+                if (!typingElement) return;
+
                 if (charIndex < texts[textIndex].length) {
                     typingElement.textContent += texts[textIndex].charAt(charIndex);
                     charIndex++;
@@ -279,17 +293,12 @@
                 }
             }
 
-            // Start typing after loader
-            setTimeout(typeWriter, 500);
+            setTimeout(typeWriter, 1000);
 
             // Navbar scroll effect
             window.addEventListener('scroll', () => {
                 const navbar = document.getElementById('navbar');
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
+                if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
             });
 
             // Smooth scrolling
@@ -306,9 +315,9 @@
                 });
             });
 
-            // Mobile menu toggle
+            // Mobile menu
             document.getElementById('mobileToggle')?.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.toggle('active');
+                document.querySelector('.nav-links')?.classList.toggle('active');
             });
 
             // Counter animation
@@ -318,7 +327,6 @@
                     const target = parseFloat(counter.getAttribute('data-target'));
                     const increment = target / 100;
                     let current = 0;
-
                     const timer = setInterval(() => {
                         current += increment;
                         if (current >= target) {
@@ -331,12 +339,7 @@
                 });
             }
 
-            // Intersection Observer for animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
+            // Intersection Observer
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -346,55 +349,47 @@
                         }
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-            // Observe all fade elements
             document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 
             // Audio visualizer
             const audio = document.getElementById('audioPlayer');
             const canvas = document.getElementById('visualizer');
-            const ctx = canvas.getContext('2d');
+            if (audio && canvas) {
+                const ctx = canvas.getContext('2d');
+                let audioContext, analyser, dataArray;
 
-            let audioContext, analyser, dataArray;
+                audio.addEventListener('play', function () {
+                    if (!audioContext) {
+                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        analyser = audioContext.createAnalyser();
+                        const source = audioContext.createMediaElementSource(audio);
+                        source.connect(analyser);
+                        analyser.connect(audioContext.destination);
+                        analyser.fftSize = 256;
+                        dataArray = new Uint8Array(analyser.frequencyBinCount);
+                    }
+                    drawVisualizer();
+                });
 
-            audio.addEventListener('play', function () {
-                if (!audioContext) {
-                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    analyser = audioContext.createAnalyser();
-                    const source = audioContext.createMediaElementSource(audio);
+                function drawVisualizer() {
+                    requestAnimationFrame(drawVisualizer);
+                    if (!analyser || !dataArray) return;
 
-                    source.connect(analyser);
-                    analyser.connect(audioContext.destination);
+                    analyser.getByteFrequencyData(dataArray);
+                    ctx.fillStyle = 'rgba(15, 15, 15, 0.1)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                    analyser.fftSize = 256;
-                    const bufferLength = analyser.frequencyBinCount;
-                    dataArray = new Uint8Array(bufferLength);
-                }
-                drawVisualizer();
-            });
-
-            function drawVisualizer() {
-                if (!analyser || !dataArray) return;
-
-                requestAnimationFrame(drawVisualizer);
-
-                analyser.getByteFrequencyData(dataArray);
-
-                ctx.fillStyle = 'rgba(15, 15, 15, 0.1)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                const barWidth = (canvas.width / dataArray.length) * 2.5;
-                let x = 0;
-
-                for (let i = 0; i < dataArray.length; i++) {
-                    const barHeight = (dataArray[i] / 255) * canvas.height;
-
-                    const hue = i / dataArray.length * 360;
-                    ctx.fillStyle = `hsl(${hue}, 70%, 60%)`;
-                    ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-
-                    x += barWidth + 1;
+                    const barWidth = (canvas.width / dataArray.length) * 2.5;
+                    let x = 0;
+                    for (let i = 0; i < dataArray.length; i++) {
+                        const barHeight = (dataArray[i] / 255) * canvas.height;
+                        const hue = i / dataArray.length * 360;
+                        ctx.fillStyle = `hsl(${hue}, 70%, 60%)`;
+                        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                        x += barWidth + 1;
+                    }
                 }
             }
 
@@ -402,17 +397,7 @@
             document.addEventListener('click', (e) => {
                 if (e.target.closest('a, button, .btn')) {
                     const audio = document.getElementById('clickSound');
-                    audio.currentTime = 0;
-                    audio.play().catch(() => { });
-                }
-            });
-
-            // Parallax effect
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const heroBg = document.querySelector('.hero-bg');
-                if (heroBg) {
-                    heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+                    audio?.play().catch(() => { });
                 }
             });
 
