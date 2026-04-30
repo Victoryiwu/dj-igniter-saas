@@ -66,18 +66,18 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label><i class="fas fa-user"></i> Full Name</label>
-                            <input type="text" id="name" placeholder="Your name" required>
+                            <input type="text" name="name" id="name" placeholder="Your name" required>
                         </div>
                         <div class="form-group">
                             <label><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" id="email" placeholder="your@email.com" required>
+                            <input type="email" name="email" id="email" placeholder="your@email.com" required>
                         </div>
                     </div>
 
                     <div class="form-group full-width">
                         <label><i class="fas fa-comment"></i> Message</label>
-                        <textarea id="message" rows="6" placeholder="Tell me about your project, event, or question..."
-                            required></textarea>
+                        <textarea name="message" id="message" rows="6"
+                            placeholder="Tell me about your project, event, or question..." required></textarea>
                     </div>
 
                     <div class="form-actions">
@@ -87,7 +87,7 @@
                     </div>
                 </form>
 
-                <div id="formFeedback" class="form-feedback"></div>
+                <div id="formFeedback" class="form-feedback" style="display: none;"></div>
             </div>
 
             <!-- CONTACT INFO -->
@@ -169,6 +169,139 @@
     </audio>
 
     <script src="script.js"></script>
+    <script>
+        // ================= CONTACT FORM HANDLER =================
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', handleContactSubmit);
+            }
+
+            // Copy to clipboard functionality
+            document.querySelectorAll('[data-copy]').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    copyToClipboard(this.dataset.copy);
+                });
+            });
+
+            // Set min date to tomorrow for any date inputs
+            const dateInputs = document.querySelectorAll('input[type="date"]');
+            dateInputs.forEach(input => {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                input.min = tomorrow.toISOString().split('T')[0];
+            });
+        });
+
+        async function handleContactSubmit(e) {
+            e.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
+
+            if (!validateContactForm(formData)) return;
+
+            showLoading();
+
+            // Simulate API delay
+            setTimeout(() => {
+                // Save to localStorage for admin panel
+                const messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
+                messages.push({
+                    ...formData,
+                    timestamp: new Date().toISOString(),
+                    id: 'M' + Date.now()
+                });
+                localStorage.setItem('contactMessages', JSON.stringify(messages));
+
+                showSuccess(formData);
+                form.reset();
+                playSound('successSound');
+                showNotification('Message sent! Response within 24h.');
+            }, 1500);
+        }
+
+        function validateContactForm(data) {
+            if (data.name.length < 2) {
+                showError('Name must be at least 2 characters');
+                return false;
+            }
+            if (!data.email.includes('@') || !data.email.includes('.')) {
+                showError('Please enter valid email');
+                return false;
+            }
+            if (data.message.length < 10) {
+                showError('Message must be at least 10 characters');
+                return false;
+            }
+            return true;
+        }
+
+        function showLoading() {
+            const feedback = document.getElementById('formFeedback');
+            feedback.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            feedback.className = 'form-feedback loading';
+            feedback.style.display = 'block';
+        }
+
+        function showSuccess(data) {
+            const feedback = document.getElementById('formFeedback');
+            feedback.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <strong>✅ Message Sent Successfully!</strong><br>
+                <small>Hi ${data.name}, we'll reply to ${data.email} within 24 hours!</small>
+            `;
+            feedback.className = 'form-feedback success';
+        }
+
+        function showError(message) {
+            const feedback = document.getElementById('formFeedback');
+            feedback.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+            feedback.className = 'form-feedback error';
+            feedback.style.display = 'block';
+            setTimeout(() => feedback.style.display = 'none', 5000);
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = event.target.innerHTML;
+                event.target.innerHTML = '✅ Copied!';
+                event.target.style.color = '#00ff88';
+                event.target.style.fontWeight = '600';
+
+                setTimeout(() => {
+                    event.target.innerHTML = originalText;
+                    event.target.style.color = '';
+                    event.target.style.fontWeight = '';
+                }, 2000);
+
+                showNotification('Copied to clipboard!');
+            }).catch(() => {
+                showNotification('Copy failed - please select manually');
+            });
+        }
+
+        function playSound(id) {
+            const audio = document.getElementById(id);
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(() => { });
+            }
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification success show';
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000);
+        }
+    </script>
 </body>
 
 </html>
