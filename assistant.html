@@ -30,7 +30,7 @@
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a class="active" href="assistant.html">Ava Assistant</a></li>
-                    <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
+                    <li><a href="booking.html" class="cta-nav btn-primary btn">Book Now</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
@@ -46,7 +46,7 @@
                     Your 24/7 DJ Igniter support. Ask about bookings, services, pricing, or anything!
                 </p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary btn-large" onclick="focusChat()">
+                    <button class="btn btn-primary btn-large" onclick="ava?.focusChat()">
                         <i class="fas fa-comments"></i> Start Chatting
                     </button>
                 </div>
@@ -65,11 +65,15 @@
                 </div>
                 <div>
                     <h3>Ava - DJ Assistant</h3>
-                    <span class="status">Online <i class="fas fa-circle" style="color: var(--success);"></i></span>
+                    <span class="status">Online <i class="fas fa-circle" style="color: #00ff88;"></i></span>
                 </div>
                 <div class="chat-actions">
-                    <button class="btn-icon" onclick="toggleVoice()"><i class="fas fa-microphone"></i></button>
-                    <button class="btn-icon" onclick="clearChat()"><i class="fas fa-trash"></i></button>
+                    <button class="btn-icon" onclick="ava?.toggleVoice()" title="Voice Mode">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="btn-icon" onclick="ava?.clearChat()" title="Clear Chat">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 </div>
             </div>
 
@@ -78,12 +82,9 @@
                 <div class="message bot-message welcome-message">
                     <div class="avatar"><i class="fas fa-robot"></i></div>
                     <div class="message-content">
-                        <div class="typing-indicator" style="display: none;">
-                            <span></span><span></span><span></span>
-                        </div>
-                        <p>Hi! I'm <strong>Ava</strong>, DJ Igniter's intelligent assistant.
-                            I can help you with bookings, services, pricing, availability, and more!
-                            What would you like to know? 🎧</p>
+                        <p>Hi! I'm <strong>Ava</strong>, DJ Igniter's intelligent assistant.<br>
+                            I can help you with bookings, services, pricing, availability, and more!<br>
+                            What would you like to know? 🎧💻</p>
                     </div>
                 </div>
             </div>
@@ -93,15 +94,15 @@
                 <div class="input-wrapper">
                     <input type="text" id="userInput" placeholder="Type your message or press Enter..."
                         autocomplete="off">
-                    <button class="send-btn" onclick="sendMessage()">
+                    <button class="send-btn" onclick="ava?.sendMessage()" title="Send">
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
                 <div class="quick-replies">
-                    <button class="quick-btn" onclick="quickReply('booking')">Book DJ</button>
-                    <button class="quick-btn" onclick="quickReply('pricing')">Pricing</button>
-                    <button class="quick-btn" onclick="quickReply('services')">Services</button>
-                    <button class="quick-btn" onclick="quickReply('availability')">Availability</button>
+                    <button class="quick-btn" onclick="ava?.quickReply('booking')">Book DJ</button>
+                    <button class="quick-btn" onclick="ava?.quickReply('pricing')">Pricing</button>
+                    <button class="quick-btn" onclick="ava?.quickReply('services')">Services</button>
+                    <button class="quick-btn" onclick="ava?.quickReply('availability')">Availability</button>
                 </div>
             </div>
 
@@ -126,7 +127,184 @@
         <source src="send.mp3" type="audio/mpeg">
     </audio>
 
-    <script src="script.js"></script>
+    <!-- ================= FIXED AVA ASSISTANT SCRIPT ================= -->
+    <script>
+        class AvaAssistant {
+            constructor() {
+                this.responses = {
+                    greetings: [
+                        "Hello! 🎧 Ready to book DJ Igniter?",
+                        "Hi there! What service can I help with?",
+                        "Hey! Ask me about bookings, pricing, or services!"
+                    ],
+                    booking: [
+                        "Perfect! Go to <a href='booking.html'>Booking page</a> for instant confirmation.",
+                        "Click 'Book Now' button or visit booking.html 🚀",
+                        "Booking form is super fast - 30 seconds!"
+                    ],
+                    pricing: [
+                        "Check <a href='pricing.html'>Pricing page</a> - Wedding DJ ₦1.2M, Websites ₦800k+",
+                        "Transparent pricing! Basic DJ from ₦500k, Premium ₦1.2M+"
+                    ],
+                    services: [
+                        "DJ Events (Weddings, Clubs), Mixtape Production, Web Development 💻🎵",
+                        "Full services on <a href='services.html'>Services page</a>"
+                    ],
+                    availability: [
+                        "Most dates open! Check booking form for real-time availability.",
+                        "Weekends book fast - submit form for instant confirmation!"
+                    ],
+                    portfolio: [
+                        "See my work on <a href='portfolio.html'>Portfolio page</a> - 250+ events!",
+                        "Real results: weddings, clubs, websites, mixtapes 🔥"
+                    ],
+                    admin: [
+                        "Admin login: admin.html (password protected)",
+                        "All bookings saved automatically 📊"
+                    ],
+                    default: [
+                        "I can help with bookings, pricing, services, portfolio! What do you need?",
+                        "Try: 'booking', 'pricing', 'services', 'portfolio' 🎯",
+                        "Type your question - I'm here 24/7!"
+                    ]
+                };
+                this.init();
+            }
+
+            init() {
+                const input = document.getElementById('userInput');
+                if (!input) return;
+
+                // Enter key
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.sendMessage();
+                    }
+                });
+
+                // Focus on load
+                setTimeout(() => input.focus(), 500);
+            }
+
+            sendMessage() {
+                const input = document.getElementById('userInput');
+                const message = input.value.trim();
+                if (!message) return;
+
+                // Add user message
+                this.addMessage('user', message);
+                input.value = '';
+
+                // Show typing
+                this.showTyping();
+
+                // AI Response (1-2 sec delay)
+                setTimeout(() => {
+                    this.hideTyping();
+                    this.generateResponse(message.toLowerCase());
+                }, 1000 + Math.random() * 1500);
+            }
+
+            addMessage(sender, text) {
+                const chatbox = document.getElementById('chatbox');
+                const isUser = sender === 'user';
+
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+
+                // Clean links
+                const cleanText = text
+                    .replace(/booking/gi, "<a href='booking.html' style='color: var(--primary-gold); font-weight: 600;'>booking</a>")
+                    .replace(/pricing/gi, "<a href='pricing.html' style='color: var(--primary-gold); font-weight: 600;'>pricing</a>")
+                    .replace(/services/gi, "<a href='services.html' style='color: var(--primary-gold); font-weight: 600;'>services</a>")
+                    .replace(/portfolio/gi, "<a href='portfolio.html' style='color: var(--primary-gold); font-weight: 600;'>portfolio</a>");
+
+                messageDiv.innerHTML = `
+                    <div class="avatar">${isUser ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>'}</div>
+                    <div class="message-content">
+                        <p>${cleanText}</p>
+                    </div>
+                `;
+
+                chatbox.appendChild(messageDiv);
+                chatbox.scrollTop = chatbox.scrollHeight;
+
+                // Sound
+                const audio = document.getElementById('sendSound') || document.getElementById('clickSound');
+                audio?.play().catch(() => { });
+            }
+
+            showTyping() {
+                const chatbox = document.getElementById('chatbox');
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'message bot-message';
+                typingDiv.innerHTML = `
+                    <div class="avatar"><i class="fas fa-robot"></i></div>
+                    <div class="message-content">
+                        <div class="typing-indicator">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                `;
+                chatbox.appendChild(typingDiv);
+                chatbox.scrollTop = chatbox.scrollHeight;
+            }
+
+            hideTyping() {
+                const typing = document.querySelector('.typing-indicator');
+                if (typing) typing.closest('.message').remove();
+            }
+
+            generateResponse(message) {
+                // Priority matching
+                for (let [key, responses] of Object.entries(this.responses)) {
+                    if (message.includes(key)) {
+                        const response = responses[Math.floor(Math.random() * responses.length)];
+                        return this.addMessage('bot', response);
+                    }
+                }
+
+                // Fallback
+                const fallback = this.responses.default[Math.floor(Math.random() * this.responses.default.length)];
+                this.addMessage('bot', fallback);
+            }
+
+            quickReply(type) {
+                document.getElementById('userInput').value = type;
+                this.sendMessage();
+            }
+
+            clearChat() {
+                if (confirm('Clear chat?')) {
+                    document.getElementById('chatbox').innerHTML = `
+                        <div class="message bot-message welcome-message">
+                            <div class="avatar"><i class="fas fa-robot"></i></div>
+                            <div class="message-content">
+                                <p>Chat cleared! How can I help? 🎧💻</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            focusChat() {
+                const input = document.getElementById('userInput');
+                input.focus();
+                input.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }
+
+            toggleVoice() {
+                alert('🎤 Voice mode coming soon!');
+            }
+        }
+
+        // ================= INIT =================
+        const ava = new AvaAssistant();
+
+        // Global functions for onclick handlers
+        window.ava = ava;
+    </script>
 </body>
 
 </html>
