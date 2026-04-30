@@ -12,6 +12,11 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="logo.jpg">
+
+    <!-- Paystack -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <!-- Flutterwave -->
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
 </head>
 
 <body>
@@ -163,38 +168,50 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label><i class="fas fa-user"></i> Full Name</label>
-                            <input type="text" name="name" required>
+                            <input type="text" name="name" id="name" required>
                         </div>
                         <div class="form-group">
                             <label><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" name="email" required>
+                            <input type="email" name="email" id="email" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label><i class="fas fa-tag"></i> Event Type</label>
-                            <select name="service" required>
+                            <select name="service" id="service" required onchange="updatePriceDisplay()">
                                 <option value="">Select Event</option>
-                                <option value="Wedding DJ">💒 Wedding DJ</option>
-                                <option value="Birthday Party DJ">🎂 Birthday Party</option>
-                                <option value="Corporate Event">🏢 Corporate</option>
-                                <option value="Club Night">🌃 Club Night</option>
-                                <option value="Private Party">🎈 Private Party</option>
+                                <option value="Wedding DJ">💒 Wedding DJ - ₦1,200,000</option>
+                                <option value="Birthday Party DJ">🎂 Birthday Party - ₦500,000</option>
+                                <option value="Corporate Event">🏢 Corporate - ₦1,500,000</option>
+                                <option value="Club Night">🌃 Club Night - ₦2,000,000</option>
+                                <option value="Private Party">🎈 Private Party - ₦800,000</option>
                             </select>
+                            <div id="priceDisplay"
+                                style="display: none; margin-top: 0.5rem; color: var(--primary-gold); font-weight: 600;">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label><i class="fas fa-calendar"></i> Event Date</label>
-                            <input type="date" name="date" required>
+                            <input type="date" name="date" id="date" required>
                         </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-full btn-large">
                         <i class="fas fa-check"></i> Secure Your DJ
                     </button>
+
+                    <div class="payment-section" style="margin-top: 2rem;">
+                        <button type="button" class="btn btn-primary btn-full pay-now-btn" onclick="initiatePayment()">
+                            <i class="fas fa-credit-card"></i> Pay & Book Now (Secure)
+                        </button>
+                        <p style="text-align: center; opacity: 0.7; margin-top: 1rem;">
+                            🔒 100% Secure • Instant Confirmation
+                        </p>
+                    </div>
                 </form>
 
-                <div id="bookingFeedback"></div>
+                <div id="bookingFeedback" style="display: none;"></div>
             </div>
         </div>
     </section>
@@ -212,6 +229,114 @@
     </audio>
 
     <script src="script.js"></script>
+    <script>
+        // ================= EVENT DJ SPECIFIC PRICING =================
+        const EVENT_PRICES = {
+            'Wedding DJ': { amount: 1200000, label: '₦1,200,000' },
+            'Corporate Event': { amount: 1500000, label: '₦1,500,000' },
+            'Club Night': { amount: 2000000, label: '₦2,000,000' },
+            'Private Party': { amount: 800000, label: '₦800,000' },
+            'Birthday Party DJ': { amount: 500000, label: '₦500,000' }
+        };
+
+        function updatePriceDisplay() {
+            const service = document.getElementById('service')?.value;
+            const priceEl = document.getElementById('priceDisplay');
+
+            if (service && EVENT_PRICES[service]) {
+                const price = EVENT_PRICES[service];
+                priceEl.textContent = `Price: ${price.label}`;
+                priceEl.style.display = 'block';
+            } else {
+                priceEl.style.display = 'none';
+            }
+        }
+
+        // Form submission handler
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('bookingForm');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    submitEventBooking(this);
+                });
+            }
+
+            // Set min date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('date').min = tomorrow.toISOString().split('T')[0];
+        });
+
+        function submitEventBooking(form) {
+            const formData = new FormData(form);
+            const booking = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                service: formData.get('service'),
+                date: formData.get('date'),
+                type: 'Event DJ Service',
+                timestamp: new Date().toISOString()
+            };
+
+            // Validation
+            if (!booking.name || !booking.email || !booking.service || !booking.date) {
+                showBookingError('Please fill all required fields');
+                return;
+            }
+
+            // Save to localStorage
+            let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+            bookings.push(booking);
+            localStorage.setItem('bookings', JSON.stringify(bookings));
+
+            // Success feedback
+            showBookingSuccess(booking);
+            form.reset();
+        }
+
+        function showBookingSuccess(booking) {
+            const feedback = document.getElementById('bookingFeedback');
+            feedback.innerHTML = `
+                <div class="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>✅ DJ Booked Successfully!</strong><br>
+                    <small>${booking.service} on ${new Date(booking.date).toLocaleDateString()}</small><br>
+                    Check your email for confirmation. We'll contact you within 24h!
+                </div>
+            `;
+            feedback.style.display = 'block';
+            feedback.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showBookingError(message) {
+            const feedback = document.getElementById('bookingFeedback');
+            feedback.innerHTML = `<div class="error-message">${message}</div>`;
+            feedback.style.display = 'block';
+        }
+
+        // Payment integration (inherits from booking.html)
+        let currentBooking = {};
+        window.initiatePayment = function () {
+            currentBooking = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                service: document.getElementById('service').value,
+                date: document.getElementById('date').value,
+                amount: EVENT_PRICES[document.getElementById('service').value]?.amount || 800000,
+                reference: 'DJ_EVENT_' + Date.now()
+            };
+
+            if (!currentBooking.name || !currentBooking.email || !currentBooking.service) {
+                alert('Please fill all fields first');
+                return;
+            }
+
+            // Redirect to main booking with pre-filled data
+            const params = new URLSearchParams(currentBooking);
+            window.location.href = `booking.html?${params.toString()}`;
+        };
+    </script>
 </body>
 
 </html>
