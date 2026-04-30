@@ -2,10 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Services | DJ Igniter Studios</title>
+    <title>Services | DJ Igniter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DJ Services, Mixtape Production, Web Development, Programming | DJ Igniter">
+    <meta name="description"
+        content="DJ Igniter Services - Events, Web Development, Mixtapes | Book Professional Services">
 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
@@ -28,9 +29,9 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html" class="active">Services</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="assistant.html">Assistant</a></li>
-                    <li><a href="booking.html" class="cta-nav btn-primary">Book Service</a></li>
+                    <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
@@ -41,18 +42,15 @@
     <section class="services-hero fade">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-star"></i> 4.9⭐ Average Rating
-                </div>
-                <h1 class="section-title">My Services</h1>
+                <h1 class="section-title">🎧 My Services</h1>
                 <p class="hero-subtitle">
-                    Complete creative solutions: DJ performances, music production,
-                    web development, and programming services.
+                    Professional DJ services + premium web development.
+                    One creative delivering two worlds of excellence.
                 </p>
-                <div class="stats-row">
-                    <span>250+ <small>Projects</small></span>
-                    <span>50+ <small>Clients</small></span>
-                    <span>100% <small>Satisfaction</small></span>
+                <div class="service-stats">
+                    <span>250+ Events</span>
+                    <span>50+ Websites</span>
+                    <span>4.9⭐ Rating</span>
                 </div>
             </div>
         </div>
@@ -63,115 +61,134 @@
         <div class="container">
             <div class="services-grid">
 
-                <!-- EVENT DJ -->
-                <a href="event-dj.html" class="service-card card" data-service="dj">
-                    <div class="service-icon">🎧</div>
-                    <div class="service-content">
-                        <h3>Event DJ Services</h3>
-                        <p>High-energy performances for weddings, parties, corporate events, clubs</p>
-                        <div class="service-meta">
-                            <span class="service-price">From ₦800k</span>
-                            <span class="service-rating">⭐ 5.0</span>
-                        </div>
+                <!-- DJ EVENTS -->
+                <div class="service-card card" data-service="dj">
+                    <div class="service-icon-large">🎧</div>
+                    <h3>Event DJ Services</h3>
+                    <p>High-energy performances for weddings, parties, corporate events, clubs</p>
+                    <div class="service-meta">
+                        <span class="service-price">From ₦800k</span>
+                        <span class="service-rating">⭐ 5.0 (248)</span>
                     </div>
-                    <div class="service-cta">
-                        <i class="fas fa-arrow-right"></i> Explore
+                    <div class="service-actions">
+                        <a href="event-dj.html" class="btn btn-primary">View DJ Services</a>
+                        <a href="event-dj.html" class="btn btn-secondary">Book DJ</a>
                     </div>
-                </a>
+                </div>
+
+                <!-- WEB DEVELOPMENT -->
+                <div class="service-card card" data-service="web">
+                    <div class="service-icon-large">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Fast, responsive, modern websites. Like this very site!</p>
+                    <div class="service-meta">
+                        <span class="service-price">From ₦300k</span>
+                        <span class="service-rating">⭐ 5.0 (52)</span>
+                    </div>
+                    <div class="service-actions">
+                        <a href="web-design.html" class="btn btn-primary">View Web Services</a>
+                        <a href="web-design.html" class="btn btn-secondary">Build Website</a>
+                    </div>
+                </div>
 
                 <!-- MIXTAPE PRODUCTION -->
-                <a href="mixtape.html" class="service-card card" data-service="mixtape">
-                    <div class="service-icon">🎵</div>
-                    <div class="service-content">
-                        <h3>Mixtape Production</h3>
-                        <p>Professional mixes with seamless transitions and studio mastering</p>
-                        <div class="service-meta">
-                            <span class="service-price">From ₦150k</span>
-                            <span class="service-rating">⭐ 4.9</span>
-                        </div>
+                <div class="service-card card" data-service="mix">
+                    <div class="service-icon-large">🎵</div>
+                    <h3>Mixtape Production</h3>
+                    <p>Professional mixing, mastering, custom track selection</p>
+                    <div class="service-meta">
+                        <span class="service-price">From ₦150k</span>
+                        <span class="service-rating">⭐ 4.9 (98)</span>
                     </div>
-                    <div class="service-cta">
-                        <i class="fas fa-arrow-right"></i> Explore
+                    <div class="service-actions">
+                        <a href="mixtape.html" class="btn btn-primary">View Production</a>
+                        <a href="mixtape.html" class="btn btn-secondary">Order Mix</a>
                     </div>
-                </a>
-
-                <!-- WEBSITE DEVELOPMENT -->
-                <a href="web-design.html" class="service-card card" data-service="web">
-                    <div class="service-icon">💻</div>
-                    <div class="service-content">
-                        <h3>Website Development</h3>
-                        <p>Modern, responsive websites and SAAS platforms with premium design</p>
-                        <div class="service-meta">
-                            <span class="service-price">From ₦500k</span>
-                            <span class="service-rating">⭐ 5.0</span>
-                        </div>
-                    </div>
-                    <div class="service-cta">
-                        <i class="fas fa-arrow-right"></i> Explore
-                    </div>
-                </a>
-
-                <!-- PROGRAMMING -->
-                <a href="programming.html" class="service-card card" data-service="programming">
-                    <div class="service-icon">🧠</div>
-                    <div class="service-content">
-                        <h3>Programming Services</h3>
-                        <p>Websites, software projects, assignment help, debugging solutions</p>
-                        <div class="service-meta">
-                            <span class="service-price">Custom</span>
-                            <span class="service-rating">⭐ 4.9</span>
-                        </div>
-                    </div>
-                    <div class="service-cta">
-                        <i class="fas fa-arrow-right"></i> Explore
-                    </div>
-                </a>
+                </div>
 
             </div>
         </div>
     </section>
 
-    <!-- ================= FEATURED / TESTIMONIALS ================= -->
-    <section class="testimonials-section fade">
+    <!-- ================= SERVICE HIGHLIGHTS ================= -->
+    <section class="section-padding bg-dark fade">
+        <div class="container">
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon">⚡</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Websites in 7-21 days. DJ bookings instantly confirmed.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">🔒</div>
+                    <h3>Secure Payments</h3>
+                    <p>Paystack, Flutterwave, bank transfer. 100% secure.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">⭐</div>
+                    <h3>5-Star Service</h3>
+                    <p>250+ happy clients. 4.9⭐ average rating.</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">📞</div>
+                    <h3>24/7 Support</h3>
+                    <p>Ava AI assistant + WhatsApp + email support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= COMPARISON TABLE ================= -->
+    <section class="section-padding fade">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">What Clients Say</h2>
-                <p class="section-subtitle">Real results from real clients</p>
+                <h2 class="section-title">Service Comparison</h2>
+                <p class="section-subtitle">Everything included at each price point</p>
             </div>
 
-            <div class="testimonials-grid">
-                <div class="testimonial-card card">
-                    <div class="testimonial-header">
-                        <img src="avatar1.jpg" alt="Client" class="client-avatar">
-                        <div>
-                            <h4>Sarah Wedding</h4>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p>"DJ Igniter made our wedding unforgettable! Perfect music selection."</p>
-                </div>
-
-                <div class="testimonial-card card">
-                    <div class="testimonial-header">
-                        <img src="avatar2.jpg" alt="Client" class="client-avatar">
-                        <div>
-                            <h4>TechCorp CEO</h4>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p>"Outstanding website development. Fast, modern, and professional."</p>
-                </div>
-
-                <div class="testimonial-card card">
-                    <div class="testimonial-header">
-                        <img src="avatar3.jpg" alt="Client" class="client-avatar">
-                        <div>
-                            <h4>Mike Artist</h4>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p>"Mixtape production was 🔥. Got 10k streams in first week!"</p>
-                </div>
+            <div class="comparison-table-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>DJ Events</th>
+                            <th>Web Development</th>
+                            <th>Mixtapes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Starting Price</strong></td>
+                            <td>₦800k</td>
+                            <td>₦300k</td>
+                            <td>₦150k</td>
+                        </tr>
+                        <tr>
+                            <td>Delivery Time</td>
+                            <td>Instant</td>
+                            <td>7-21 days</td>
+                            <td>3-7 days</td>
+                        </tr>
+                        <tr>
+                            <td>Custom Work</td>
+                            <td>✅ Playlist</td>
+                            <td>✅ Design</td>
+                            <td>✅ Tracklist</td>
+                        </tr>
+                        <tr>
+                            <td>Revisions</td>
+                            <td>✅ On-site</td>
+                            <td>✅ 2 rounds</td>
+                            <td>✅ 2 rounds</td>
+                        </tr>
+                        <tr>
+                            <td>Support</td>
+                            <td>✅ 24/7</td>
+                            <td>✅ 30 days</td>
+                            <td>✅ 14 days</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -180,14 +197,14 @@
     <section class="cta-section fade">
         <div class="container">
             <div class="cta-content">
-                <h2 class="section-title">Ready to Get Started?</h2>
-                <p class="hero-subtitle">Choose your service and book instantly</p>
+                <h2>Ready to Get Started?</h2>
+                <p>Choose your service and book instantly</p>
                 <div class="cta-buttons">
                     <a href="booking.html" class="btn btn-primary btn-large">
-                        <i class="fas fa-calendar-check"></i> Book Service
+                        <i class="fas fa-calendar-check"></i> Instant Booking
                     </a>
-                    <a href="contact.html" class="btn btn-secondary btn-large">
-                        <i class="fas fa-comments"></i> Get Free Quote
+                    <a href="pricing.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-tag"></i> Detailed Pricing
                     </a>
                 </div>
             </div>
@@ -197,24 +214,62 @@
     <!-- ================= FOOTER ================= -->
     <footer class="footer fade">
         <div class="container">
-            <div class="footer-content">
-                <p>© 2026 DJ Igniter Studios | Complete Creative Services</p>
-            </div>
+            <p>© 2026 DJ Igniter Studios | Professional Services for Creative Projects</p>
         </div>
     </footer>
 
     <!-- ================= FLOATING CHAT ================= -->
     <div class="float" id="chatToggle">
         <i class="fas fa-comments"></i>
-        <span class="float-label">Service Help</span>
+        <span class="float-label">Ask About Services</span>
     </div>
 
-    <!-- AUDIO -->
-    <audio id="clickSound" preload="auto">
-        <source src="click.mp3" type="audio/mpeg">
-    </audio>
-
     <script src="script.js"></script>
+    <script>
+        // ================= SERVICE INTERACTIONS =================
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+                card.style.boxShadow = '0 25px 50px rgba(0,0,0,0.25)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = '0 15px 35px rgba(0,0,0,0.1)';
+            });
+        });
+
+        // Service filter (hover effect)
+        document.querySelectorAll('[data-service]').forEach(card => {
+            card.addEventListener('click', () => {
+                const service = card.dataset.service;
+                // Add active class for visual feedback
+                document.querySelectorAll('.service-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+
+                // Scroll to booking with service preselected
+                const params = new URLSearchParams({ service: service.toUpperCase() });
+                window.open(`booking.html?${params}`, '_blank');
+            });
+        });
+
+        // Table row highlights
+        document.querySelectorAll('.comparison-table tbody tr').forEach((row, index) => {
+            row.style.opacity = '0';
+            row.style.transform = 'translateX(-50px)';
+            setTimeout(() => {
+                row.style.transition = 'all 0.6s ease';
+                row.style.opacity = '1';
+                row.style.transform = 'translateX(0)';
+            }, index * 150);
+
+            row.addEventListener('mouseenter', () => {
+                row.style.background = 'rgba(255, 215, 0, 0.1)';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.background = 'transparent';
+            });
+        });
+    </script>
 </body>
 
 </html>
