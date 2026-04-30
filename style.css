@@ -2118,3 +2118,26 @@ tbody tr:hover {
     width: 100%;
     max-width: 250px;
 }
+
+/* Assistant Page Fixes */
+.welcome-message .message-content p {
+    font-weight: 500;
+}
+
+#chatbox {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-gold) rgba(255, 255, 255, 0.1);
+}
+
+#chatbox::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chatbox::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#chatbox::-webkit-scrollbar-thumb {
+    background: var(--primary-gold);
+    border-radius: 3px;
+}
