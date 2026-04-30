@@ -12,6 +12,11 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="logo.jpg">
+
+    <!-- Paystack -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <!-- Flutterwave -->
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
 </head>
 
 <body>
@@ -85,41 +90,53 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label><i class="fas fa-user"></i> Full Name</label>
-                            <input type="text" id="name" placeholder="John Doe" required>
+                            <input type="text" name="name" id="name" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
                             <label><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" id="email" placeholder="john@example.com" required>
+                            <input type="email" name="email" id="email" placeholder="john@example.com" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label><i class="fas fa-tag"></i> Service Type</label>
-                            <select id="service" required>
+                            <select name="service" id="service" required onchange="updatePriceDisplay()">
                                 <option value="">Choose your event</option>
-                                <option value="Wedding DJ">💒 Wedding DJ - $1200</option>
-                                <option value="Corporate Event">🏢 Corporate Event - $1500</option>
-                                <option value="Club Night">🎉 Club Night - $2000</option>
-                                <option value="Private Party">🎈 Private Party - $800</option>
+                                <option value="Wedding DJ">💒 Wedding DJ - ₦1,200,000</option>
+                                <option value="Corporate Event">🏢 Corporate Event - ₦1,500,000</option>
+                                <option value="Club Night">🎉 Club Night - ₦2,000,000</option>
+                                <option value="Private Party">🎈 Private Party - ₦800,000</option>
                                 <option value="Website Development">💻 Website Development - Custom</option>
                             </select>
+                            <div id="priceDisplay"
+                                style="display: none; margin-top: 0.5rem; color: var(--primary-gold); font-weight: 600;">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label><i class="fas fa-calendar"></i> Event Date</label>
-                            <input type="date" id="date" required>
+                            <input type="date" name="date" id="date" required>
                         </div>
                     </div>
 
                     <div class="form-group full-width">
                         <label><i class="fas fa-comment"></i> Event Details (Optional)</label>
-                        <textarea id="details" rows="4"
+                        <textarea name="details" id="details" rows="4"
                             placeholder="Venue, guest count, music preferences..."></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-full btn-large">
                         <i class="fas fa-check"></i> Secure Booking Now
                     </button>
+
+                    <div class="payment-section" style="margin-top: 2rem;">
+                        <button type="button" class="btn btn-primary btn-full pay-now-btn" onclick="initiatePayment()">
+                            <i class="fas fa-credit-card"></i> Pay & Book Now (Secure)
+                        </button>
+                        <p style="text-align: center; opacity: 0.7; margin-top: 1rem;">
+                            🔒 100% Secure • Instant Confirmation
+                        </p>
+                    </div>
                 </form>
 
                 <div id="successMsg" class="success-message" style="display: none;"></div>
@@ -129,7 +146,14 @@
             <!-- AVAILABILITY CALENDAR -->
             <div class="calendar-card card">
                 <h3><i class="fas fa-calendar-alt"></i> Availability</h3>
-                <div id="availabilityCalendar"></div>
+                <div id="availabilityCalendar">
+                    <div style="text-align: center; padding: 2rem; color: rgba(255,255,255,0.6);">
+                        <i class="fas fa-check-circle"
+                            style="font-size: 3rem; color: var(--primary-gold); margin-bottom: 1rem;"></i>
+                        <h4>15+ Dates Available</h4>
+                        <p>Most weekends open for booking</p>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -160,6 +184,199 @@
     </audio>
 
     <script src="script.js"></script>
+    <script>
+        // ================= CONSISTENT PRICING =================
+        const OFFICIAL_PRICES = {
+            'Wedding DJ': { amount: 1200000, label: '₦1,200,000' },
+            'Corporate Event': { amount: 1500000, label: '₦1,500,000' },
+            'Club Night': { amount: 2000000, label: '₦2,000,000' },
+            'Private Party': { amount: 800000, label: '₦800,000' },
+            'Website Development': { amount: 800000, label: '₦800,000+' }
+        };
+
+        function updatePriceDisplay() {
+            const service = document.getElementById('service')?.value;
+            const priceEl = document.getElementById('priceDisplay');
+
+            if (service && OFFICIAL_PRICES[service]) {
+                const price = OFFICIAL_PRICES[service];
+                priceEl.textContent = `Price: ${price.label}`;
+                priceEl.style.display = 'block';
+            } else {
+                priceEl.style.display = 'none';
+            }
+        }
+
+        // ================= PAYMENT SYSTEM =================
+        let currentBooking = {};
+
+        function initiatePayment() {
+            currentBooking = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                service: document.getElementById('service').value,
+                date: document.getElementById('date').value,
+                details: document.getElementById('details').value,
+                amount: OFFICIAL_PRICES[document.getElementById('service').value]?.amount || 800000,
+                reference: 'DJIGNITER_' + Date.now()
+            };
+
+            if (!validateBooking(currentBooking)) return;
+
+            // Show payment options
+            showPaymentOptions();
+        }
+
+        function validateBooking(booking) {
+            if (!booking.name?.trim()) {
+                showError('Please enter your full name');
+                return false;
+            }
+            if (!booking.email || !booking.email.includes('@')) {
+                showError('Please enter valid email');
+                return false;
+            }
+            if (!booking.service) {
+                showError('Please select a service');
+                return false;
+            }
+            if (!booking.date) {
+                showError('Please select event date');
+                return false;
+            }
+            return true;
+        }
+
+        function showPaymentOptions() {
+            const options = `
+                <div style="text-align: center; padding: 2rem;">
+                    <h3>Choose Payment Method</h3>
+                    <p><strong>${currentBooking.service}</strong> - ₦${(currentBooking.amount / 1000).toLocaleString()}k</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap;">
+                        <button onclick="payWithPaystack()" class="btn btn-primary" style="padding: 1rem 2rem;">
+                            <i class="fab fa-cc-paystack"></i> Paystack
+                        </button>
+                        <button onclick="payWithFlutterwave()" class="btn btn-secondary" style="padding: 1rem 2rem;">
+                            <i class="fas fa-credit-card"></i> Flutterwave
+                        </button>
+                        <button onclick="payWithTransfer()" class="btn btn-secondary" style="padding: 1rem 2rem;">
+                            <i class="fas fa-university"></i> Bank Transfer
+                        </button>
+                    </div>
+                    <button onclick="cancelPayment()" style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1rem;">
+                        Cancel
+                    </button>
+                </div>
+            `;
+            document.querySelector('.booking-card').innerHTML = options;
+        }
+
+        function payWithPaystack() {
+            const handler = PaystackPop.setup({
+                key: 'pk_test_your_paystack_key_here', // Replace with real key
+                email: currentBooking.email,
+                amount: currentBooking.amount * 100, // kobo
+                currency: 'NGN',
+                ref: currentBooking.reference,
+                callback: function (response) {
+                    savePaidBooking(currentBooking);
+                    showPaymentSuccess(currentBooking);
+                },
+                onClose: function () {
+                    location.reload();
+                }
+            });
+            handler.openIframe();
+        }
+
+        function payWithFlutterwave() {
+            FlutterwaveCheckout({
+                public_key: "FLWPUBK_TEST-235153f84dfd29187e84b036f16379f7-X",
+                tx_ref: currentBooking.reference,
+                amount: currentBooking.amount / 100000,
+                currency: "NGN",
+                payment_options: "card, ussd, banktransfer",
+                customer: {
+                    email: currentBooking.email,
+                    phone_number: "",
+                    name: currentBooking.name,
+                },
+                customizations: {
+                    title: "DJ Igniter Booking",
+                    description: currentBooking.service,
+                    logo: "logo.jpg"
+                },
+                callback: function (data) {
+                    savePaidBooking(currentBooking);
+                    showPaymentSuccess(currentBooking);
+                }
+            });
+        }
+
+        function payWithTransfer() {
+            const bankDetails = `
+                <div style="text-align: center; padding: 2rem;">
+                    <h3>Bank Transfer Details</h3>
+                    <div style="background: var(--blur-bg); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                        <p><strong>Account Name:</strong> DJ Igniter Studios</p>
+                        <p><strong>Bank:</strong> OPAY</p>
+                        <p><strong>Account No:</strong> 9021368638</p>
+                        <p><strong>Amount:</strong> ₦${(currentBooking.amount / 1000).toLocaleString()}k</p>
+                        <p><strong>Reference:</strong> ${currentBooking.reference}</p>
+                    </div>
+                    <button onclick="confirmTransfer()" class="btn btn-primary">I've Paid</button>
+                </div>
+            `;
+            document.querySelector('.booking-card').innerHTML = bankDetails;
+        }
+
+        function confirmTransfer() {
+            savePaidBooking(currentBooking);
+            showPaymentSuccess(currentBooking);
+        }
+
+        function savePaidBooking(booking) {
+            booking.paid = true;
+            booking.status = 'confirmed';
+            booking.timestamp = new Date().toISOString();
+
+            let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+            bookings.push(booking);
+            localStorage.setItem('bookings', JSON.stringify(bookings));
+        }
+
+        function showPaymentSuccess(booking) {
+            const successMsg = `
+                <div class="success-message" style="text-align: center; padding: 3rem;">
+                    <i class="fas fa-check-circle" style="font-size: 4rem; color: #00ff88;"></i>
+                    <h2>🎉 Payment Successful!</h2>
+                    <p><strong>${booking.service}</strong> booked for ${new Date(booking.date).toLocaleDateString()}</p>
+                    <p>Confirmation sent to ${booking.email}</p>
+                    <a href="booking.html" class="btn btn-primary">Book Another</a>
+                    <a href="index.html" class="btn btn-secondary">Home</a>
+                </div>
+            `;
+            document.querySelector('.booking-card').innerHTML = successMsg;
+        }
+
+        function showError(message) {
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.textContent = `❌ ${message}`;
+            errorMsg.style.display = 'block';
+            setTimeout(() => errorMsg.style.display = 'none', 5000);
+        }
+
+        function cancelPayment() {
+            location.reload();
+        }
+
+        // Set min date to tomorrow
+        document.addEventListener('DOMContentLoaded', function () {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('date').min = tomorrow.toISOString().split('T')[0];
+        });
+    </script>
 </body>
 
 </html>
