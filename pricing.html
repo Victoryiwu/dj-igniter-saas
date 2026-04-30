@@ -5,7 +5,7 @@
     <title>Pricing | DJ Igniter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Transparent DJ pricing - Events, Mixtapes, Web Development | DJ Igniter">
+    <meta name="description" content="Transparent DJ Igniter Pricing - Events, Web Development, Mixtapes">
 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <!-- YOUR MAIN NAVBAR (Copy from index.html) -->
+    <!-- ================= NAVBAR ================= -->
     <header class="nav" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -27,109 +27,224 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
-                    <li><a class="active" href="pricing.html">Pricing</a></li>
+                    <li><a href="pricing.html" class="active">Pricing</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="assistant.html">Assistant</a></li>
-                    <li><a href="booking.html" class="cta-nav btn-primary btn">Book Now</a></li>
+                    <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
-    <!-- ================= PRICING HERO ================= -->
+    <!-- ================= HERO ================= -->
     <section class="pricing-hero fade">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-tag"></i> Transparent Pricing
-                </div>
-                <h1 class="section-title">💰 Pricing Plans</h1>
+                <h1 class="section-title">💰 Transparent Pricing</h1>
                 <p class="hero-subtitle">
-                    Simple packages for DJ events, mixtape production, and premium web development.
-                    No hidden fees - what you see is what you get.
+                    No hidden fees. Premium quality. Instant booking.
                 </p>
+                <div class="pricing-stats">
+                    <span>⭐ 4.9 Rating</span>
+                    <span>250+ Clients</span>
+                    <span>100% Satisfaction</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ================= PRICING GRID ================= -->
-    <section class="section-padding container fade">
-        <div class="pricing-grid">
-            <!-- Your existing cards here - just update classes -->
-            <div class="pricing-card card popular">
-                <div class="plan-badge">Most Popular</div>
-                <div class="card-icon">
-                    <i class="fas fa-headphones"></i>
-                </div>
-                <h3>🎧 Basic DJ Package</h3>
-                <div class="price">
-                    <span class="amount">₦10,000</span>
-                    <span class="range"> - ₦15,000</span>
-                </div>
-                <ul class="features">
-                    <li><i class="fas fa-check"></i> Small parties & birthdays</li>
-                    <li><i class="fas fa-check"></i> House events</li>
-                    <li><i class="fas fa-check"></i> 3-4 hours performance</li>
-                    <li><i class="fas fa-check"></i> Basic sound setup</li>
-                </ul>
-                <a href="booking.html" class="cta-button">Book Now</a>
+    <!-- ================= PRICING TABS ================= -->
+    <section class="section-padding fade">
+        <div class="container">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="dj">🎧 DJ Events</button>
+                <button class="tab-btn" data-tab="web">💻 Web Development</button>
+                <button class="tab-btn" data-tab="mix">🎵 Mixtapes</button>
             </div>
 
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-fire"></i>
+            <!-- DJ EVENTS PRICING -->
+            <div id="dj" class="tab-content active">
+                <div class="pricing-grid">
+                    <div class="pricing-card card recommended">
+                        <div class="plan-badge">Most Popular</div>
+                        <div class="plan-header">
+                            <h3>Wedding DJ</h3>
+                            <div class="price">₦1,200,000</div>
+                            <small>6 Hours</small>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Custom playlist</li>
+                            <li><i class="fas fa-check"></i> Full lighting</li>
+                            <li><i class="fas fa-check"></i> MC services</li>
+                            <li><i class="fas fa-check"></i> Ceremony + reception</li>
+                        </ul>
+                        <a href="booking.html?service=Wedding%20DJ" class="btn btn-primary btn-full">Book Wedding</a>
+                    </div>
+
+                    <div class="pricing-card card">
+                        <div class="plan-header">
+                            <h3>Private Party</h3>
+                            <div class="price">₦800,000</div>
+                            <small>5 Hours</small>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Custom playlist</li>
+                            <li><i class="fas fa-check"></i> LED lighting</li>
+                            <li><i class="fas fa-check"></i> Sound system</li>
+                        </ul>
+                        <a href="booking.html?service=Private%20Party" class="btn btn-primary btn-full">Book Party</a>
+                    </div>
+
+                    <div class="pricing-card card">
+                        <div class="plan-header">
+                            <h3>Corporate Event</h3>
+                            <div class="price">₦1,500,000</div>
+                            <small>4 Hours</small>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Professional setup</li>
+                            <li><i class="fas fa-check"></i> Custom branding</li>
+                            <li><i class="fas fa-check"></i> Background music</li>
+                        </ul>
+                        <a href="booking.html?service=Corporate%20Event" class="btn btn-primary btn-full">Book
+                            Corporate</a>
+                    </div>
+
+                    <div class="pricing-card card">
+                        <div class="plan-header">
+                            <h3>Club Night</h3>
+                            <div class="price">₦2,000,000</div>
+                            <small>8 Hours</small>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Premium Pioneer gear</li>
+                            <li><i class="fas fa-check"></i> Full club setup</li>
+                            <li><i class="fas fa-check"></i> Non-stop energy</li>
+                        </ul>
+                        <a href="booking.html?service=Club%20Night" class="btn btn-primary btn-full">Book Club</a>
+                    </div>
                 </div>
-                <h3>🔥 Premium Event DJ</h3>
-                <div class="price">
-                    <span class="amount">₦20,000</span>
-                    <span class="range"> - ₦35,000</span>
-                </div>
-                <ul class="features">
-                    <li><i class="fas fa-check"></i> Weddings & clubs</li>
-                    <li><i class="fas fa-check"></i> Large events</li>
-                    <li><i class="fas fa-check"></i> 5-8 hours performance</li>
-                    <li><i class="fas fa-check"></i> Professional lighting</li>
-                    <li><i class="fas fa-check"></i> MC services</li>
-                </ul>
-                <a href="booking.html" class="cta-button secondary">Get Quote</a>
             </div>
 
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-compact-disc"></i>
+            <!-- WEB DEVELOPMENT PRICING -->
+            <div id="web" class="tab-content">
+                <div class="pricing-grid">
+                    <div class="pricing-card card recommended">
+                        <div class="plan-badge">Most Popular</div>
+                        <div class="plan-header">
+                            <h3>Business Website</h3>
+                            <div class="price">₦800,000</div>
+                            <small>14 Days</small>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> 10+ pages</li>
+                            <li><i class="fas fa-check"></i> Mobile responsive</li>
+                            <li><i class="fas fa-check"></i> Contact forms</li>
+                            <li><i class="fas fa-check"></i> SEO optimized</li>
+                        </ul>
+                        <a href="booking.html?service=Website%20Development" class="btn btn-primary btn-full">Build
+                            Website</a>
+                    </div>
+
+                    <div class="pricing-card card">
+                        <div class="plan-header">
+                            <h3>E-commerce</h3>
+                            <div class="price">₦1,500,000</div>
+                            <small>21 Days</small>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Payment integration</li>
+                            <li><i class="fas fa-check"></i> Inventory system</li>
+                            <li><i class="fas fa-check"></i> Admin dashboard</li>
+                        </ul>
+                        <a href="booking.html?service=E-commerce%20Website" class="btn btn-primary btn-full">Build
+                            Store</a>
+                    </div>
+
+                    <div class="pricing-card card">
+                        <div class="plan-header">
+                            <h3>Custom App</h3>
+                            <div class="price">₦3,000,000+</div>
+                            <small>Custom</small>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Full-stack development</li>
+                            <li><i class="fas fa-check"></i> Database</li>
+                            <li><i class="fas fa-check"></i> API integration</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary btn-full">Get Quote</a>
+                    </div>
                 </div>
-                <h2>🎵 Mixtape Production</h2>
-                <div class="price">
-                    <span class="amount">₦5,000</span>
-                    <span class="range"> - ₦20,000</span>
-                </div>
-                <ul class="features">
-                    <li><i class="fas fa-check"></i> Custom mixes</li>
-                    <li><i class="fas fa-check"></i> Professional transitions</li>
-                    <li><i class="fas fa-check"></i> Branding & artwork</li>
-                    <li><i class="fas fa-check"></i> Multiple revisions</li>
-                </ul>
-                <a href="booking.html" class="cta-button">Start Project</a>
             </div>
 
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-laptop-code"></i>
+            <!-- MIXTAPE PRICING -->
+            <div id="mix" class="tab-content">
+                <div class="pricing-grid">
+                    <div class="pricing-card card">
+                        <div class="plan-header">
+                            <h3>Starter Mix</h3>
+                            <div class="price">₦150,000</div>
+                            <small>20-30 mins</small>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> 10-15 tracks</li>
+                            <li><i class="fas fa-check"></i> Basic mixing</li>
+                            <li><i class="fas fa-check"></i> MP3 delivery</li>
+                        </ul>
+                        <a href="booking.html?service=Mixtape%20Production" class="btn btn-primary btn-full">Order
+                            Starter</a>
+                    </div>
+
+                    <div class="pricing-card card recommended">
+                        <div class="plan-badge">Best Value</div>
+                        <div class="plan-header">
+                            <h3>Pro Mix</h3>
+                            <div class="price">₦350,000</div>
+                            <small>45-60 mins</small>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> 20-25 tracks</li>
+                            <li><i class="fas fa-check"></i> Full mixing + effects</li>
+                            <li><i class="fas fa-check"></i> Professional mastering</li>
+                            <li><i class="fas fa-check"></i> WAV + MP3</li>
+                        </ul>
+                        <a href="booking.html?service=Mixtape%20Production" class="btn btn-primary btn-full">Order
+                            Pro</a>
+                    </div>
+
+                    <div class="pricing-card card">
+                        <div class="plan-header">
+                            <h3>Artist Mix</h3>
+                            <div class="price">₦650,000+</div>
+                            <small>Custom</small>
+                        </div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Unlimited tracks</li>
+                            <li><i class="fas fa-check"></i> Studio mastering</li>
+                            <li><i class="fas fa-check"></i> Commercial license</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary btn-full">Custom Quote</a>
+                    </div>
                 </div>
-                <h2>💻 Website Development</h2>
-                <div class="price">
-                    <span class="amount">₦15,000</span>
-                    <span class="range"> - ₦50,000</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= QUOTE FORM ================= -->
+    <section class="section-padding fade">
+        <div class="container">
+            <div class="quote-card card">
+                <h3><i class="fas fa-calculator"></i> Need Custom Pricing?</h3>
+                <p>Get personalized quote in 24 hours</p>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="contact.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-comments"></i> Get Free Quote
+                    </a>
+                    <a href="booking.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-calendar-check"></i> Instant Book
+                    </a>
                 </div>
-                <ul class="features">
-                    <li><i class="fas fa-check"></i> Business websites</li>
-                    <li><i class="fas fa-check"></i> Portfolios</li>
-                    <li><i class="fas fa-check"></i> SaaS applications</li>
-                    <li><i class="fas fa-check"></i> Mobile responsive</li>
-                    <li><i class="fas fa-check"></i> SEO optimized</li>
-                </ul>
-                <a href="booking.html" class="cta-button">Build My Site</a>
             </div>
         </div>
     </section>
@@ -137,24 +252,66 @@
     <!-- ================= FOOTER ================= -->
     <footer class="footer fade">
         <div class="container">
-            <div class="footer-content">
-                <p>© 2026 DJ Igniter Studios | Transparent Pricing • Instant Booking</p>
-            </div>
+            <p>© 2026 DJ Igniter Studios | Transparent Pricing • Premium Quality</p>
         </div>
     </footer>
 
-    <!-- FLOATING CHAT -->
-    <div class="float" id="chatToggle">
-        <i class="fas fa-comments"></i>
-        <span class="float-label">Pricing Help</span>
-    </div>
-
-    <!-- AUDIO -->
-    <audio id="clickSound" preload="auto">
-        <source src="click.mp3" type="audio/mpeg">
-    </audio>
-
     <script src="script.js"></script>
+    <script>
+        // ================= PRICING TABS =================
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.dataset.tab;
+
+                // Update active tab
+                document.querySelector('.tab-btn.active').classList.remove('active');
+                btn.classList.add('active');
+
+                // Show target content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(targetTab).classList.add('active');
+
+                // Animate cards
+                setTimeout(() => {
+                    const cards = document.querySelectorAll('.pricing-card');
+                    cards.forEach((card, index) => {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(30px)';
+                        setTimeout(() => {
+                            card.style.transition = 'all 0.6s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    });
+                }, 200);
+            });
+        });
+
+        // Smart booking links with prefill
+        document.querySelectorAll('a[href*="booking.html"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                // Track clicks for analytics
+                console.log('Booking clicked:', this.href);
+            });
+        });
+
+        // Price highlight animation
+        const priceElements = document.querySelectorAll('.price');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transform = 'scale(1.1)';
+                    entry.target.style.transition = 'transform 0.5s ease';
+                    setTimeout(() => {
+                        entry.target.style.transform = 'scale(1)';
+                    }, 500);
+                }
+            });
+        });
+        priceElements.forEach(el => observer.observe(el));
+    </script>
 </body>
 
 </html>
