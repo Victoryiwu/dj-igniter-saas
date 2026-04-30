@@ -12,6 +12,11 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="logo.jpg">
+
+    <!-- Paystack -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <!-- Flutterwave -->
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
 </head>
 
 <body>
@@ -26,7 +31,7 @@
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="services.html">Services</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="assistant.html">Assistant</a></li>
@@ -114,7 +119,6 @@
                         <li><i class="fas fa-check"></i> 10-15 tracks</li>
                         <li><i class="fas fa-check"></i> Basic mixing</li>
                         <li><i class="fas fa-check"></i> MP3 delivery</li>
-                        <li><i class="fas fa-times"></i> Mastering</li>
                     </ul>
                     <a href="#booking" class="btn btn-primary btn-full">Start Order</a>
                 </div>
@@ -170,7 +174,8 @@
                         <p>High-energy dance mix</p>
                     </div>
                     <audio controls preload="metadata">
-                        <source src="afrobeats-sample.mp3" type="audio/mpeg">
+                        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/mpeg">
+                        Your browser doesn't support audio.
                     </audio>
                 </div>
                 <div class="sample-player card">
@@ -179,7 +184,8 @@
                         <p>Smooth hip-hop transitions</p>
                     </div>
                     <audio controls preload="metadata">
-                        <source src="hiphop-sample.mp3" type="audio/mpeg">
+                        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/mpeg">
+                        Your browser doesn't support audio.
                     </audio>
                 </div>
                 <div class="sample-player card">
@@ -188,7 +194,8 @@
                         <p>Non-stop club energy</p>
                     </div>
                     <audio controls preload="metadata">
-                        <source src="club-sample.mp3" type="audio/mpeg">
+                        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/mpeg">
+                        Your browser doesn't support audio.
                     </audio>
                 </div>
             </div>
@@ -208,49 +215,63 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label><i class="fas fa-user"></i> Full Name</label>
-                            <input type="text" id="name" required>
+                            <input type="text" name="name" id="name" required>
                         </div>
                         <div class="form-group">
                             <label><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" id="email" required>
+                            <input type="email" name="email" id="email" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label><i class="fas fa-music"></i> Mixtape Type</label>
-                            <select id="service" required>
+                            <select name="service" id="service" required onchange="updateMixtapePrice()">
                                 <option value="">Select Type</option>
-                                <option>Afrobeats Mix</option>
-                                <option>Hip-Hop Mix</option>
-                                <option>Party Mix</option>
-                                <option>Club Mix</option>
-                                <option>Wedding Mix</option>
-                                <option>Custom Mix</option>
+                                <option value="Afrobeats Mix">Afrobeats Mix</option>
+                                <option value="Hip-Hop Mix">Hip-Hop Mix</option>
+                                <option value="Party Mix">Party Mix</option>
+                                <option value="Club Mix">Club Mix</option>
+                                <option value="Wedding Mix">Wedding Mix</option>
+                                <option value="Custom Mix">Custom Mix</option>
                             </select>
+                            <div id="mixtapePriceDisplay"
+                                style="display: none; margin-top: 0.5rem; color: var(--primary-gold); font-weight: 600;">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label><i class="fas fa-clock"></i> Length</label>
-                            <select id="length" required>
+                            <select name="length" id="length" required>
                                 <option value="">Select Duration</option>
-                                <option>20-30 mins</option>
-                                <option>45-60 mins</option>
-                                <option>60+ mins</option>
+                                <option value="20-30 mins">20-30 mins (₦150k)</option>
+                                <option value="45-60 mins">45-60 mins (₦350k)</option>
+                                <option value="60+ mins">60+ mins (₦650k+)</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group full-width">
                         <label><i class="fas fa-comment"></i> Details (Optional)</label>
-                        <textarea id="details" rows="4" placeholder="Genre preferences, artists, vibe..."></textarea>
+                        <textarea name="details" id="details" rows="4"
+                            placeholder="Genre preferences, artists, vibe..."></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-full btn-large">
                         <i class="fas fa-play"></i> Start Production
                     </button>
+
+                    <div class="payment-section" style="margin-top: 2rem;">
+                        <button type="button" class="btn btn-primary btn-full pay-now-btn"
+                            onclick="initiateMixtapePayment()">
+                            <i class="fas fa-credit-card"></i> Pay & Book Now (Secure)
+                        </button>
+                        <p style="text-align: center; opacity: 0.7; margin-top: 1rem;">
+                            🔒 100% Secure • Instant Confirmation
+                        </p>
+                    </div>
                 </form>
 
-                <div id="bookingFeedback"></div>
+                <div id="bookingFeedback" style="display: none;"></div>
             </div>
         </div>
     </section>
@@ -274,6 +295,117 @@
     </audio>
 
     <script src="script.js"></script>
+    <script>
+        // ================= MIXTAPE PRICING =================
+        const MIXTAPE_PRICES = {
+            '20-30 mins': { amount: 150000, label: '₦150,000' },
+            '45-60 mins': { amount: 350000, label: '₦350,000' },
+            '60+ mins': { amount: 650000, label: '₦650,000+' }
+        };
+
+        function updateMixtapePrice() {
+            const length = document.getElementById('length')?.value;
+            const priceEl = document.getElementById('mixtapePriceDisplay');
+
+            if (length && MIXTAPE_PRICES[length]) {
+                const price = MIXTAPE_PRICES[length];
+                priceEl.textContent = `Price: ${price.label}`;
+                priceEl.style.display = 'block';
+            } else {
+                priceEl.style.display = 'none';
+            }
+        }
+
+        // Form handler
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('mixtapeForm');
+            if (form) {
+                form.addEventListener('submit', handleMixtapeSubmit);
+            }
+
+            // Set min date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 7); // 1 week minimum
+            const dateInput = document.querySelector('input[type="date"]');
+            if (dateInput) dateInput.min = tomorrow.toISOString().split('T')[0];
+        });
+
+        function handleMixtapeSubmit(e) {
+            e.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                service: document.getElementById('service').value,
+                length: document.getElementById('length').value,
+                details: document.getElementById('details').value.trim(),
+                type: 'Mixtape Production'
+            };
+
+            // Validation
+            if (!formData.name || !formData.email || !formData.service || !formData.length) {
+                showMixtapeError('Please fill all required fields');
+                return;
+            }
+
+            // Save booking
+            const booking = { ...formData, timestamp: new Date().toISOString() };
+            let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+            bookings.push(booking);
+            localStorage.setItem('bookings', JSON.stringify(bookings));
+
+            showMixtapeSuccess(formData);
+            e.target.reset();
+        }
+
+        function showMixtapeSuccess(data) {
+            const feedback = document.getElementById('bookingFeedback');
+            feedback.innerHTML = `
+                <div class="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>✅ Production Booked!</strong><br>
+                    <small>${data.service} (${data.length})</small><br>
+                    We'll contact you within 24h to discuss your vision!
+                </div>
+            `;
+            feedback.style.display = 'block';
+            feedback.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showMixtapeError(message) {
+            const feedback = document.getElementById('bookingFeedback');
+            feedback.innerHTML = `<div class="error-message">${message}</div>`;
+            feedback.style.display = 'block';
+        }
+
+        // Payment handler
+        let currentMixtapeBooking = {};
+        window.initiateMixtapePayment = function () {
+            currentMixtapeBooking = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                service: document.getElementById('service').value,
+                length: document.getElementById('length').value,
+                details: document.getElementById('details').value,
+                amount: MIXTAPE_PRICES[document.getElementById('length').value]?.amount || 150000,
+                reference: 'MIXTAPE_' + Date.now()
+            };
+
+            if (!currentMixtapeBooking.name || !currentMixtapeBooking.email || !currentMixtapeBooking.length) {
+                alert('Please fill all fields first');
+                return;
+            }
+
+            // Smart redirect to booking with prefill
+            const params = new URLSearchParams({
+                service: 'Mixtape Production',
+                name: currentMixtapeBooking.name,
+                email: currentMixtapeBooking.email,
+                details: `${currentMixtapeBooking.service} (${currentMixtapeBooking.length}) - ${currentMixtapeBooking.details}`
+            });
+            window.location.href = `booking.html?${params.toString()}`;
+        };
+    </script>
 </body>
 
 </html>
