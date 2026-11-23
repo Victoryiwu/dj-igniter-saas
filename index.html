@@ -5,20 +5,25 @@
     <title>DJ Igniter Studios | Where Beats Meet Technology</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DJ Igniter - Professional DJ Services + Web Development | Book Now">
+    <meta name="description" content="DJ Igniter Studios - Live DJ sets, custom mixtapes, and modern web development">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        referrerpolicy="no-referrer">
+    <link rel="icon" href="images/logo.jpg">
 </head>
 
 <body>
+    <div id="readingProgress"></div>
+
     <!-- ================= PRELOADER ================= -->
     <div id="loader">
         <div class="loader-content">
-            <img src="logo.jpg" alt="DJ Igniter" class="loader-logo">
+            <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo">
             <h1>DJ IGNITER</h1>
             <div class="loader-bar">
                 <div class="loader-progress"></div>
@@ -30,111 +35,156 @@
     <header class="nav" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo" class="logo-img">
                 <h2>DJ Igniter</h2>
             </div>
-            <nav>
+
+            <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+
+            <nav aria-label="Primary Navigation">
                 <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="#home" class="active" aria-current="page">Home</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="assistant.html">Assistant</a></li>
                     <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+
+            <button type="button" class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle navigation menu"
+                aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
     </header>
 
     <!-- ================= HERO SECTION ================= -->
     <section id="home" class="hero fade">
-        <div class="hero-bg"></div>
+        <div class="floating-icons" aria-hidden="true">
+            <i class="fas fa-music"></i>
+            <i class="fas fa-headphones"></i>
+            <i class="fas fa-compact-disc"></i>
+            <i class="fas fa-microphone"></i>
+            <i class="fas fa-sliders-h"></i>
+        </div>
+        <div class="hero-bg" aria-hidden="true"></div>
         <div class="container">
-            <div class="hero-content">
+            <div class="glow-orbs" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="hero-content reveal">
                 <div class="hero-badge">
-                    <i class="fas fa-crown"></i> Award Winning DJ
+                    <i class="fas fa-crown" aria-hidden="true"></i> Live Sets • Mixtapes • Web Craft
                 </div>
-                <h1 id="typingText"></h1>
+                <div class="vinyl-record" aria-hidden="true">
+                    <div class="vinyl-center"></div>
+                </div>
+                <div class="sound-wave" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <h1 id="typingText">Where Beats Meet Technology</h1>
                 <p class="hero-subtitle">
-                    Professional DJ • Web Developer • Creative Technologist
+                    DJ • Mixtape Curator • Web Developer
                 </p>
                 <div class="hero-buttons">
                     <a href="booking.html" class="btn btn-primary btn-large">
-                        <i class="fas fa-calendar-check"></i> Book Now
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i> Book Now
                     </a>
                     <a href="#services" class="btn btn-secondary btn-large">
-                        <i class="fas fa-eye"></i> View Services
+                        <i class="fas fa-eye" aria-hidden="true"></i> Explore Services
                     </a>
                 </div>
                 <div class="hero-stats">
-                    <span>250+ <small>Events</small></span>
-                    <span>4.9⭐ <small>Rating</small></span>
-                    <span>50+ <small>Websites</small></span>
+                    <span>500+ <small>Events &amp; Sets</small></span>
+                    <span>4.9<span aria-hidden="true">⭐</span> <small>Rating</small></span>
+                    <span>50+ <small>Web Builds</small></span>
                 </div>
             </div>
+            <div class="scroll-indicator" aria-hidden="true">
+                <span></span>
+            </div>
         </div>
+        <div id="searchMount"></div>
     </section>
+
+    <div class="equalizer" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
     <!-- ================= STATS SECTION ================= -->
     <section class="stats-section fade">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number" data-target="250">0</div>
-                    <div class="stat-label">Events Booked</div>
+                    <div class="stat-number" data-target="500">500+</div>
+                    <div class="stat-label">Events &amp; Sets</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-target="4.9">0</div>
-                    <div class="stat-label">⭐ Client Rating</div>
+                    <div class="stat-number" data-target="4.9">4.9</div>
+                    <div class="stat-label"><span aria-hidden="true">⭐</span> Client Rating</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-number" data-target="50">50+</div>
                     <div class="stat-label">Websites Built</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-target="15">0</div>
-                    <div class="stat-label">Years Experience</div>
+                    <div class="stat-number" data-target="10">10+</div>
+                    <div class="stat-label">Years in Sound</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ================= SERVICES SECTION ================= -->
-    <section id="services" class="section-padding fade">
+    <section id="services" class="section-padding reveal fade">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">My Services</h2>
-                <p class="section-subtitle">DJ Services • Web Development • Creative Solutions</p>
+                <h2 class="section-title">Core Services</h2>
+                <p class="section-subtitle">Live DJ Performances • Custom Mixtapes • Modern Web Development</p>
             </div>
 
             <div class="services-grid">
                 <a href="event-dj.html" class="service-card card">
-                    <div class="service-icon">🎧</div>
+                    <div class="service-icon" aria-hidden="true">🎧</div>
                     <h3>Event DJ</h3>
-                    <p>High-energy DJ sets for weddings, parties, corporate events</p>
+                    <p>High-energy sets for weddings, parties, corporate events, and nightlife</p>
                     <div class="service-meta">
                         <span class="service-price">From ₦800k</span>
-                        <span class="service-rating">⭐ 5.0</span>
+                        <span class="service-rating"><span aria-hidden="true">⭐</span> 5.0</span>
                     </div>
                 </a>
                 <a href="programming.html" class="service-card card">
-                    <div class="service-icon">💻</div>
+                    <div class="service-icon" aria-hidden="true">💻</div>
                     <h3>Web Development</h3>
-                    <p>Premium websites like this one. Fast, responsive, modern</p>
+                    <p>Fast, responsive websites and interactive frontends built to convert</p>
                     <div class="service-meta">
-                        <span class="service-price">From ₦500k</span>
-                        <span class="service-rating">⭐ 5.0</span>
+                        <span class="service-price">From ₦300k</span>
+                        <span class="service-rating"><span aria-hidden="true">⭐</span> 5.0</span>
                     </div>
                 </a>
                 <a href="mixtape.html" class="service-card card">
-                    <div class="service-icon">🎵</div>
-                    <h3>Music Production</h3>
-                    <p>Custom mixtapes, remixes, and production services</p>
+                    <div class="service-icon" aria-hidden="true">🎵</div>
+                    <h3>Custom Mixtapes</h3>
+                    <p>Curated blends across Afrobeats, street-pop, Amapiano, hip-hop, and party hits</p>
                     <div class="service-meta">
                         <span class="service-price">From ₦150k</span>
-                        <span class="service-rating">⭐ 4.9</span>
+                        <span class="service-rating"><span aria-hidden="true">⭐</span> 4.9</span>
                     </div>
                 </a>
             </div>
@@ -146,29 +196,32 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Featured Work</h2>
-                <p class="section-subtitle">Recent projects & performances</p>
+                <p class="section-subtitle">Selected live sets, web projects, and studio showcases</p>
             </div>
 
             <div class="portfolio-grid">
                 <div class="portfolio-item card">
-                    <img src="logo.jpg" alt="Wedding DJ" style="object-fit: cover;">
+                    <img src="images/placeholder.webp" data-src="images/portfolio1.png" alt="Wedding DJ Set"
+                        style="object-fit: cover;">
                     <div class="portfolio-overlay">
                         <h3>Wedding DJ Set</h3>
-                        <p>Lagos Wedding 2024</p>
+                        <p>Reception &amp; Dancefloor Energy</p>
                     </div>
                 </div>
                 <div class="portfolio-item card">
-                    <img src="logo.jpg" alt="Website" style="object-fit: cover;">
+                    <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="Website Design"
+                        style="object-fit: cover;">
                     <div class="portfolio-overlay">
-                        <h3>SAAS Website</h3>
-                        <p>Premium Design System</p>
+                        <h3>Web &amp; UI Builds</h3>
+                        <p>Responsive Design Systems</p>
                     </div>
                 </div>
                 <div class="portfolio-item card">
-                    <img src="logo.jpg" alt="Club DJ" style="object-fit: cover;">
+                    <img src="images/placeholder.webp" data-src="images/portfolio3.jpg" alt="Club Night"
+                        style="object-fit: cover;">
                     <div class="portfolio-overlay">
-                        <h3>Club Night</h3>
-                        <p>Abuja Nightlife 2024</p>
+                        <h3>Club &amp; Campus Nights</h3>
+                        <p>High-Tempo Crowd Sets</p>
                     </div>
                 </div>
             </div>
@@ -179,17 +232,17 @@
     <section class="audio-section fade">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">🎧 Listen to My Latest Mix</h2>
+                <h2 class="section-title"><span aria-hidden="true">🎧</span> Listen to a Studio Mix</h2>
             </div>
             <div class="audio-player-container">
                 <audio id="audioPlayer" controls preload="metadata">
-                    <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/mpeg">
-                    <!-- Replace with your real mix file -->
-                    <source src="igniter-mix(1).mp3" type="audio/mpeg">
-                    Your browser doesn't support audio.
+                    <source src="igniter-mix.mp3" type="audio/mpeg">
+                    Your browser doesn't support HTML5 audio.
                 </audio>
-                <canvas id="visualizer" width="800" height="200"></canvas>
-                <p style="opacity: 0.6; margin-top: 1rem;"></p>
+                <canvas id="visualizer" width="800" height="200" aria-label="Audio frequency visualizer"></canvas>
+                <p style="opacity: 0.7; margin-top: 0.85rem; font-size: var(--font-sm);">
+                    Igniter Studio Promo Mix — Seamless transitions &amp; studio energy
+                </p>
             </div>
         </div>
     </section>
@@ -198,14 +251,14 @@
     <section class="cta-section fade">
         <div class="container">
             <div class="cta-content">
-                <h2 class="section-title">Ready to Book?</h2>
-                <p class="hero-subtitle">Your perfect DJ experience starts here</p>
+                <h2 class="section-title">Ready to Kick Off?</h2>
+                <p class="hero-subtitle">Lock in a DJ date, order a mixtape, or start a web build</p>
                 <div class="cta-buttons">
                     <a href="booking.html" class="btn btn-primary btn-large">
-                        <i class="fas fa-calendar-check"></i> Book DJ Now
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i> Book Now
                     </a>
                     <a href="contact.html" class="btn btn-secondary btn-large">
-                        <i class="fas fa-comments"></i> Get Free Quote
+                        <i class="fas fa-comments" aria-hidden="true"></i> Get Free Quote
                     </a>
                 </div>
             </div>
@@ -217,14 +270,17 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.jpg" alt="DJ Igniter" class="logo-img">
+                    <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo" width="100">
                     <h3>DJ Igniter Studios</h3>
                 </div>
-                <p>Where beats meet technology. Professional DJ services + premium web development.</p>
+                <p>Where beats meet technology. Live sets, custom mixtapes, and modern web development.</p>
                 <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+                            class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i
+                            class="fab fa-spotify" aria-hidden="true"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -233,175 +289,40 @@
         </div>
     </footer>
 
+    <!-- ================= BACK TO TOP ================= -->
+    <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
+
     <!-- ================= FLOATING CHAT ================= -->
-    <div class="float" id="chatToggle">
-        <i class="fas fa-comments"></i>
+    <button type="button" class="float" id="chatToggle" aria-label="Ask Ava assistant">
+        <i class="fas fa-robot" aria-hidden="true"></i>
         <span class="float-label">Ask Ava</span>
-    </div>
+    </button>
 
     <!-- AUDIO -->
     <audio id="clickSound" preload="auto">
         <source src="click.mp3" type="audio/mpeg">
     </audio>
 
+    <script src="js/utils.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/command-palette.js"></script>
+    <script src="js/studio-fallbacks.js"></script>
     <script src="script.js"></script>
+    <script src="js/visualizer.js"></script>
     <script>
-        // ================= BULLETPROOF HOMEPAGE SCRIPT =================
-        (function () {
-            'use strict';
-
-            // Preloader
-            let loadTimeout;
-            function hideLoader() {
-                const loader = document.getElementById('loader');
-                if (loader) {
-                    loader.style.opacity = '0';
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                        document.body.classList.add('loaded');
-                    }, 500);
-                }
+        document.addEventListener("DOMContentLoaded", function () {
+            const typingEl = document.getElementById("typingText");
+            if (typingEl && !typingEl.textContent.trim()) {
+                typingEl.textContent = "Where Beats Meet Technology";
             }
-
-            window.addEventListener('load', () => {
-                clearTimeout(loadTimeout);
-                hideLoader();
-            });
-
-            loadTimeout = setTimeout(hideLoader, 4000);
-
-            // Typing effect - FIXED
-            const texts = ['Where Beats Meet Technology', 'DJ • Developer • Creator', 'High-Energy Performances'];
-            let textIndex = 0;
-            let charIndex = 0;
-            const typingElement = document.getElementById('typingText');
-
-            function typeWriter() {
-                if (!typingElement) return;
-
-                if (charIndex < texts[textIndex].length) {
-                    typingElement.textContent += texts[textIndex].charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeWriter, 80);
-                } else {
-                    setTimeout(() => {
-                        charIndex = 0;
-                        typingElement.textContent = '';
-                        textIndex = (textIndex + 1) % texts.length;
-                        typeWriter();
-                    }, 2500);
-                }
-            }
-
-            setTimeout(typeWriter, 1000);
-
-            // Navbar scroll effect
-            window.addEventListener('scroll', () => {
-                const navbar = document.getElementById('navbar');
-                if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
-            });
-
-            // Smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Mobile menu
-            document.getElementById('mobileToggle')?.addEventListener('click', () => {
-                document.querySelector('.nav-links')?.classList.toggle('active');
-            });
-
-            // Counter animation
-            function animateCounters() {
-                const counters = document.querySelectorAll('.stat-number[data-target]');
-                counters.forEach(counter => {
-                    const target = parseFloat(counter.getAttribute('data-target'));
-                    const increment = target / 100;
-                    let current = 0;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            counter.textContent = target + (target === 4.9 ? '⭐' : '');
-                            clearInterval(timer);
-                        } else {
-                            counter.textContent = Math.floor(current) + (target === 4.9 ? '' : '+');
-                        }
-                    }, 25);
-                });
-            }
-
-            // Intersection Observer
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('show');
-                        if (entry.target.classList.contains('stats-section')) {
-                            animateCounters();
-                        }
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-            document.querySelectorAll('.fade').forEach(el => observer.observe(el));
-
-            // Audio visualizer
-            const audio = document.getElementById('audioPlayer');
-            const canvas = document.getElementById('visualizer');
-            if (audio && canvas) {
-                const ctx = canvas.getContext('2d');
-                let audioContext, analyser, dataArray;
-
-                audio.addEventListener('play', function () {
-                    if (!audioContext) {
-                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                        analyser = audioContext.createAnalyser();
-                        const source = audioContext.createMediaElementSource(audio);
-                        source.connect(analyser);
-                        analyser.connect(audioContext.destination);
-                        analyser.fftSize = 256;
-                        dataArray = new Uint8Array(analyser.frequencyBinCount);
-                    }
-                    drawVisualizer();
-                });
-
-                function drawVisualizer() {
-                    requestAnimationFrame(drawVisualizer);
-                    if (!analyser || !dataArray) return;
-
-                    analyser.getByteFrequencyData(dataArray);
-                    ctx.fillStyle = 'rgba(15, 15, 15, 0.1)';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                    const barWidth = (canvas.width / dataArray.length) * 2.5;
-                    let x = 0;
-                    for (let i = 0; i < dataArray.length; i++) {
-                        const barHeight = (dataArray[i] / 255) * canvas.height;
-                        const hue = i / dataArray.length * 360;
-                        ctx.fillStyle = `hsl(${hue}, 70%, 60%)`;
-                        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-                        x += barWidth + 1;
-                    }
-                }
-            }
-
-            // Click sounds
-            document.addEventListener('click', (e) => {
-                if (e.target.closest('a, button, .btn')) {
-                    const audio = document.getElementById('clickSound');
-                    audio?.play().catch(() => { });
-                }
-            });
-
-        })();
+        });
     </script>
 </body>
 
