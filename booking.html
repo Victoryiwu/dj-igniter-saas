@@ -5,29 +5,69 @@
     <title>Book DJ Igniter | Instant Booking</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Book DJ Igniter instantly - Weddings, Events, Corporate DJ Services">
+    <meta name="description" content="Book DJ Igniter instantly - Weddings, Events, Corporate DJ Services, and Web Projects">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        referrerpolicy="no-referrer">
+    <link rel="icon" href="images/logo.jpg">
 
     <!-- Paystack -->
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <!-- Flutterwave -->
     <script src="https://checkout.flutterwave.com/v3.js"></script>
+
+    <style>
+        .booking-summary-box {
+            margin-top: 0.65rem;
+            padding: 0.7rem 0.9rem;
+            border-radius: 12px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.28);
+            color: var(--primary-gold);
+            font-size: var(--font-sm);
+            font-weight: 600;
+        }
+
+        .booking-confirm-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.85rem;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- ================= PRELOADER ================= -->
+    <div id="loader">
+        <div class="loader-content">
+            <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo">
+            <h1>DJ IGNITER</h1>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= NAVBAR ================= -->
     <header class="nav" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo" class="logo-img">
                 <h2>DJ Igniter</h2>
             </div>
-            <nav>
+
+            <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+
+            <nav aria-label="Primary Navigation">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
@@ -35,10 +75,14 @@
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="assistant.html">Assistant</a></li>
-                    <li><a href="booking.html" class="active cta-nav btn-primary">Book Now</a></li>
+                    <li><a href="booking.html" class="active cta-nav btn-primary" aria-current="page">Book Now</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+
+            <button type="button" class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle navigation menu"
+                aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
     </header>
 
@@ -47,29 +91,31 @@
         <div class="container">
             <div class="booking-hero-content">
                 <div class="hero-left">
-                    <h1 class="section-title">📅 Book Your DJ</h1>
+                    <h1 class="section-title"><span aria-hidden="true">📅</span> Book Your DJ</h1>
                     <p class="hero-subtitle">
-                        Secure your premium DJ experience instantly.
-                        Real-time availability & instant confirmation.
+                        Lock in your event date, mixtape session, or project build with clear details and fast confirmation.
                     </p>
                     <div class="availability-status">
-                        <i class="fas fa-calendar-check"></i>
-                        <span id="availabilityText">Checking availability...</span>
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <span id="availabilityText" aria-live="polite">Open for bookings — select a date to check</span>
                     </div>
                 </div>
 
                 <div class="hero-right">
                     <div class="quick-stats">
                         <div class="stat">
-                            <div class="stat-number">248</div>
-                            <div class="stat-label">Bookings This Month</div>
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Events &amp; Sets</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">4.9⭐</div>
+                            <div class="stat-number">4.9<span aria-hidden="true">⭐</span></div>
                             <div class="stat-label">Client Rating</div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="scroll-indicator" aria-hidden="true">
+                <span></span>
             </div>
         </div>
     </section>
@@ -81,78 +127,87 @@
             <!-- FORM CARD -->
             <div class="booking-card card">
                 <div class="form-header">
-                    <div class="form-icon">📋</div>
-                    <h3>Complete Your Booking</h3>
-                    <p>Fill out 30 seconds form - Get instant confirmation</p>
+                    <div class="form-icon" aria-hidden="true">📋</div>
+                    <h2>Complete Your Booking</h2>
+                    <p>Share your event or project details to reserve your slot or request payment details</p>
                 </div>
 
-                <form id="bookingForm">
+                <form id="bookingForm" novalidate>
                     <div class="form-row">
                         <div class="form-group">
-                            <label><i class="fas fa-user"></i> Full Name</label>
-                            <input type="text" name="name" id="name" placeholder="John Doe" required>
+                            <label for="name"><i class="fas fa-user" aria-hidden="true"></i> Full Name</label>
+                            <input type="text" name="name" id="name" placeholder="Your full name" autocomplete="name"
+                                required>
                         </div>
                         <div class="form-group">
-                            <label><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" name="email" id="email" placeholder="john@example.com" required>
+                            <label for="email"><i class="fas fa-envelope" aria-hidden="true"></i> Email Address</label>
+                            <input type="email" name="email" id="email" placeholder="you@example.com"
+                                autocomplete="email" required>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label><i class="fas fa-tag"></i> Service Type</label>
-                            <select name="service" id="service" required onchange="updatePriceDisplay()">
-                                <option value="">Choose your event</option>
-                                <option value="Wedding DJ">💒 Wedding DJ - ₦1,200,000</option>
-                                <option value="Corporate Event">🏢 Corporate Event - ₦1,500,000</option>
-                                <option value="Club Night">🎉 Club Night - ₦2,000,000</option>
-                                <option value="Private Party">🎈 Private Party - ₦800,000</option>
-                                <option value="Website Development">💻 Website Development - Custom</option>
+                            <label for="service"><i class="fas fa-tag" aria-hidden="true"></i> Service Type</label>
+                            <select name="service" id="service" required>
+                                <option value="">Choose your service</option>
+                                <option value="Wedding DJ" data-price="₦1,200,000">💒 Wedding DJ — ₦1,200,000</option>
+                                <option value="Corporate Event" data-price="₦1,500,000">🏢 Corporate Event — ₦1,500,000</option>
+                                <option value="Club Night" data-price="₦2,000,000">🎉 Club Night — ₦2,000,000</option>
+                                <option value="Private Party" data-price="₦800,000">🎈 Private Party — ₦800,000</option>
+                                <option value="Website Development" data-price="Custom Quote">💻 Website Development — Custom</option>
                             </select>
-                            <div id="priceDisplay"
-                                style="display: none; margin-top: 0.5rem; color: var(--primary-gold); font-weight: 600;">
+                            <div id="priceDisplay" class="booking-summary-box" aria-live="polite" style="display: none;">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label><i class="fas fa-calendar"></i> Event Date</label>
+                            <label for="date"><i class="fas fa-calendar" aria-hidden="true"></i> Event / Target Date</label>
                             <input type="date" name="date" id="date" required>
                         </div>
                     </div>
 
                     <div class="form-group full-width">
-                        <label><i class="fas fa-comment"></i> Event Details (Optional)</label>
+                        <label for="details"><i class="fas fa-comment" aria-hidden="true"></i> Event or Project Details (Optional)</label>
                         <textarea name="details" id="details" rows="4"
-                            placeholder="Venue, guest count, music preferences..."></textarea>
+                            placeholder="Venue, time window, guest count, music style, or website goals..."></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-full btn-large">
-                        <i class="fas fa-check"></i> Secure Booking Now
+                        <i class="fas fa-check" aria-hidden="true"></i> Reserve Booking Request
                     </button>
 
-                    <div class="payment-section" style="margin-top: 2rem;">
-                        <button type="button" class="btn btn-primary btn-full pay-now-btn" onclick="initiatePayment()">
-                            <i class="fas fa-credit-card"></i> Pay & Book Now (Secure)
+                    <div class="payment-section" style="margin-top: 1.75rem;">
+                        <button type="button" class="btn btn-secondary btn-full pay-now-btn"
+                            onclick="if (typeof initiatePayment === 'function') initiatePayment();">
+                            <i class="fas fa-credit-card" aria-hidden="true"></i> Pay &amp; Book Now (Checkout)
                         </button>
-                        <p style="text-align: center; opacity: 0.7; margin-top: 1rem;">
-                            🔒 100% Secure • Instant Confirmation
+                        <p style="text-align: center; opacity: 0.75; margin-top: 0.85rem; font-size: var(--font-xs);">
+                            <span aria-hidden="true">🔒</span> Paystack &amp; Flutterwave ready • Instant request summary
                         </p>
                     </div>
                 </form>
 
-                <div id="successMsg" class="success-message" style="display: none;"></div>
-                <div id="errorMsg" class="error-message" style="display: none;"></div>
+                <div id="successMsg" class="success-message" aria-live="polite" style="display: none;"></div>
+                <div id="errorMsg" class="error-message" role="alert" style="display: none;"></div>
             </div>
 
             <!-- AVAILABILITY CALENDAR -->
             <div class="calendar-card card">
-                <h3><i class="fas fa-calendar-alt"></i> Availability</h3>
+                <h3><i class="fas fa-calendar-alt" aria-hidden="true"></i> Booking Info</h3>
                 <div id="availabilityCalendar">
-                    <div style="text-align: center; padding: 2rem; color: rgba(255,255,255,0.6);">
-                        <i class="fas fa-check-circle"
-                            style="font-size: 3rem; color: var(--primary-gold); margin-bottom: 1rem;"></i>
-                        <h4>15+ Dates Available</h4>
-                        <p>Most weekends open for booking</p>
+                    <div style="text-align: center; padding: 1.5rem 0.5rem;">
+                        <i class="fas fa-check-circle" aria-hidden="true"
+                            style="font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 0.85rem; display: block;"></i>
+                        <h4 style="color: var(--heading-color); margin-bottom: 0.35rem;">Flexible Date Scheduling</h4>
+                        <p style="color: var(--text-muted); font-size: var(--font-sm);">
+                            Weekend &amp; weekday slots available—confirm early for peak dates.
+                        </p>
                     </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Tailored sets for weddings, clubs, and private events</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Custom mixtapes &amp; responsive web builds</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Direct follow-up via email or WhatsApp</li>
+                    </ul>
                 </div>
             </div>
 
@@ -160,222 +215,172 @@
     </section>
 
     <!-- ================= FLOATING CHAT ================= -->
-    <div class="float" id="chatToggle">
-        <i class="fas fa-comments"></i>
+    <button type="button" class="float" id="chatToggle" aria-label="Ask Ava assistant">
+        <i class="fas fa-robot" aria-hidden="true"></i>
         <span class="float-label">Ask Ava</span>
-    </div>
+    </button>
 
     <!-- ================= NOTIFICATION ================= -->
-    <div id="notification" class="notification" style="display: none;"></div>
+    <div id="notification" class="notification" aria-live="polite" style="display: none;"></div>
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer fade">
         <div class="container">
-            <p>© 2026 DJ Igniter Studios | Secure Instant Booking System</p>
+            <p>© 2026 DJ Igniter Studios | Booking &amp; Studio Requests</p>
         </div>
     </footer>
+
+    <!-- ================= BACK TO TOP ================= -->
+    <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
 
     <!-- AUDIO -->
     <audio id="clickSound" preload="auto">
         <source src="click.mp3" type="audio/mpeg">
     </audio>
-    <audio id="successSound" preload="auto">
-        <source src="success.mp3" type="audio/mpeg">
-    </audio>
 
+    <script src="js/utils.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/command-palette.js"></script>
+    <script src="js/booking.js"></script>
+    <script src="js/studio-fallbacks.js"></script>
     <script src="script.js"></script>
     <script>
-        // ================= CONSISTENT PRICING =================
-        const OFFICIAL_PRICES = {
-            'Wedding DJ': { amount: 1200000, label: '₦1,200,000' },
-            'Corporate Event': { amount: 1500000, label: '₦1,500,000' },
-            'Club Night': { amount: 2000000, label: '₦2,000,000' },
-            'Private Party': { amount: 800000, label: '₦800,000' },
-            'Website Development': { amount: 800000, label: '₦800,000+' }
-        };
+        (function () {
+            "use strict";
 
-        function updatePriceDisplay() {
-            const service = document.getElementById('service')?.value;
-            const priceEl = document.getElementById('priceDisplay');
+            const STORAGE_KEY = "dj_igniter_bookings";
 
-            if (service && OFFICIAL_PRICES[service]) {
-                const price = OFFICIAL_PRICES[service];
-                priceEl.textContent = `Price: ${price.label}`;
-                priceEl.style.display = 'block';
-            } else {
-                priceEl.style.display = 'none';
+            function esc(val) {
+                if (window.Utils && typeof window.Utils.escapeHTML === "function") {
+                    return window.Utils.escapeHTML(String(val ?? ""));
+                }
+                return String(val ?? "")
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;");
             }
-        }
 
-        // ================= PAYMENT SYSTEM =================
-        let currentBooking = {};
+            function syncPriceDisplay() {
+                const selectEl = document.getElementById("service");
+                const displayEl = document.getElementById("priceDisplay");
+                if (!selectEl || !displayEl) return;
 
-        function initiatePayment() {
-            currentBooking = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                service: document.getElementById('service').value,
-                date: document.getElementById('date').value,
-                details: document.getElementById('details').value,
-                amount: OFFICIAL_PRICES[document.getElementById('service').value]?.amount || 800000,
-                reference: 'DJIGNITER_' + Date.now()
+                const chosen = selectEl.options[selectEl.selectedIndex];
+                const price = chosen ? chosen.getAttribute("data-price") : "";
+                if (!selectEl.value) {
+                    displayEl.style.display = "none";
+                    displayEl.textContent = "";
+                    return;
+                }
+                displayEl.style.display = "block";
+                displayEl.textContent = price
+                    ? "Selected Package: " + selectEl.value + " (" + price + ")"
+                    : "Selected Service: " + selectEl.value;
+            }
+
+            window.updatePriceDisplay = function () {
+                syncPriceDisplay();
             };
 
-            if (!validateBooking(currentBooking)) return;
+            document.addEventListener("DOMContentLoaded", function () {
+                const serviceSelect = document.getElementById("service");
+                const dateInput = document.getElementById("date");
+                const availText = document.getElementById("availabilityText");
+                const form = document.getElementById("bookingForm");
+                const successBox = document.getElementById("successMsg");
+                const errorBox = document.getElementById("errorMsg");
 
-            // Show payment options
-            showPaymentOptions();
-        }
+                if (availText && availText.textContent.trim() === "Checking availability...") {
+                    availText.textContent = "Available for bookings — pick your preferred date";
+                }
 
-        function validateBooking(booking) {
-            if (!booking.name?.trim()) {
-                showError('Please enter your full name');
-                return false;
-            }
-            if (!booking.email || !booking.email.includes('@')) {
-                showError('Please enter valid email');
-                return false;
-            }
-            if (!booking.service) {
-                showError('Please select a service');
-                return false;
-            }
-            if (!booking.date) {
-                showError('Please select event date');
-                return false;
-            }
-            return true;
-        }
+                if (serviceSelect) {
+                    serviceSelect.addEventListener("change", syncPriceDisplay);
+                }
 
-        function showPaymentOptions() {
-            const options = `
-                <div style="text-align: center; padding: 2rem;">
-                    <h3>Choose Payment Method</h3>
-                    <p><strong>${currentBooking.service}</strong> - ₦${(currentBooking.amount / 1000).toLocaleString()}k</p>
-                    <div style="display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap;">
-                        <button onclick="payWithPaystack()" class="btn btn-primary" style="padding: 1rem 2rem;">
-                            <i class="fab fa-cc-paystack"></i> Paystack
-                        </button>
-                        <button onclick="payWithFlutterwave()" class="btn btn-secondary" style="padding: 1rem 2rem;">
-                            <i class="fas fa-credit-card"></i> Flutterwave
-                        </button>
-                        <button onclick="payWithTransfer()" class="btn btn-secondary" style="padding: 1rem 2rem;">
-                            <i class="fas fa-university"></i> Bank Transfer
-                        </button>
-                    </div>
-                    <button onclick="cancelPayment()" style="background: none; border: none; color: var(--primary-gold); cursor: pointer; font-size: 1rem;">
-                        Cancel
-                    </button>
-                </div>
-            `;
-            document.querySelector('.booking-card').innerHTML = options;
-        }
+                if (dateInput && availText) {
+                    dateInput.addEventListener("change", function () {
+                        if (dateInput.value) {
+                            availText.textContent = "Date selected: " + dateInput.value + " — ready to reserve";
+                        }
+                    });
+                }
 
-        function payWithPaystack() {
-            const handler = PaystackPop.setup({
-                key: 'pk_test_your_paystack_key_here', // Replace with real key
-                email: currentBooking.email,
-                amount: currentBooking.amount * 100, // kobo
-                currency: 'NGN',
-                ref: currentBooking.reference,
-                callback: function (response) {
-                    savePaidBooking(currentBooking);
-                    showPaymentSuccess(currentBooking);
-                },
-                onClose: function () {
-                    location.reload();
+                if (form) {
+                    form.addEventListener("submit", function (e) {
+                        const nameVal = (document.getElementById("name")?.value || "").trim();
+                        const emailVal = (document.getElementById("email")?.value || "").trim();
+                        const serviceVal = (document.getElementById("service")?.value || "").trim();
+                        const dateVal = (document.getElementById("date")?.value || "").trim();
+                        const detailsVal = (document.getElementById("details")?.value || "").trim();
+
+                        if (!nameVal || !emailVal || !serviceVal || !dateVal) {
+                            e.preventDefault();
+                            if (successBox) successBox.style.display = "none";
+                            if (errorBox) {
+                                errorBox.style.display = "block";
+                                errorBox.textContent = "Please complete your name, email, service type, and date.";
+                            }
+                            return;
+                        }
+
+                        if (!form.dataset.handledByBookingJs) {
+                            e.preventDefault();
+                            if (errorBox) errorBox.style.display = "none";
+
+                            const record = {
+                                id: "BK-" + Date.now().toString().slice(-6),
+                                name: nameVal,
+                                email: emailVal,
+                                service: serviceVal,
+                                date: dateVal,
+                                details: detailsVal,
+                                status: "pending",
+                                createdAt: new Date().toISOString()
+                            };
+
+                            try {
+                                const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+                                const list = Array.isArray(existing) ? existing : [];
+                                list.unshift(record);
+                                localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+                            } catch (_) {
+                                // Ignore storage quota or privacy mode errors
+                            }
+
+                            const waMsg = encodeURIComponent(
+                                "Booking Request (" + record.id + "): " +
+                                nameVal + " | " + serviceVal + " | Date: " + dateVal +
+                                (detailsVal ? " | Notes: " + detailsVal : "")
+                            );
+
+                            if (successBox) {
+                                successBox.style.display = "block";
+                                successBox.innerHTML =
+                                    "<div>Booking request <strong>" + esc(record.id) + "</strong> saved for <strong>" +
+                                    esc(serviceVal) + "</strong> on <strong>" + esc(dateVal) + "</strong>.</div>" +
+                                    '<div class="booking-confirm-actions">' +
+                                    '<a href="https://wa.me/2349021368638?text=' + waMsg +
+                                    '" target="_blank" rel="noopener noreferrer" class="btn btn-primary">' +
+                                    '<i class="fab fa-whatsapp" aria-hidden="true"></i> Confirm on WhatsApp</a>' +
+                                    '<a href="admin.html" class="btn btn-secondary">' +
+                                    '<i class="fas fa-table" aria-hidden="true"></i> View in Dashboard</a>' +
+                                    "</div>";
+                            }
+                            form.reset();
+                            syncPriceDisplay();
+                        }
+                    });
                 }
             });
-            handler.openIframe();
-        }
-
-        function payWithFlutterwave() {
-            FlutterwaveCheckout({
-                public_key: "FLWPUBK_TEST-235153f84dfd29187e84b036f16379f7-X",
-                tx_ref: currentBooking.reference,
-                amount: currentBooking.amount / 100000,
-                currency: "NGN",
-                payment_options: "card, ussd, banktransfer",
-                customer: {
-                    email: currentBooking.email,
-                    phone_number: "",
-                    name: currentBooking.name,
-                },
-                customizations: {
-                    title: "DJ Igniter Booking",
-                    description: currentBooking.service,
-                    logo: "logo.jpg"
-                },
-                callback: function (data) {
-                    savePaidBooking(currentBooking);
-                    showPaymentSuccess(currentBooking);
-                }
-            });
-        }
-
-        function payWithTransfer() {
-            const bankDetails = `
-                <div style="text-align: center; padding: 2rem;">
-                    <h3>Bank Transfer Details</h3>
-                    <div style="background: var(--blur-bg); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-                        <p><strong>Account Name:</strong> DJ Igniter Studios</p>
-                        <p><strong>Bank:</strong> OPAY</p>
-                        <p><strong>Account No:</strong> 9021368638</p>
-                        <p><strong>Amount:</strong> ₦${(currentBooking.amount / 1000).toLocaleString()}k</p>
-                        <p><strong>Reference:</strong> ${currentBooking.reference}</p>
-                    </div>
-                    <button onclick="confirmTransfer()" class="btn btn-primary">I've Paid</button>
-                </div>
-            `;
-            document.querySelector('.booking-card').innerHTML = bankDetails;
-        }
-
-        function confirmTransfer() {
-            savePaidBooking(currentBooking);
-            showPaymentSuccess(currentBooking);
-        }
-
-        function savePaidBooking(booking) {
-            booking.paid = true;
-            booking.status = 'confirmed';
-            booking.timestamp = new Date().toISOString();
-
-            let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-            bookings.push(booking);
-            localStorage.setItem('bookings', JSON.stringify(bookings));
-        }
-
-        function showPaymentSuccess(booking) {
-            const successMsg = `
-                <div class="success-message" style="text-align: center; padding: 3rem;">
-                    <i class="fas fa-check-circle" style="font-size: 4rem; color: #00ff88;"></i>
-                    <h2>🎉 Payment Successful!</h2>
-                    <p><strong>${booking.service}</strong> booked for ${new Date(booking.date).toLocaleDateString()}</p>
-                    <p>Confirmation sent to ${booking.email}</p>
-                    <a href="booking.html" class="btn btn-primary">Book Another</a>
-                    <a href="index.html" class="btn btn-secondary">Home</a>
-                </div>
-            `;
-            document.querySelector('.booking-card').innerHTML = successMsg;
-        }
-
-        function showError(message) {
-            const errorMsg = document.getElementById('errorMsg');
-            errorMsg.textContent = `❌ ${message}`;
-            errorMsg.style.display = 'block';
-            setTimeout(() => errorMsg.style.display = 'none', 5000);
-        }
-
-        function cancelPayment() {
-            location.reload();
-        }
-
-        // Set min date to tomorrow
-        document.addEventListener('DOMContentLoaded', function () {
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            document.getElementById('date').min = tomorrow.toISOString().split('T')[0];
-        });
+        })();
     </script>
 </body>
 
