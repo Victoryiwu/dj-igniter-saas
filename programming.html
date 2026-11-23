@@ -5,24 +5,43 @@
     <title>Web Development | DJ Igniter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Premium Web Development - Business Sites, E-commerce, Custom Apps | DJ Igniter">
+    <meta name="description" content="Web Development - Business Sites, E-commerce & Custom Apps | DJ Igniter">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        referrerpolicy="no-referrer">
+    <link rel="icon" href="images/logo.jpg">
 </head>
 
 <body>
+    <!-- ================= PRELOADER ================= -->
+    <div id="loader">
+        <div class="loader-content">
+            <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter" class="loader-logo">
+            <h1>DJ IGNITER</h1>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= NAVBAR ================= -->
     <header class="nav" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo" class="logo-img">
                 <h2>DJ Igniter</h2>
             </div>
-            <nav>
+
+            <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+
+            <nav aria-label="Primary Navigation">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
@@ -33,7 +52,11 @@
                     <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+
+            <button type="button" class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle navigation menu"
+                aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
     </header>
 
@@ -42,20 +65,52 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <i class="fas fa-code"></i> Premium Code
+                    <i class="fas fa-code" aria-hidden="true"></i> Modern Web Craft
                 </div>
-                <h1 class="section-title">💻 Web Development</h1>
+                <h1 class="section-title"><span aria-hidden="true">💻</span> Web Development</h1>
                 <p class="hero-subtitle">
-                    Fast, responsive, modern websites built with cutting-edge technology.
-                    Like this very site you're viewing!
+                    Fast, responsive websites and interactive frontends built for clarity, speed, and conversion.
                 </p>
                 <div class="hero-buttons">
                     <a href="#packages" class="btn btn-primary btn-large">
-                        <i class="fas fa-tag"></i> View Packages
+                        <i class="fas fa-tag" aria-hidden="true"></i> View Packages
                     </a>
                     <a href="#demo" class="btn btn-secondary btn-large">
-                        <i class="fas fa-laptop-code"></i> Live Demo
+                        <i class="fas fa-laptop-code" aria-hidden="true"></i> Key Highlights
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROCESS ================= -->
+    <section class="section-padding fade">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Build Process</h2>
+                <p class="section-subtitle">Structured steps from initial brief to live launch</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step card">
+                    <div class="step-number">01</div>
+                    <h3>Discovery</h3>
+                    <p>Clarify goals, target users, key pages, and required workflows</p>
+                </div>
+                <div class="process-step card">
+                    <div class="step-number">02</div>
+                    <h3>Layout &amp; UI</h3>
+                    <p>Structure sections, typography, color hierarchy, and responsive flow</p>
+                </div>
+                <div class="process-step card">
+                    <div class="step-number">03</div>
+                    <h3>Development</h3>
+                    <p>Build clean markup, styling, and interactive behaviors across screen sizes</p>
+                </div>
+                <div class="process-step card">
+                    <div class="step-number">04</div>
+                    <h3>Testing &amp; Launch</h3>
+                    <p>Verify forms, responsiveness, and polish before handing off</p>
                 </div>
             </div>
         </div>
@@ -66,33 +121,33 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Tech Stack</h2>
-                <p class="section-subtitle">Modern tools for premium results</p>
+                <p class="section-subtitle">Tools and foundations for responsive web builds</p>
             </div>
 
             <div class="tech-grid">
                 <div class="tech-item">
-                    <i class="fab fa-html5"></i>
+                    <i class="fab fa-html5" aria-hidden="true"></i>
                     <h4>HTML5</h4>
                 </div>
                 <div class="tech-item">
-                    <i class="fab fa-css3-alt"></i>
+                    <i class="fab fa-css3-alt" aria-hidden="true"></i>
                     <h4>CSS3</h4>
                 </div>
                 <div class="tech-item">
-                    <i class="fab fa-js-square"></i>
+                    <i class="fab fa-js-square" aria-hidden="true"></i>
                     <h4>JavaScript</h4>
                 </div>
                 <div class="tech-item">
-                    <i class="fab fa-react"></i>
+                    <i class="fab fa-react" aria-hidden="true"></i>
                     <h4>React</h4>
                 </div>
                 <div class="tech-item">
-                    <i class="fas fa-database"></i>
-                    <h4>Node.js</h4>
+                    <i class="fas fa-database" aria-hidden="true"></i>
+                    <h4>Databases</h4>
                 </div>
                 <div class="tech-item">
-                    <i class="fas fa-cloud"></i>
-                    <h4>Cloud</h4>
+                    <i class="fas fa-cloud" aria-hidden="true"></i>
+                    <h4>Cloud &amp; Hosting</h4>
                 </div>
             </div>
         </div>
@@ -103,7 +158,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Pricing Packages</h2>
-                <p class="section-subtitle">Choose your perfect website solution</p>
+                <p class="section-subtitle">Choose a starting package or request a custom scope</p>
             </div>
 
             <div class="pricing-grid">
@@ -111,13 +166,13 @@
                     <div class="plan-header">
                         <h3>Landing Page</h3>
                         <div class="price">₦300,000</div>
-                        <small>7 Days</small>
+                        <small>~7 Days</small>
                     </div>
                     <ul class="features">
-                        <li><i class="fas fa-check"></i> Single page</li>
-                        <li><i class="fas fa-check"></i> Mobile responsive</li>
-                        <li><i class="fas fa-check"></i> Contact form</li>
-                        <li><i class="fas fa-check"></i> SEO basics</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Focused single-page layout</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Mobile &amp; desktop responsive</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Contact / inquiry section</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Clean semantic SEO basics</li>
                     </ul>
                     <a href="booking.html?service=Landing%20Page" class="btn btn-primary btn-full">Order Landing</a>
                 </div>
@@ -127,14 +182,14 @@
                     <div class="plan-header">
                         <h3>Business Website</h3>
                         <div class="price">₦800,000</div>
-                        <small>14 Days</small>
+                        <small>~14 Days</small>
                     </div>
                     <ul class="features">
-                        <li><i class="fas fa-check"></i> 10+ pages</li>
-                        <li><i class="fas fa-check"></i> Blog system</li>
-                        <li><i class="fas fa-check"></i> Contact forms</li>
-                        <li><i class="fas fa-check"></i> SEO optimized</li>
-                        <li><i class="fas fa-check"></i> Analytics</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Multi-page structure</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Service &amp; content sections</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Interactive forms &amp; CTAs</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Responsive polish</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Analytics ready</li>
                     </ul>
                     <a href="booking.html?service=Website%20Development" class="btn btn-primary btn-full">Build Business
                         Site</a>
@@ -144,13 +199,13 @@
                     <div class="plan-header">
                         <h3>E-commerce Store</h3>
                         <div class="price">₦1,500,000</div>
-                        <small>21 Days</small>
+                        <small>~21 Days</small>
                     </div>
                     <ul class="features">
-                        <li><i class="fas fa-check"></i> Payment gateway</li>
-                        <li><i class="fas fa-check"></i> Product catalog</li>
-                        <li><i class="fas fa-check"></i> Inventory system</li>
-                        <li><i class="fas fa-check"></i> Admin dashboard</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Payment gateway integration</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Product showcase &amp; details</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Order &amp; inventory flow</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Management view</li>
                     </ul>
                     <a href="booking.html?service=E-commerce%20Website" class="btn btn-primary btn-full">Build Store</a>
                 </div>
@@ -162,30 +217,30 @@
     <section id="demo" class="section-padding fade">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Live Demo</h2>
-                <p class="section-subtitle">This website you're viewing - built by DJ Igniter</p>
+                <h2 class="section-title">What You Get</h2>
+                <p class="section-subtitle">Practical engineering choices built into every site</p>
             </div>
 
             <div class="demo-grid">
                 <div class="demo-item">
-                    <div class="demo-icon">⚡</div>
-                    <h3>Lightning Fast</h3>
-                    <p>Optimized performance • Instant loading</p>
+                    <div class="demo-icon" aria-hidden="true">⚡</div>
+                    <h3>Snappy Performance</h3>
+                    <p>Clean assets, smooth transitions, and fast page load</p>
                 </div>
                 <div class="demo-item">
-                    <div class="demo-icon">📱</div>
-                    <h3>Fully Responsive</h3>
-                    <p>Perfect on desktop, tablet, mobile</p>
+                    <div class="demo-icon" aria-hidden="true">📱</div>
+                    <h3>Responsive Layout</h3>
+                    <p>Adapts cleanly across phones, tablets, and wide screens</p>
                 </div>
                 <div class="demo-item">
-                    <div class="demo-icon">🎨</div>
-                    <h3>Premium Design</h3>
-                    <p>Modern animations • Custom graphics</p>
+                    <div class="demo-icon" aria-hidden="true">🎨</div>
+                    <h3>Cohesive UI</h3>
+                    <p>Consistent cards, buttons, typography, and theme support</p>
                 </div>
                 <div class="demo-item">
-                    <div class="demo-icon">🔒</div>
-                    <h3>Secure Booking</h3>
-                    <p>Payment integration • Form validation</p>
+                    <div class="demo-icon" aria-hidden="true">🔒</div>
+                    <h3>Structured Forms</h3>
+                    <p>Validated inputs, clear feedback, and booking workflows</p>
                 </div>
             </div>
         </div>
@@ -197,25 +252,27 @@
             <div class="booking-section">
                 <div class="section-header">
                     <h2 class="section-title">Start Your Website</h2>
-                    <p class="section-subtitle">Get your custom quote instantly</p>
+                    <p class="section-subtitle">Share your project type, target date, and goals</p>
                 </div>
 
                 <div class="booking-card card">
-                    <form id="websiteForm">
+                    <form id="websiteForm" data-handled-by-module="true" novalidate>
                         <div class="form-row">
                             <div class="form-group">
-                                <label><i class="fas fa-user"></i> Full Name</label>
-                                <input type="text" name="name" id="name" required>
+                                <label for="name"><i class="fas fa-user" aria-hidden="true"></i> Full Name</label>
+                                <input type="text" name="name" id="name" placeholder="Your full name" autocomplete="name"
+                                    required>
                             </div>
                             <div class="form-group">
-                                <label><i class="fas fa-envelope"></i> Email</label>
-                                <input type="email" name="email" id="email" required>
+                                <label for="email"><i class="fas fa-envelope" aria-hidden="true"></i> Email Address</label>
+                                <input type="email" name="email" id="email" placeholder="you@example.com"
+                                    autocomplete="email" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label><i class="fas fa-globe"></i> Website Type</label>
+                                <label for="service"><i class="fas fa-globe" aria-hidden="true"></i> Website Type</label>
                                 <select name="service" id="service" required>
                                     <option value="">Select Type</option>
                                     <option value="Landing Page">Landing Page (₦300k)</option>
@@ -225,23 +282,23 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label><i class="fas fa-calendar"></i> Deadline</label>
+                                <label for="deadline"><i class="fas fa-calendar" aria-hidden="true"></i> Target Date</label>
                                 <input type="date" name="deadline" id="deadline" required>
                             </div>
                         </div>
 
                         <div class="form-group full-width">
-                            <label><i class="fas fa-comment"></i> Project Details</label>
+                            <label for="details"><i class="fas fa-comment" aria-hidden="true"></i> Project Details</label>
                             <textarea name="details" id="details" rows="4"
-                                placeholder="Business type, features needed, design preferences..."></textarea>
+                                placeholder="Pages needed, features, design style, reference sites..."></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-full btn-large">
-                            <i class="fas fa-rocket"></i> Get Quote & Book
+                            <i class="fas fa-rocket" aria-hidden="true"></i> Submit Project Inquiry
                         </button>
                     </form>
 
-                    <div id="formFeedback" style="display: none; margin-top: 2rem;"></div>
+                    <div id="formFeedback" aria-live="polite" style="display: none; margin-top: 1.5rem;"></div>
                 </div>
             </div>
         </div>
@@ -250,91 +307,170 @@
     <!-- ================= FOOTER ================= -->
     <footer class="footer fade">
         <div class="container">
-            <p>© 2026 DJ Igniter Studios | Premium Web Development</p>
+            <p>© 2026 DJ Igniter Studios | Web Development &amp; UI Craft</p>
         </div>
     </footer>
 
+    <!-- ================= BACK TO TOP ================= -->
+    <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
+
+    <script src="js/utils.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/command-palette.js"></script>
+    <script src="js/studio-fallbacks.js"></script>
     <script src="script.js"></script>
     <script>
-        // ================= WEBSITE PRICING =================
-        const WEBSITE_PRICES = {
-            'Landing Page': { amount: 300000, label: '₦300,000' },
-            'Business Website': { amount: 800000, label: '₦800,000' },
-            'E-commerce Store': { amount: 1500000, label: '₦1,500,000' }
-        };
+        (function () {
+            "use strict";
 
-        // Form handler
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('websiteForm');
-            if (form) {
-                form.addEventListener('submit', handleWebsiteBooking);
-            }
-
-            // Set realistic deadlines
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 7);
-            document.getElementById('deadline').min = tomorrow.toISOString().split('T')[0];
-        });
-
-        function handleWebsiteBooking(e) {
-            e.preventDefault();
-
-            const formData = {
-                name: document.getElementById('name').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                service: document.getElementById('service').value,
-                deadline: document.getElementById('deadline').value,
-                details: document.getElementById('details').value.trim(),
-                type: 'Website Development'
+            const WEBSITE_PRICES = {
+                "Landing Page": { amount: 300000, label: "₦300,000" },
+                "Business Website": { amount: 800000, label: "₦800,000" },
+                "E-commerce Store": { amount: 1500000, label: "₦1,500,000" }
             };
 
-            // Validation
-            if (!formData.name || !formData.email || !formData.service || !formData.deadline) {
-                showWebsiteError('Please fill all required fields');
-                return;
+            function esc(value) {
+                return window.Utils?.escapeHTML
+                    ? window.Utils.escapeHTML(value)
+                    : String(value ?? "")
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;");
             }
 
-            // Save to bookings
-            const booking = { ...formData, timestamp: new Date().toISOString() };
-            let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-            bookings.push(booking);
-            localStorage.setItem('bookings', JSON.stringify(bookings));
+            function showWebsiteSuccess(data) {
+                const feedback = document.getElementById("formFeedback");
+                if (!feedback) return;
 
-            showWebsiteSuccess(formData);
-            e.target.reset();
-        }
+                const formattedDate = window.Utils?.formatDate
+                    ? window.Utils.formatDate(data.deadline)
+                    : new Date(data.deadline).toLocaleDateString();
 
-        function showWebsiteSuccess(data) {
-            const feedback = document.getElementById('formFeedback');
-            feedback.innerHTML = `
-                <div class="success-message">
-                    <i class="fas fa-check-circle"></i>
-                    <strong>✅ Website Project Booked!</strong><br>
-                    <small>${data.service} - Due ${new Date(data.deadline).toLocaleDateString()}</small><br>
-                    We'll send detailed proposal to ${data.email} within 24h!
-                </div>
-            `;
-            feedback.style.display = 'block';
-            feedback.scrollIntoView({ behavior: 'smooth' });
-        }
+                feedback.innerHTML = `
+                    <div class="success-message">
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        <strong>Website Inquiry Saved (${esc(data.id)})</strong><br>
+                        <small>${esc(data.service)} — Target ${esc(formattedDate)}</small><br>
+                        We'll follow up with next steps at ${esc(data.email)}.
+                    </div>
+                `;
+                feedback.style.display = "block";
+                feedback.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
 
-        function showWebsiteError(message) {
-            const feedback = document.getElementById('formFeedback');
-            feedback.innerHTML = `<div class="error-message">${message}</div>`;
-            feedback.style.display = 'block';
-        }
+            function showWebsiteError(message) {
+                const feedback = document.getElementById("formFeedback");
+                if (!feedback) return;
 
-        // Tech stack animations
-        document.querySelectorAll('.tech-item').forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(50px)';
-            setTimeout(() => {
-                item.style.transition = 'all 0.8s ease';
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }, index * 200);
-        });
+                feedback.innerHTML = `<div class="error-message" role="alert">${esc(message)}</div>`;
+                feedback.style.display = "block";
+            }
+
+            function persistWebBooking(record) {
+                try {
+                    const existing = window.Utils?.load ? window.Utils.load("bookings", []) : JSON.parse(localStorage.getItem("bookings") || "[]");
+                    const list = Array.isArray(existing) ? existing : [];
+                    list.unshift(record);
+                    if (window.Utils?.save) {
+                        window.Utils.save("bookings", list);
+                    } else {
+                        localStorage.setItem("bookings", JSON.stringify(list));
+                    }
+                } catch (_) {
+                    // Ignore storage errors
+                }
+
+                try {
+                    const rawAdmin = JSON.parse(localStorage.getItem("dj_igniter_bookings") || "[]");
+                    const adminList = Array.isArray(rawAdmin) ? rawAdmin : [];
+                    adminList.unshift({
+                        id: record.id,
+                        name: record.name,
+                        email: record.email,
+                        service: record.service,
+                        date: record.deadline,
+                        status: "pending"
+                    });
+                    localStorage.setItem("dj_igniter_bookings", JSON.stringify(adminList));
+                } catch (_) {
+                    // Ignore storage errors
+                }
+            }
+
+            function handleWebsiteBooking(e) {
+                e.preventDefault();
+
+                const name = document.getElementById("name")?.value.trim() || "";
+                const email = document.getElementById("email")?.value.trim() || "";
+                const service = document.getElementById("service")?.value || "";
+                const deadline = document.getElementById("deadline")?.value || "";
+                const details = document.getElementById("details")?.value.trim() || "";
+
+                if (!name || !email || !service || !deadline) {
+                    const msg = "Please fill in your name, email, website type, and target date.";
+                    showWebsiteError(msg);
+                    window.notify?.show?.(msg, "warning");
+                    return;
+                }
+
+                const booking = {
+                    id: "WEB-" + Date.now().toString(36).toUpperCase(),
+                    name,
+                    email,
+                    service,
+                    deadline,
+                    details,
+                    estimatedAmount: WEBSITE_PRICES[service]?.amount ?? null,
+                    type: "Website Development",
+                    status: "Pending",
+                    timestamp: new Date().toISOString()
+                };
+
+                persistWebBooking(booking);
+                showWebsiteSuccess(booking);
+                window.notify?.show?.("Website project inquiry saved!", "success");
+                e.target.reset();
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const form = document.getElementById("websiteForm");
+                if (form) {
+                    form.addEventListener("submit", handleWebsiteBooking);
+                }
+
+                const minDate = new Date();
+                minDate.setDate(minDate.getDate() + 7);
+                const deadlineInput = document.getElementById("deadline");
+                if (deadlineInput) {
+                    deadlineInput.min = minDate.toISOString().split("T")[0];
+                }
+
+                const prefersReducedMotion =
+                    window.matchMedia &&
+                    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+                const techItems = document.querySelectorAll(".tech-item");
+                if (!prefersReducedMotion) {
+                    techItems.forEach(function (item, index) {
+                        item.style.opacity = "0";
+                        item.style.transform = "translateY(32px)";
+                        setTimeout(function () {
+                            item.style.transition = "opacity 0.65s ease, transform 0.65s ease";
+                            item.style.opacity = "1";
+                            item.style.transform = "translateY(0)";
+                        }, index * 120);
+                    });
+                }
+            });
+        })();
     </script>
 </body>
 
-</html> 
+</html>
