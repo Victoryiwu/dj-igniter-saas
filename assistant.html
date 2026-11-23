@@ -5,86 +5,231 @@
     <title>Ava Assistant | DJ Igniter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ava - DJ Igniter's intelligent assistant for bookings and support">
+    <meta name="description" content="Ava - DJ Igniter's intelligent assistant for bookings, studio services, and creative help">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        referrerpolicy="no-referrer">
+    <link rel="icon" href="images/logo.jpg">
+
+    <style>
+        .assistant-hero--compact {
+            min-height: min(46vh, 430px);
+            padding-top: clamp(92px, 12vw, 124px);
+            padding-bottom: clamp(28px, 4vw, 44px);
+        }
+
+        .ava-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.42rem 0.95rem;
+            border-radius: 999px;
+            font-size: var(--font-xs);
+            font-weight: 600;
+            background: rgba(255, 215, 0, 0.14);
+            color: var(--primary-gold);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .ava-section.section-padding {
+            padding-top: clamp(12px, 2.5vw, 28px);
+        }
+
+        .chat-container--refined {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0;
+            text-align: left;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 24px 55px rgba(0, 0, 0, 0.35);
+        }
+
+        .message-content p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .message-content p + p {
+            margin-top: 0.55rem;
+        }
+
+        .message-content ul {
+            margin: 0.5rem 0 0 1.15rem;
+        }
+
+        .message-content li {
+            margin-bottom: 0.3rem;
+        }
+
+        .msg-cta-row {
+            display: flex;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+        }
+
+        .msg-mini-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            min-height: 34px;
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            font-size: var(--font-xs);
+            font-weight: 600;
+            text-decoration: none;
+            background: rgba(255, 215, 0, 0.16);
+            color: var(--primary-gold);
+            border: 1px solid rgba(255, 215, 0, 0.32);
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .msg-mini-btn:hover {
+            background: var(--primary-gold);
+            color: var(--black);
+        }
+
+        .typing-dots {
+            display: inline-flex;
+            gap: 4px;
+            align-items: center;
+            height: 18px;
+        }
+
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary-gold);
+            opacity: 0.4;
+            animation: avaDot 1.1s infinite ease-in-out;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.18s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.36s;
+        }
+
+        @keyframes avaDot {
+            0%, 80%, 100% {
+                opacity: 0.35;
+                transform: translateY(0);
+            }
+            40% {
+                opacity: 1;
+                transform: translateY(-3px);
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- ================= PRELOADER ================= -->
+    <div id="loader">
+        <div class="loader-content">
+            <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo">
+            <h1>DJ IGNITER</h1>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= NAVBAR ================= -->
     <header class="nav" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo" class="logo-img">
                 <h2>DJ Igniter</h2>
             </div>
-            <nav>
+
+            <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+
+            <nav aria-label="Primary Navigation">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a class="active" href="assistant.html">Ava Assistant</a></li>
+                    <li><a class="active" href="assistant.html" aria-current="page">Ava Assistant</a></li>
                     <li><a href="booking.html" class="cta-nav btn-primary btn">Book Now</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+
+            <button type="button" class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle navigation menu"
+                aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
     </header>
 
     <!-- ================= HERO ================= -->
-    <section class="assistant-hero fade">
+    <section class="assistant-hero assistant-hero--compact fade">
         <div class="container">
             <div class="hero-content">
-                <div class="section-title" style="font-size: 3.5rem;">🤖 Ava Assistant</div>
+                <span class="ava-badge">
+                    <i class="fas fa-sparkles" aria-hidden="true"></i> Smart Studio &amp; General Assistant
+                </span>
+                <h1 class="section-title"><span aria-hidden="true">🤖</span> Ava Assistant</h1>
                 <p class="hero-subtitle">
-                    Your 24/7 DJ Igniter support. Ask about bookings, services, pricing, or anything!
+                    Ask about bookings, packages, DJ sets, mixtapes, or websites—or ask for ideas, drafts, planning, and problem-solving.
                 </p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary btn-large" onclick="ava?.focusChat()">
-                        <i class="fas fa-comments"></i> Start Chatting
+                    <button type="button" class="btn btn-primary btn-large" onclick="window.ava?.focusChat()">
+                        <i class="fas fa-comments" aria-hidden="true"></i> Start Chatting
                     </button>
+                    <a href="booking.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i> Go to Booking
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ================= CHAT INTERFACE ================= -->
-    <section class="section-padding container fade">
-        <div class="chat-container card" style="max-width: 900px; margin: auto;">
+    <section class="ava-section section-padding container fade">
+        <div class="chat-container chat-container--refined card">
 
             <!-- CHAT HEADER -->
             <div class="chat-header">
-                <div class="avatar">
+                <div class="avatar" aria-hidden="true">
                     <i class="fas fa-robot"></i>
                 </div>
                 <div>
-                    <h3>Ava - DJ Assistant</h3>
-                    <span class="status">Online <i class="fas fa-circle" style="color: #00ff88;"></i></span>
+                    <h2>Ava — AI Assistant</h2>
+                    <span class="status">Online <i class="fas fa-circle" style="color: #00ff88;" aria-hidden="true"></i> Ready to help</span>
                 </div>
                 <div class="chat-actions">
-                    <button class="btn-icon" onclick="ava?.toggleVoice()" title="Voice Mode">
-                        <i class="fas fa-microphone"></i>
+                    <button type="button" class="btn-icon" onclick="window.ava?.toggleVoice()" title="Voice Input"
+                        aria-label="Toggle Voice Input">
+                        <i class="fas fa-microphone" aria-hidden="true"></i>
                     </button>
-                    <button class="btn-icon" onclick="ava?.clearChat()" title="Clear Chat">
-                        <i class="fas fa-trash"></i>
+                    <button type="button" class="btn-icon" onclick="window.ava?.clearChat()" title="Clear Chat"
+                        aria-label="Clear Chat">
+                        <i class="fas fa-trash" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
 
             <!-- MESSAGES -->
-            <div id="chatbox" class="chat-messages">
+            <div id="chatbox" class="chat-messages" role="log" aria-live="polite" aria-label="Chat messages">
                 <div class="message bot-message welcome-message">
-                    <div class="avatar"><i class="fas fa-robot"></i></div>
+                    <div class="avatar" aria-hidden="true"><i class="fas fa-robot"></i></div>
                     <div class="message-content">
-                        <p>Hi! I'm <strong>Ava</strong>, DJ Igniter's intelligent assistant.<br>
-                            I can help you with bookings, services, pricing, availability, and more!<br>
-                            What would you like to know? 🎧💻</p>
+                        <p>Hey! I'm <strong>Ava</strong>. I can help you lock in a <strong>DJ booking</strong>, compare <strong>pricing &amp; packages</strong>, plan a <strong>mixtape or website</strong>, or brainstorm ideas, outlines, and answers on almost any topic.</p>
+                        <p>What are we working on today?</p>
                     </div>
                 </div>
             </div>
@@ -92,17 +237,19 @@
             <!-- INPUT AREA -->
             <div class="chat-input-area">
                 <div class="input-wrapper">
-                    <input type="text" id="userInput" placeholder="Type your message or press Enter..."
+                    <label for="userInput" class="sr-only">Message Ava Assistant</label>
+                    <input type="text" id="userInput" placeholder="Ask about DJ rates, mixtapes, web builds, or ask me anything..."
                         autocomplete="off">
-                    <button class="send-btn" onclick="ava?.sendMessage()" title="Send">
-                        <i class="fas fa-paper-plane"></i>
+                    <button type="button" class="send-btn" onclick="window.ava?.sendMessage()" title="Send"
+                        aria-label="Send message">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
                     </button>
                 </div>
                 <div class="quick-replies">
-                    <button class="quick-btn" onclick="ava?.quickReply('booking')">Book DJ</button>
-                    <button class="quick-btn" onclick="ava?.quickReply('pricing')">Pricing</button>
-                    <button class="quick-btn" onclick="ava?.quickReply('services')">Services</button>
-                    <button class="quick-btn" onclick="ava?.quickReply('availability')">Availability</button>
+                    <button type="button" class="quick-btn" onclick="window.ava?.quickReply('How do I book a DJ?')">Book DJ</button>
+                    <button type="button" class="quick-btn" onclick="window.ava?.quickReply('What are your prices?')">Pricing</button>
+                    <button type="button" class="quick-btn" onclick="window.ava?.quickReply('Tell me about mixtape & web services')">Services</button>
+                    <button type="button" class="quick-btn" onclick="window.ava?.quickReply('Help me plan a party setlist & schedule')">Plan &amp; Brainstorm</button>
                 </div>
             </div>
 
@@ -113,197 +260,300 @@
     <footer class="footer fade">
         <div class="container">
             <div class="footer-content">
-                <p>© 2026 DJ Igniter Studios | Powered by Ava AI</p>
-                <p style="opacity: 0.6;">Your 24/7 DJ booking assistant</p>
+                <p>© 2026 DJ Igniter Studios | Ava Assistant</p>
+                <p style="opacity: 0.65;">Instant studio guidance &amp; smart assistance</p>
             </div>
         </div>
     </footer>
 
-    <!-- 🔊 SOUNDS -->
+    <!-- ================= BACK TO TOP ================= -->
+    <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- SOUNDS -->
     <audio id="clickSound" preload="auto">
         <source src="click.mp3" type="audio/mpeg">
     </audio>
-    <audio id="sendSound" preload="auto">
-        <source src="send.mp3" type="audio/mpeg">
-    </audio>
 
-    <!-- ================= FIXED AVA ASSISTANT SCRIPT ================= -->
+    <script src="js/utils.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/command-palette.js"></script>
+    <script src="js/assistant.js"></script>
+    <script src="js/studio-fallbacks.js"></script>
+    <script src="script.js"></script>
     <script>
-        class AvaAssistant {
-            constructor() {
-                this.responses = {
-                    greetings: [
-                        "Hello! 🎧 Ready to book DJ Igniter?",
-                        "Hi there! What service can I help with?",
-                        "Hey! Ask me about bookings, pricing, or services!"
-                    ],
-                    booking: [
-                        "Perfect! Go to <a href='booking.html'>Booking page</a> for instant confirmation.",
-                        "Click 'Book Now' button or visit booking.html 🚀",
-                        "Booking form is super fast - 30 seconds!"
-                    ],
-                    pricing: [
-                        "Check <a href='pricing.html'>Pricing page</a> - Wedding DJ ₦1.2M, Websites ₦800k+",
-                        "Transparent pricing! Basic DJ from ₦500k, Premium ₦1.2M+"
-                    ],
-                    services: [
-                        "DJ Events (Weddings, Clubs), Mixtape Production, Web Development 💻🎵",
-                        "Full services on <a href='services.html'>Services page</a>"
-                    ],
-                    availability: [
-                        "Most dates open! Check booking form for real-time availability.",
-                        "Weekends book fast - submit form for instant confirmation!"
-                    ],
-                    portfolio: [
-                        "See my work on <a href='portfolio.html'>Portfolio page</a> - 250+ events!",
-                        "Real results: weddings, clubs, websites, mixtapes 🔥"
-                    ],
-                    admin: [
-                        "Admin login: admin.html (password protected)",
-                        "All bookings saved automatically 📊"
-                    ],
-                    default: [
-                        "I can help with bookings, pricing, services, portfolio! What do you need?",
-                        "Try: 'booking', 'pricing', 'services', 'portfolio' 🎯",
-                        "Type your question - I'm here 24/7!"
-                    ]
-                };
-                this.init();
+        (function () {
+            "use strict";
+
+            function escapeText(value) {
+                if (window.Utils && typeof window.Utils.escapeHTML === "function") {
+                    return window.Utils.escapeHTML(String(value ?? ""));
+                }
+                return String(value ?? "")
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;");
             }
 
-            init() {
-                const input = document.getElementById('userInput');
-                if (!input) return;
+            function formatRichText(raw) {
+                const lines = String(raw ?? "").split("\n");
+                const parts = [];
+                let listItems = [];
 
-                // Enter key
-                input.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        this.sendMessage();
+                const flushList = function () {
+                    if (listItems.length) {
+                        parts.push("<ul>" + listItems.join("") + "</ul>");
+                        listItems = [];
+                    }
+                };
+
+                lines.forEach(function (line) {
+                    const trimmed = line.trim();
+                    if (!trimmed) {
+                        flushList();
+                        return;
+                    }
+                    if (/^[-*•]\s+/.test(trimmed)) {
+                        const itemText = escapeText(trimmed.replace(/^[-*•]\s+/, ""))
+                            .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+                        listItems.push("<li>" + itemText + "</li>");
+                    } else {
+                        flushList();
+                        const safe = escapeText(trimmed)
+                            .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+                        parts.push("<p>" + safe + "</p>");
                     }
                 });
 
-                // Focus on load
-                setTimeout(() => input.focus(), 500);
+                flushList();
+                return parts.join("");
             }
 
-            sendMessage() {
-                const input = document.getElementById('userInput');
-                const message = input.value.trim();
-                if (!message) return;
+            function generateSmartReply(prompt) {
+                const q = prompt.toLowerCase().trim();
 
-                // Add user message
-                this.addMessage('user', message);
-                input.value = '';
+                if (/(price|pricing|cost|rate|how much|fee|budget|naira|₦)/i.test(q)) {
+                    return {
+                        text:
+                            "Here's a quick overview of our standard starting packages:\n" +
+                            "- **Event DJ:** Starter/Private parties from ₦800k, Weddings around ₦1.2M, Corporate from ₦1.5M, Club nights up to ₦2M\n" +
+                            "- **Mixtape Production:** Starter Mix (20–30 mins) from ₦150k, Pro Mix (45–60 mins) from ₦350k, Artist Mix from ₦650k+\n" +
+                            "- **Web Development:** Landing pages from ₦300k, Business sites around ₦800k, E-commerce from ₦1.5M–₦1.8M+",
+                        links: [
+                            { label: "Full Pricing", href: "pricing.html" },
+                            { label: "Book Now", href: "booking.html" }
+                        ]
+                    };
+                }
 
-                // Show typing
-                this.showTyping();
+                if (/(book|booking|reserve|hire|date|slot|availability|available)/i.test(q)) {
+                    return {
+                        text:
+                            "Booking is straightforward:\n" +
+                            "- Pick your **service**, **event date or deadline**, and share key details on the booking page\n" +
+                            "- For DJ dates, booking early helps lock in your preferred slot and setup\n" +
+                            "- Need urgent help or custom dates? Reach out directly on Contact or WhatsApp",
+                        links: [
+                            { label: "Open Booking Form", href: "booking.html" },
+                            { label: "Contact Page", href: "contact.html" }
+                        ]
+                    };
+                }
 
-                // AI Response (1-2 sec delay)
-                setTimeout(() => {
-                    this.hideTyping();
-                    this.generateResponse(message.toLowerCase());
-                }, 1000 + Math.random() * 1500);
+                if (/(mixtape|mix|dj|setlist|afrobeats|amapiano|hip-hop|party|wedding)/i.test(q)) {
+                    return {
+                        text:
+                            "For **DJ sets & mixtapes**, we tailor energy flow, transitions, and track selection to your crowd or audience:\n" +
+                            "- **Warm-up / Cocktail:** Groove, R&B, smooth Afro-fusion (moderate BPM)\n" +
+                            "- **Peak Dance / Club:** High-energy Afrobeats, street-pop, Amapiano, hip-hop/UK builds\n" +
+                            "- **Custom Mixtapes:** Delivered with clean transitions and mastering tailored to your length",
+                        links: [
+                            { label: "Event DJ", href: "event-dj.html" },
+                            { label: "Mixtape Production", href: "mixtape.html" }
+                        ]
+                    };
+                }
+
+                if (/(website|web|developer|code|coding|react|html|css|javascript|app|store|ecommerce)/i.test(q)) {
+                    return {
+                        text:
+                            "For **websites & web apps**, we focus on responsive layout, clean UI/UX, fast performance, and practical functionality:\n" +
+                            "- **Landing & Business Sites:** Clear conversion sections, mobile-first layout, contact/booking flows\n" +
+                            "- **E-commerce & Custom Apps:** Catalogs, checkout/payment flows, structured state, and clean code\n" +
+                            "Tell me what you're building and I can help outline the pages, features, or structure.",
+                        links: [
+                            { label: "Web Services", href: "programming.html" },
+                            { label: "Start Booking", href: "booking.html" }
+                        ]
+                    };
+                }
+
+                if (/(plan|brainstorm|idea|ideas|outline|structure|write|draft|help|how to|explain|what is)/i.test(q)) {
+                    return {
+                        text:
+                            "I can help you break that down step by step:\n" +
+                            "- Clarify your **goal** and **target audience**\n" +
+                            "- Build a **structured outline, checklist, or option list**\n" +
+                            "- Draft **copy, captions, messages, or code structure**\n\n" +
+                            "Share a few more details about what you're working on—such as the occasion, topic, or exact outcome you want—and I'll give you a concrete draft or plan.",
+                        links: []
+                    };
+                }
+
+                return {
+                    text:
+                        "Got it. Here's how I can help right now:\n" +
+                        "- Answer questions about **DJ bookings, mixtapes, websites, or pricing**\n" +
+                        "- Help **brainstorm, plan, write, or structure** ideas and projects\n\n" +
+                        "Ask me a specific question or tell me what you're building or planning!",
+                    links: [
+                        { label: "Services", href: "services.html" },
+                        { label: "Pricing", href: "pricing.html" }
+                    ]
+                };
             }
 
-            addMessage(sender, text) {
-                const chatbox = document.getElementById('chatbox');
-                const isUser = sender === 'user';
+            document.addEventListener("DOMContentLoaded", function () {
+                const chatbox = document.getElementById("chatbox");
+                const input = document.getElementById("userInput");
+                if (!chatbox || !input) return;
 
-                const messageDiv = document.createElement('div');
-                messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+                let typingEl = null;
 
-                // Clean links
-                const cleanText = text
-                    .replace(/booking/gi, "<a href='booking.html' style='color: var(--primary-gold); font-weight: 600;'>booking</a>")
-                    .replace(/pricing/gi, "<a href='pricing.html' style='color: var(--primary-gold); font-weight: 600;'>pricing</a>")
-                    .replace(/services/gi, "<a href='services.html' style='color: var(--primary-gold); font-weight: 600;'>services</a>")
-                    .replace(/portfolio/gi, "<a href='portfolio.html' style='color: var(--primary-gold); font-weight: 600;'>portfolio</a>");
+                function appendBubble(sender, htmlBody, links) {
+                    const msg = document.createElement("div");
+                    msg.className = "message " + (sender === "user" ? "user-message" : "bot-message");
 
-                messageDiv.innerHTML = `
-                    <div class="avatar">${isUser ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>'}</div>
-                    <div class="message-content">
-                        <p>${cleanText}</p>
-                    </div>
-                `;
+                    const avatar = document.createElement("div");
+                    avatar.className = "avatar";
+                    avatar.setAttribute("aria-hidden", "true");
+                    avatar.innerHTML = sender === "user"
+                        ? '<i class="fas fa-user"></i>'
+                        : '<i class="fas fa-robot"></i>';
 
-                chatbox.appendChild(messageDiv);
-                chatbox.scrollTop = chatbox.scrollHeight;
+                    const content = document.createElement("div");
+                    content.className = "message-content";
+                    content.innerHTML = htmlBody;
 
-                // Sound
-                const audio = document.getElementById('sendSound') || document.getElementById('clickSound');
-                audio?.play().catch(() => { });
-            }
-
-            showTyping() {
-                const chatbox = document.getElementById('chatbox');
-                const typingDiv = document.createElement('div');
-                typingDiv.className = 'message bot-message';
-                typingDiv.innerHTML = `
-                    <div class="avatar"><i class="fas fa-robot"></i></div>
-                    <div class="message-content">
-                        <div class="typing-indicator">
-                            <span></span><span></span><span></span>
-                        </div>
-                    </div>
-                `;
-                chatbox.appendChild(typingDiv);
-                chatbox.scrollTop = chatbox.scrollHeight;
-            }
-
-            hideTyping() {
-                const typing = document.querySelector('.typing-indicator');
-                if (typing) typing.closest('.message').remove();
-            }
-
-            generateResponse(message) {
-                // Priority matching
-                for (let [key, responses] of Object.entries(this.responses)) {
-                    if (message.includes(key)) {
-                        const response = responses[Math.floor(Math.random() * responses.length)];
-                        return this.addMessage('bot', response);
+                    if (Array.isArray(links) && links.length) {
+                        const row = document.createElement("div");
+                        row.className = "msg-cta-row";
+                        links.forEach(function (item) {
+                            const a = document.createElement("a");
+                            a.className = "msg-mini-btn";
+                            a.href = item.href;
+                            a.textContent = item.label;
+                            row.appendChild(a);
+                        });
+                        content.appendChild(row);
                     }
+
+                    msg.appendChild(avatar);
+                    msg.appendChild(content);
+                    chatbox.appendChild(msg);
+                    chatbox.scrollTop = chatbox.scrollHeight;
+                    return msg;
                 }
 
-                // Fallback
-                const fallback = this.responses.default[Math.floor(Math.random() * this.responses.default.length)];
-                this.addMessage('bot', fallback);
-            }
-
-            quickReply(type) {
-                document.getElementById('userInput').value = type;
-                this.sendMessage();
-            }
-
-            clearChat() {
-                if (confirm('Clear chat?')) {
-                    document.getElementById('chatbox').innerHTML = `
-                        <div class="message bot-message welcome-message">
-                            <div class="avatar"><i class="fas fa-robot"></i></div>
-                            <div class="message-content">
-                                <p>Chat cleared! How can I help? 🎧💻</p>
-                            </div>
-                        </div>
-                    `;
+                function showTyping() {
+                    if (typingEl) return;
+                    typingEl = appendBubble(
+                        "bot",
+                        '<div class="typing-dots" aria-label="Ava is typing"><span></span><span></span><span></span></div>',
+                        []
+                    );
                 }
-            }
 
-            focusChat() {
-                const input = document.getElementById('userInput');
-                input.focus();
-                input.scrollIntoView({ behavior: 'smooth', block: 'end' });
-            }
+                function hideTyping() {
+                    if (typingEl && typingEl.parentNode) {
+                        typingEl.parentNode.removeChild(typingEl);
+                    }
+                    typingEl = null;
+                }
 
-            toggleVoice() {
-                alert('🎤 Voice mode coming soon!');
-            }
-        }
+                function handleSend(overrideText) {
+                    const text = (typeof overrideText === "string" ? overrideText : input.value).trim();
+                    if (!text) return;
 
-        // ================= INIT =================
-        const ava = new AvaAssistant();
+                    appendBubble("user", "<p>" + escapeText(text) + "</p>", []);
+                    if (typeof overrideText !== "string") {
+                        input.value = "";
+                    }
 
-        // Global functions for onclick handlers
-        window.ava = ava;
+                    showTyping();
+                    setTimeout(function () {
+                        hideTyping();
+                        const reply = generateSmartReply(text);
+                        appendBubble("bot", formatRichText(reply.text), reply.links);
+                    }, 350);
+                }
+
+                // Expose clean API on window.ava (preserving or enhancing any external methods)
+                const existingAva = window.ava || {};
+                window.ava = Object.assign({}, existingAva, {
+                    focusChat: function () {
+                        input.focus();
+                        input.scrollIntoView({ behavior: "smooth", block: "center" });
+                    },
+                    sendMessage: function () {
+                        handleSend();
+                    },
+                    quickReply: function (presetText) {
+                        handleSend(presetText);
+                        input.focus();
+                    },
+                    clearChat: function () {
+                        chatbox.innerHTML = "";
+                        appendBubble(
+                            "bot",
+                            "<p>Chat cleared. What would you like to explore—bookings, pricing, mixtapes, web builds, or a new idea?</p>",
+                            []
+                        );
+                    },
+                    toggleVoice: function () {
+                        const SpeechRecognition =
+                            window.SpeechRecognition || window.webkitSpeechRecognition;
+                        if (!SpeechRecognition) {
+                            appendBubble(
+                                "bot",
+                                "<p>Voice recognition isn't supported in this browser, so you can type your message directly below.</p>",
+                                []
+                            );
+                            input.focus();
+                            return;
+                        }
+                        try {
+                            const recognition = new SpeechRecognition();
+                            recognition.lang = "en-US";
+                            recognition.interimResults = false;
+                            recognition.onresult = function (event) {
+                                const transcript = event.results?.[0]?.[0]?.transcript || "";
+                                if (transcript) {
+                                    input.value = transcript;
+                                    handleSend(transcript);
+                                }
+                            };
+                            recognition.start();
+                        } catch (err) {
+                            input.focus();
+                        }
+                    }
+                });
+
+                input.addEventListener("keydown", function (e) {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        handleSend();
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 
