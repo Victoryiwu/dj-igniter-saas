@@ -5,35 +5,65 @@
     <title>Pricing | DJ Igniter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Transparent DJ Igniter Pricing - Events, Web Development, Mixtapes">
+    <meta name="description" content="DJ Igniter Pricing - Event DJ Packages, Web Development & Mixtape Production">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        referrerpolicy="no-referrer">
+    <link rel="icon" href="images/logo.jpg">
 </head>
 
 <body>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Pricing</span>
+    </nav>
+
+    <!-- ================= PRELOADER ================= -->
+    <div id="loader">
+        <div class="loader-content">
+            <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter" class="loader-logo">
+            <h1>DJ IGNITER</h1>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= NAVBAR ================= -->
     <header class="nav" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo" class="logo-img"
+                    width="45" height="45">
                 <h2>DJ Igniter</h2>
             </div>
-            <nav>
+
+            <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+
+            <nav aria-label="Primary Navigation">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
-                    <li><a href="pricing.html" class="active">Pricing</a></li>
+                    <li><a href="pricing.html" class="active" aria-current="page">Pricing</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="assistant.html">Assistant</a></li>
                     <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+
+            <button type="button" class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle navigation menu"
+                aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
     </header>
 
@@ -41,14 +71,14 @@
     <section class="pricing-hero fade">
         <div class="container">
             <div class="hero-content">
-                <h1 class="section-title">💰 Transparent Pricing</h1>
+                <h1 class="section-title"><span aria-hidden="true">💰</span> Transparent Pricing</h1>
                 <p class="hero-subtitle">
-                    No hidden fees. Premium quality. Instant booking.
+                    Clear starting rates across live DJ sets, websites, and custom mixtapes.
                 </p>
                 <div class="pricing-stats">
-                    <span>⭐ 4.9 Rating</span>
-                    <span>250+ Clients</span>
-                    <span>100% Satisfaction</span>
+                    <span><span aria-hidden="true">⭐</span> 4.9 Rating</span>
+                    <span>500+ Sets &amp; Events</span>
+                    <span>Fast Quotes</span>
                 </div>
             </div>
         </div>
@@ -57,27 +87,36 @@
     <!-- ================= PRICING TABS ================= -->
     <section class="section-padding fade">
         <div class="container">
-            <div class="tabs-header">
-                <button class="tab-btn active" data-tab="dj">🎧 DJ Events</button>
-                <button class="tab-btn" data-tab="web">💻 Web Development</button>
-                <button class="tab-btn" data-tab="mix">🎵 Mixtapes</button>
+            <div class="tabs-header" role="tablist" aria-label="Pricing categories">
+                <button type="button" class="tab-btn active" data-tab="dj" role="tab" aria-selected="true"
+                    aria-controls="dj">
+                    <span aria-hidden="true">🎧</span> DJ Events
+                </button>
+                <button type="button" class="tab-btn" data-tab="web" role="tab" aria-selected="false"
+                    aria-controls="web">
+                    <span aria-hidden="true">💻</span> Web Development
+                </button>
+                <button type="button" class="tab-btn" data-tab="mix" role="tab" aria-selected="false"
+                    aria-controls="mix">
+                    <span aria-hidden="true">🎵</span> Mixtapes
+                </button>
             </div>
 
             <!-- DJ EVENTS PRICING -->
-            <div id="dj" class="tab-content active">
+            <div id="dj" class="tab-content active" role="tabpanel">
                 <div class="pricing-grid">
                     <div class="pricing-card card recommended">
                         <div class="plan-badge">Most Popular</div>
                         <div class="plan-header">
                             <h3>Wedding DJ</h3>
                             <div class="price">₦1,200,000</div>
-                            <small>6 Hours</small>
+                            <small>Up to 6 Hours</small>
                         </div>
                         <ul class="features">
-                            <li><i class="fas fa-check"></i> Custom playlist</li>
-                            <li><i class="fas fa-check"></i> Full lighting</li>
-                            <li><i class="fas fa-check"></i> MC services</li>
-                            <li><i class="fas fa-check"></i> Ceremony + reception</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Custom playlist &amp; key moments</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Full lighting setup</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> MC cue support</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Ceremony + reception flow</li>
                         </ul>
                         <a href="booking.html?service=Wedding%20DJ" class="btn btn-primary btn-full">Book Wedding</a>
                     </div>
@@ -86,12 +125,12 @@
                         <div class="plan-header">
                             <h3>Private Party</h3>
                             <div class="price">₦800,000</div>
-                            <small>5 Hours</small>
+                            <small>Up to 5 Hours</small>
                         </div>
                         <ul class="features">
-                            <li><i class="fas fa-check"></i> Custom playlist</li>
-                            <li><i class="fas fa-check"></i> LED lighting</li>
-                            <li><i class="fas fa-check"></i> Sound system</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Custom crowd playlist</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> LED lighting</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Sound system package</li>
                         </ul>
                         <a href="booking.html?service=Private%20Party" class="btn btn-primary btn-full">Book Party</a>
                     </div>
@@ -100,12 +139,12 @@
                         <div class="plan-header">
                             <h3>Corporate Event</h3>
                             <div class="price">₦1,500,000</div>
-                            <small>4 Hours</small>
+                            <small>Up to 4 Hours</small>
                         </div>
                         <ul class="features">
-                            <li><i class="fas fa-check"></i> Professional setup</li>
-                            <li><i class="fas fa-check"></i> Custom branding</li>
-                            <li><i class="fas fa-check"></i> Background music</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Neat executive setup</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Brand-aligned curation</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Lounge &amp; upbeat pacing</li>
                         </ul>
                         <a href="booking.html?service=Corporate%20Event" class="btn btn-primary btn-full">Book
                             Corporate</a>
@@ -115,12 +154,12 @@
                         <div class="plan-header">
                             <h3>Club Night</h3>
                             <div class="price">₦2,000,000</div>
-                            <small>8 Hours</small>
+                            <small>Up to 8 Hours</small>
                         </div>
                         <ul class="features">
-                            <li><i class="fas fa-check"></i> Premium Pioneer gear</li>
-                            <li><i class="fas fa-check"></i> Full club setup</li>
-                            <li><i class="fas fa-check"></i> Non-stop energy</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Club-grade DJ decks</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> High-energy lighting</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Non-stop peak mixing</li>
                         </ul>
                         <a href="booking.html?service=Club%20Night" class="btn btn-primary btn-full">Book Club</a>
                     </div>
@@ -128,20 +167,20 @@
             </div>
 
             <!-- WEB DEVELOPMENT PRICING -->
-            <div id="web" class="tab-content">
+            <div id="web" class="tab-content" role="tabpanel" hidden>
                 <div class="pricing-grid">
                     <div class="pricing-card card recommended">
                         <div class="plan-badge">Most Popular</div>
                         <div class="plan-header">
                             <h3>Business Website</h3>
                             <div class="price">₦800,000</div>
-                            <small>14 Days</small>
+                            <small>~14 Days</small>
                         </div>
                         <ul class="features">
-                            <li><i class="fas fa-check"></i> 10+ pages</li>
-                            <li><i class="fas fa-check"></i> Mobile responsive</li>
-                            <li><i class="fas fa-check"></i> Contact forms</li>
-                            <li><i class="fas fa-check"></i> SEO optimized</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Multi-page responsive layout</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Mobile &amp; desktop polish</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Contact &amp; booking forms</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Clean structure &amp; SEO basics</li>
                         </ul>
                         <a href="booking.html?service=Website%20Development" class="btn btn-primary btn-full">Build
                             Website</a>
@@ -149,14 +188,14 @@
 
                     <div class="pricing-card card">
                         <div class="plan-header">
-                            <h3>E-commerce</h3>
+                            <h3>E-commerce Store</h3>
                             <div class="price">₦1,500,000</div>
-                            <small>21 Days</small>
+                            <small>~21 Days</small>
                         </div>
                         <ul class="features">
-                            <li><i class="fas fa-check"></i> Payment integration</li>
-                            <li><i class="fas fa-check"></i> Inventory system</li>
-                            <li><i class="fas fa-check"></i> Admin dashboard</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Product catalog &amp; checkout</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Payment gateway ready</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Order &amp; store management</li>
                         </ul>
                         <a href="booking.html?service=E-commerce%20Website" class="btn btn-primary btn-full">Build
                             Store</a>
@@ -164,14 +203,14 @@
 
                     <div class="pricing-card card">
                         <div class="plan-header">
-                            <h3>Custom App</h3>
+                            <h3>Custom Web App</h3>
                             <div class="price">₦3,000,000+</div>
-                            <small>Custom</small>
+                            <small>Custom Scope</small>
                         </div>
                         <ul class="features">
-                            <li><i class="fas fa-check"></i> Full-stack development</li>
-                            <li><i class="fas fa-check"></i> Database</li>
-                            <li><i class="fas fa-check"></i> API integration</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Tailored architecture</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Database &amp; data flows</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> API &amp; custom features</li>
                         </ul>
                         <a href="contact.html" class="btn btn-primary btn-full">Get Quote</a>
                     </div>
@@ -179,18 +218,18 @@
             </div>
 
             <!-- MIXTAPE PRICING -->
-            <div id="mix" class="tab-content">
+            <div id="mix" class="tab-content" role="tabpanel" hidden>
                 <div class="pricing-grid">
                     <div class="pricing-card card">
                         <div class="plan-header">
                             <h3>Starter Mix</h3>
                             <div class="price">₦150,000</div>
-                            <small>20-30 mins</small>
+                            <small>20–30 mins</small>
                         </div>
                         <ul class="features">
-                            <li><i class="fas fa-check"></i> 10-15 tracks</li>
-                            <li><i class="fas fa-check"></i> Basic mixing</li>
-                            <li><i class="fas fa-check"></i> MP3 delivery</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> 10–15 curated tracks</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Clean core mixing</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> MP3 delivery</li>
                         </ul>
                         <a href="booking.html?service=Mixtape%20Production" class="btn btn-primary btn-full">Order
                             Starter</a>
@@ -201,13 +240,13 @@
                         <div class="plan-header">
                             <h3>Pro Mix</h3>
                             <div class="price">₦350,000</div>
-                            <small>45-60 mins</small>
+                            <small>45–60 mins</small>
                         </div>
                         <ul class="features">
-                            <li><i class="fas fa-check"></i> 20-25 tracks</li>
-                            <li><i class="fas fa-check"></i> Full mixing + effects</li>
-                            <li><i class="fas fa-check"></i> Professional mastering</li>
-                            <li><i class="fas fa-check"></i> WAV + MP3</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> 20–25 curated tracks</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Full mixing + FX &amp; phrasing</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Final level polish</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> WAV + MP3 delivery</li>
                         </ul>
                         <a href="booking.html?service=Mixtape%20Production" class="btn btn-primary btn-full">Order
                             Pro</a>
@@ -217,12 +256,12 @@
                         <div class="plan-header">
                             <h3>Artist Mix</h3>
                             <div class="price">₦650,000+</div>
-                            <small>Custom</small>
+                            <small>Custom Length</small>
                         </div>
                         <ul class="features">
-                            <li><i class="fas fa-check"></i> Unlimited tracks</li>
-                            <li><i class="fas fa-check"></i> Studio mastering</li>
-                            <li><i class="fas fa-check"></i> Commercial license</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Custom runtime &amp; vibe</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Studio-grade transition polish</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Promo &amp; commercial usage</li>
                         </ul>
                         <a href="contact.html" class="btn btn-primary btn-full">Custom Quote</a>
                     </div>
@@ -235,14 +274,14 @@
     <section class="section-padding fade">
         <div class="container">
             <div class="quote-card card">
-                <h3><i class="fas fa-calculator"></i> Need Custom Pricing?</h3>
-                <p>Get personalized quote in 24 hours</p>
-                <div style="text-align: center; margin-top: 2rem;">
+                <h3><i class="fas fa-calculator" aria-hidden="true"></i> Need Custom Pricing?</h3>
+                <p>Share your date, event size, or project scope for a tailored estimate</p>
+                <div style="text-align: center; margin-top: 1.5rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
                     <a href="contact.html" class="btn btn-primary btn-large">
-                        <i class="fas fa-comments"></i> Get Free Quote
+                        <i class="fas fa-comments" aria-hidden="true"></i> Request Custom Quote
                     </a>
                     <a href="booking.html" class="btn btn-secondary btn-large">
-                        <i class="fas fa-calendar-check"></i> Instant Book
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i> Book Directly
                     </a>
                 </div>
             </div>
@@ -252,65 +291,55 @@
     <!-- ================= FOOTER ================= -->
     <footer class="footer fade">
         <div class="container">
-            <p>© 2026 DJ Igniter Studios | Transparent Pricing • Premium Quality</p>
+            <p>© 2026 DJ Igniter Studios | Transparent Pricing • Quality Craft</p>
         </div>
     </footer>
 
+    <!-- ================= BACK TO TOP ================= -->
+    <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
+
+    <script src="js/utils.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/command-palette.js"></script>
+    <script src="js/pricing.js"></script>
+    <script src="js/studio-fallbacks.js"></script>
     <script src="script.js"></script>
     <script>
-        // ================= PRICING TABS =================
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetTab = btn.dataset.tab;
+        (function () {
+            "use strict";
 
-                // Update active tab
-                document.querySelector('.tab-btn.active').classList.remove('active');
-                btn.classList.add('active');
+            document.addEventListener("DOMContentLoaded", function () {
+                const tabButtons = Array.from(document.querySelectorAll(".tab-btn[data-tab]"));
+                const panels = Array.from(document.querySelectorAll(".tab-content[role='tabpanel']"));
 
-                // Show target content
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                document.getElementById(targetTab).classList.add('active');
-
-                // Animate cards
-                setTimeout(() => {
-                    const cards = document.querySelectorAll('.pricing-card');
-                    cards.forEach((card, index) => {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(30px)';
-                        setTimeout(() => {
-                            card.style.transition = 'all 0.6s ease';
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, index * 100);
+                function switchTab(targetId) {
+                    tabButtons.forEach(function (btn) {
+                        const active = btn.getAttribute("data-tab") === targetId;
+                        btn.classList.toggle("active", active);
+                        btn.setAttribute("aria-selected", active ? "true" : "false");
                     });
-                }, 200);
-            });
-        });
 
-        // Smart booking links with prefill
-        document.querySelectorAll('a[href*="booking.html"]').forEach(link => {
-            link.addEventListener('click', function (e) {
-                // Track clicks for analytics
-                console.log('Booking clicked:', this.href);
-            });
-        });
-
-        // Price highlight animation
-        const priceElements = document.querySelectorAll('.price');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.transform = 'scale(1.1)';
-                    entry.target.style.transition = 'transform 0.5s ease';
-                    setTimeout(() => {
-                        entry.target.style.transform = 'scale(1)';
-                    }, 500);
+                    panels.forEach(function (panel) {
+                        const active = panel.id === targetId;
+                        panel.classList.toggle("active", active);
+                        panel.hidden = !active;
+                    });
                 }
+
+                tabButtons.forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        const target = btn.getAttribute("data-tab");
+                        if (target) switchTab(target);
+                    });
+                });
             });
-        });
-        priceElements.forEach(el => observer.observe(el));
+        })();
     </script>
 </body>
 
