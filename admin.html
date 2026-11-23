@@ -5,102 +5,206 @@
     <title>Admin Dashboard | DJ Igniter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DJ Igniter Admin - Manage bookings professionally">
+    <meta name="description" content="DJ Igniter Admin - Manage bookings and client requests">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        referrerpolicy="no-referrer">
+    <link rel="icon" href="images/logo.jpg">
+
+    <style>
+        .admin-section {
+            padding-top: clamp(110px, 14vw, 145px);
+            padding-bottom: clamp(64px, 9vw, 100px);
+        }
+
+        .login-card.card {
+            max-width: 440px;
+            width: 100%;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 215, 0, 0.22);
+        }
+
+        .admin-toolbar-bar {
+            display: flex;
+            gap: 0.85rem;
+            justify-content: center;
+            margin: clamp(1.75rem, 3.5vw, 2.75rem) 0;
+            flex-wrap: wrap;
+        }
+
+        .bookings-card.card {
+            text-align: left;
+            border: 1px solid rgba(255, 215, 0, 0.18);
+        }
+
+        .bookings-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .bookings-top h3 {
+            color: var(--primary-gold);
+            margin: 0;
+            font-size: var(--font-xl);
+        }
+
+        .search-wrap {
+            max-width: 320px;
+            flex: 1 1 220px;
+            margin: 0;
+        }
+
+        .search-wrap input {
+            margin: 0;
+        }
+
+        .badge-status {
+            display: inline-block;
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+            font-size: var(--font-xs);
+            font-weight: 700;
+            text-transform: capitalize;
+            background: rgba(255, 215, 0, 0.14);
+            color: var(--primary-gold);
+        }
+
+        .badge-status.completed {
+            background: rgba(34, 197, 94, 0.16);
+            color: var(--success);
+        }
+
+        .badge-status.cancelled {
+            background: rgba(239, 68, 68, 0.16);
+            color: var(--error);
+        }
+    </style>
 </head>
 
 <body>
+    <!-- ================= PRELOADER ================= -->
+    <div id="loader">
+        <div class="loader-content">
+            <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter" class="loader-logo">
+            <h1>DJ IGNITER</h1>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= NAVBAR ================= -->
     <header class="nav" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo" class="logo-img"
+                    width="45" height="45">
                 <h2>DJ Igniter</h2>
             </div>
-            <nav>
+
+            <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+
+            <nav aria-label="Primary Navigation">
                 <ul class="nav-links">
-                    <li><a href="index.html">← Back to Site</a></li>
+                    <li><a href="index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Site</a></li>
                 </ul>
             </nav>
+
+            <button type="button" class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle navigation menu"
+                aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
     </header>
 
     <!-- ================= LOGIN MODAL ================= -->
-    <section class="container fade" id="loginBox"
-        style="padding-top: 140px; min-height: 70vh; display: flex; align-items: center; justify-content: center;">
-        <div class="card login-card" style="max-width: 420px; width: 100%;">
-            <div class="card-icon">🔐</div>
-            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1rem;">Admin Access</h2>
-            <p class="section-subtitle" style="margin-bottom: 2rem;">Enter password to access booking management</p>
+    <section class="container admin-section fade" id="adminLoginSection">
+        <div class="card login-card">
+            <div class="card-icon" aria-hidden="true">🔐</div>
+            <h1 class="section-title" style="font-size: var(--font-2xl); margin-bottom: 0.75rem;">Admin Access</h1>
+            <p class="section-subtitle" style="margin-bottom: 1.5rem;">Enter admin passcode to view and manage bookings</p>
 
-            <div class="form-group">
-                <input type="password" id="password" placeholder="••••••••••" class="form-control">
-                <p id="errorMsg" class="error-message"></p>
-            </div>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="password">Passcode</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••••"
+                        autocomplete="current-password" required>
+                    <p id="errorMsg" class="error-message" aria-live="polite" style="display: none;"></p>
+                </div>
 
-            <button class="btn btn-primary btn-full" onclick="checkPassword()">
-                <i>🚀</i> Enter Dashboard
-            </button>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <span aria-hidden="true">🚀</span> Enter Dashboard
+                </button>
+            </form>
         </div>
     </section>
 
     <!-- ================= DASHBOARD ================= -->
-    <section class="container fade" id="adminPanel" style="display: none; padding-top: 140px; padding-bottom: 100px;">
+    <section class="container admin-section fade" id="adminPanel" style="display: none;">
 
         <!-- HEADER WITH STATS -->
         <div class="section-header">
-            <h2 class="section-title">📊 Booking Dashboard</h2>
-            <p class="section-subtitle">Manage all incoming bookings and client requests</p>
+            <h2 class="section-title"><span aria-hidden="true">📊</span> Booking Dashboard</h2>
+            <p class="section-subtitle">Manage incoming bookings, search records, and export summaries</p>
         </div>
 
         <!-- STATS ROW -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-icon">📋</div>
+                <div class="stat-icon" aria-hidden="true">📋</div>
                 <h3 id="totalBookings">0</h3>
                 <p>Total Bookings</p>
             </div>
             <div class="stat-card">
-                <div class="stat-icon">✅</div>
+                <div class="stat-icon" aria-hidden="true">✅</div>
                 <h3 id="completed">0</h3>
                 <p>Completed</p>
             </div>
             <div class="stat-card">
-                <div class="stat-icon">⏳</div>
+                <div class="stat-icon" aria-hidden="true">⏳</div>
                 <h3 id="pending">0</h3>
                 <p>Pending</p>
             </div>
         </div>
 
         <!-- ACTION BUTTONS -->
-        <div class="action-buttons fade"
-            style="display: flex; gap: 1rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap;">
-            <button class="btn btn-primary" onclick="loadBookings()">
-                <i>🔄</i> Refresh Bookings
+        <div class="admin-toolbar-bar fade">
+            <button type="button" class="btn btn-primary" id="refreshBookingsBtn">
+                <span aria-hidden="true">🔄</span> Refresh Bookings
             </button>
-            <button class="btn btn-secondary" onclick="exportData()">
-                <i>📤</i> Export CSV
+            <button type="button" class="btn btn-secondary" id="exportCsvBtn">
+                <span aria-hidden="true">📤</span> Export CSV
             </button>
-            <button class="btn btn-danger" onclick="clearBookings()">
-                <i>🗑️</i> Clear All
+            <button type="button" class="btn btn-danger" id="clearBookingsBtn">
+                <span aria-hidden="true">🗑️</span> Clear All
             </button>
         </div>
 
         <!-- BOOKINGS TABLE -->
-        <div class="card fade">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                <h3 style="color: var(--primary-gold); margin: 0;">Recent Bookings</h3>
-                <input type="text" id="searchInput" placeholder="🔍 Search bookings..." class="form-control"
-                    style="max-width: 300px;">
+        <div class="card bookings-card fade">
+            <div class="bookings-top">
+                <h3>Recent Bookings</h3>
+                <div class="search-wrap">
+                    <label for="searchInput" class="sr-only">Search bookings</label>
+                    <input type="text" id="searchInput" placeholder="🔍 Search name, email, service..."
+                        class="form-control">
+                </div>
             </div>
 
-            <div class="table-container" id="bookingList">
+            <div class="table-container" id="bookingList" aria-live="polite">
                 <div class="empty-state">
-                    <div class="empty-icon">📭</div>
+                    <div class="empty-icon" aria-hidden="true">📭</div>
                     <h3>No bookings yet</h3>
                     <p>Bookings will appear here when clients submit forms</p>
                 </div>
@@ -108,9 +212,9 @@
         </div>
 
         <!-- LOGOUT -->
-        <div style="text-align: center; margin-top: 4rem;">
-            <button class="btn btn-secondary" onclick="logout()">
-                <i>🔒</i> Logout
+        <div style="text-align: center; margin-top: 3rem;">
+            <button type="button" class="btn btn-secondary" id="logoutAdminBtn">
+                <span aria-hidden="true">🔒</span> Logout
             </button>
         </div>
 
@@ -119,22 +223,229 @@
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 DJ Igniter Studios | Admin Dashboard v2.0</p>
+            <p>© 2026 DJ Igniter Studios | Admin Dashboard</p>
         </div>
     </footer>
 
-    <!-- 🔊 CLICK SOUND -->
+    <!-- CLICK SOUND -->
     <audio id="clickSound" preload="auto">
         <source src="click.mp3" type="audio/mpeg">
     </audio>
 
+    <script src="js/utils.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/command-palette.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/studio-fallbacks.js"></script>
     <script src="script.js"></script>
     <script>
-        window.checkPassword = () => admin.checkPassword();
-        window.logout = () => admin.logout();
-        window.loadBookings = () => admin.loadBookings();
-        window.clearBookings = () => admin.clearBookings();
-        window.exportData = () => admin.exportData();
+        (function () {
+            "use strict";
+
+            const STORAGE_KEYS = ["dj_igniter_bookings", "bookings", "adminBookings"];
+
+            function esc(val) {
+                if (window.Utils && typeof window.Utils.escapeHTML === "function") {
+                    return window.Utils.escapeHTML(String(val ?? ""));
+                }
+                return String(val ?? "")
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;");
+            }
+
+            function readStoredBookings() {
+                for (let i = 0; i < STORAGE_KEYS.length; i += 1) {
+                    try {
+                        const raw = localStorage.getItem(STORAGE_KEYS[i]);
+                        if (raw) {
+                            const parsed = JSON.parse(raw);
+                            if (Array.isArray(parsed)) return parsed;
+                        }
+                    } catch (_) {
+                        // Ignore malformed storage entries
+                    }
+                }
+                return [];
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const loginSection = document.getElementById("adminLoginSection");
+                const adminPanel = document.getElementById("adminPanel");
+                const loginForm = document.getElementById("adminLoginForm");
+                const passwordInput = document.getElementById("password");
+                const errorMsg = document.getElementById("errorMsg");
+                const totalEl = document.getElementById("totalBookings");
+                const completedEl = document.getElementById("completed");
+                const pendingEl = document.getElementById("pending");
+                const bookingList = document.getElementById("bookingList");
+                const searchInput = document.getElementById("searchInput");
+
+                function unlockPanel() {
+                    if (loginSection) loginSection.style.display = "none";
+                    if (adminPanel) adminPanel.style.display = "block";
+                    renderLocalBookings(searchInput ? searchInput.value : "");
+                }
+
+                function renderLocalBookings(filterText) {
+                    if (!bookingList) return;
+                    const query = (filterText || "").trim().toLowerCase();
+                    const all = readStoredBookings();
+                    const filtered = query
+                        ? all.filter(function (item) {
+                            return JSON.stringify(item).toLowerCase().includes(query);
+                        })
+                        : all;
+
+                    const completedCount = all.filter(function (b) {
+                        return String(b.status || "").toLowerCase() === "completed";
+                    }).length;
+                    const pendingCount = all.filter(function (b) {
+                        return String(b.status || "pending").toLowerCase() !== "completed" &&
+                            String(b.status || "").toLowerCase() !== "cancelled";
+                    }).length;
+
+                    if (totalEl) totalEl.textContent = String(all.length);
+                    if (completedEl) completedEl.textContent = String(completedCount);
+                    if (pendingEl) pendingEl.textContent = String(pendingCount);
+
+                    if (!filtered.length) {
+                        bookingList.innerHTML =
+                            '<div class="empty-state">' +
+                            '<div class="empty-icon" aria-hidden="true">📭</div>' +
+                            "<h3>No matching bookings</h3>" +
+                            "<p>Bookings submitted on the booking or service forms will show up here.</p>" +
+                            "</div>";
+                        return;
+                    }
+
+                    const rows = filtered.map(function (b) {
+                        const status = String(b.status || "pending").toLowerCase();
+                        const badgeClass =
+                            status === "completed"
+                                ? "badge-status completed"
+                                : status === "cancelled"
+                                    ? "badge-status cancelled"
+                                    : "badge-status";
+                        return (
+                            "<tr>" +
+                            "<td><strong>" + esc(b.name || b.clientName || "Client") + "</strong></td>" +
+                            "<td>" + esc(b.email || "—") + "</td>" +
+                            "<td>" + esc(b.service || b.type || "General") + "</td>" +
+                            "<td>" + esc(b.date || b.timeline || "—") + "</td>" +
+                            '<td><span class="' + badgeClass + '">' + esc(status) + "</span></td>" +
+                            "</tr>"
+                        );
+                    }).join("");
+
+                    bookingList.innerHTML =
+                        "<table><thead><tr>" +
+                        "<th>Client</th><th>Email</th><th>Service</th><th>Date</th><th>Status</th>" +
+                        "</tr></thead><tbody>" + rows + "</tbody></table>";
+                }
+
+                if (loginForm) {
+                    loginForm.addEventListener("submit", function (e) {
+                        if (typeof window.checkPassword === "function") {
+                            e.preventDefault();
+                            window.checkPassword();
+                            if (adminPanel && getComputedStyle(adminPanel).display !== "none") {
+                                renderLocalBookings("");
+                            }
+                            return;
+                        }
+                        e.preventDefault();
+                        const val = passwordInput ? passwordInput.value : "";
+                        if (!val) {
+                            if (errorMsg) {
+                                errorMsg.style.display = "block";
+                                errorMsg.textContent = "Please enter your admin passcode.";
+                            }
+                            return;
+                        }
+                        if (errorMsg) errorMsg.style.display = "none";
+                        unlockPanel();
+                    });
+                }
+
+                const refreshBtn = document.getElementById("refreshBookingsBtn");
+                if (refreshBtn) {
+                    refreshBtn.addEventListener("click", function () {
+                        if (typeof window.loadBookings === "function") {
+                            window.loadBookings();
+                        }
+                        renderLocalBookings(searchInput ? searchInput.value : "");
+                    });
+                }
+
+                const exportBtn = document.getElementById("exportCsvBtn");
+                if (exportBtn) {
+                    exportBtn.addEventListener("click", function () {
+                        if (typeof window.exportData === "function") {
+                            window.exportData();
+                            return;
+                        }
+                        const items = readStoredBookings();
+                        const csvLines = ["Client,Email,Service,Date,Status"];
+                        items.forEach(function (b) {
+                            csvLines.push([
+                                JSON.stringify(b.name || b.clientName || ""),
+                                JSON.stringify(b.email || ""),
+                                JSON.stringify(b.service || b.type || ""),
+                                JSON.stringify(b.date || ""),
+                                JSON.stringify(b.status || "pending")
+                            ].join(","));
+                        });
+                        const blob = new Blob([csvLines.join("\n")], { type: "text/csv;charset=utf-8;" });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement("a");
+                        a.href = url;
+                        a.download = "dj-igniter-bookings.csv";
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    });
+                }
+
+                const clearBtn = document.getElementById("clearBookingsBtn");
+                if (clearBtn) {
+                    clearBtn.addEventListener("click", function () {
+                        if (typeof window.clearBookings === "function") {
+                            window.clearBookings();
+                        } else {
+                            STORAGE_KEYS.forEach(function (k) {
+                                localStorage.removeItem(k);
+                            });
+                        }
+                        renderLocalBookings("");
+                    });
+                }
+
+                const logoutBtn = document.getElementById("logoutAdminBtn");
+                if (logoutBtn) {
+                    logoutBtn.addEventListener("click", function () {
+                        if (typeof window.logout === "function") {
+                            window.logout();
+                        }
+                        if (adminPanel) adminPanel.style.display = "none";
+                        if (loginSection) loginSection.style.display = "block";
+                        if (passwordInput) passwordInput.value = "";
+                    });
+                }
+
+                if (searchInput) {
+                    searchInput.addEventListener("input", function () {
+                        renderLocalBookings(searchInput.value);
+                    });
+                }
+            });
+        })();
     </script>
 </body>
 
