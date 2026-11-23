@@ -5,123 +5,337 @@
     <title>Contact DJ Igniter | Get In Touch</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact DJ Igniter for bookings, web development, or DJ services">
+    <meta name="description" content="Contact DJ Igniter for bookings, web development, mixtapes, or creative collaborations.">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        referrerpolicy="no-referrer">
+    <link rel="icon" href="images/logo.jpg">
+
+    <style>
+        .contact-hero.contact-hero--compact {
+            min-height: min(46vh, 440px);
+            padding-top: clamp(92px, 12vw, 124px);
+            padding-bottom: clamp(32px, 5vw, 52px);
+        }
+
+        .contact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.42rem 0.95rem;
+            border-radius: 999px;
+            font-size: var(--font-xs);
+            font-weight: 600;
+            background: rgba(255, 215, 0, 0.14);
+            color: var(--primary-gold);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .contact-section.section-padding {
+            padding-top: clamp(16px, 3vw, 32px);
+        }
+
+        .contact-grid--refined {
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            align-items: start;
+        }
+
+        .contact-form-card.card,
+        .contact-card.card,
+        .testimonials.card {
+            text-align: left;
+            border: 1px solid rgba(255, 215, 0, 0.18);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
+        }
+
+        .contact-form-card .card-header {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.12);
+        }
+
+        .contact-form-card .card-header i {
+            margin: 0 0 0.65rem;
+            font-size: 1.65rem;
+        }
+
+        .contact-form-card .card-header h2 {
+            font-size: var(--font-xl);
+            color: var(--heading-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-form-card .card-header p {
+            font-size: var(--font-sm);
+            color: var(--text-muted);
+        }
+
+        .contact-form-card select {
+            width: 100%;
+            min-height: 48px;
+            padding: 12px 16px;
+            margin: 0.35rem 0 0.9rem;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 215, 0, 0.22);
+            background: #111827;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: var(--font-base);
+        }
+
+        body.light-mode .contact-form-card select {
+            background: #FFFFFF;
+            color: #111827;
+            border-color: #CBD5E1;
+        }
+
+        .channel-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 16px;
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(255, 215, 0, 0.12);
+            margin-top: 0.85rem;
+            transition: border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        body.light-mode .channel-box {
+            background: rgba(241, 245, 249, 0.9);
+            border-color: rgba(15, 23, 42, 0.1);
+        }
+
+        .channel-box:hover {
+            border-color: var(--primary-gold);
+            transform: translateY(-2px);
+        }
+
+        .channel-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 215, 0, 0.14);
+            color: var(--primary-gold);
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+
+        .channel-meta {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .channel-meta h4 {
+            font-size: var(--font-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-bottom: 0.2rem;
+        }
+
+        .copy-btn {
+            min-height: 36px;
+            padding: 0.35rem 0.75rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.28);
+            background: transparent;
+            color: var(--primary-gold);
+            font-family: inherit;
+            font-size: var(--font-xs);
+            font-weight: 600;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-gold);
+            color: var(--black);
+        }
+
+        .contact-feedback-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-grid--refined {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Contact</span>
+    </nav>
+
+    <!-- ================= PRELOADER ================= -->
+    <div id="loader">
+        <div class="loader-content">
+            <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo">
+            <h1>DJ IGNITER</h1>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= NAVBAR ================= -->
     <header class="nav" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo" class="logo-img"
+                    width="45" height="45">
                 <h2>DJ Igniter</h2>
             </div>
-            <nav>
+
+            <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+
+            <nav aria-label="Primary Navigation">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
                     <li><a href="assistant.html">Assistant</a></li>
                     <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+
+            <button type="button" class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle navigation menu"
+                aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
     </header>
 
     <!-- ================= CONTACT HERO ================= -->
-    <section class="contact-hero fade">
+    <section class="contact-hero contact-hero--compact fade">
         <div class="container">
             <div class="hero-content">
-                <h1 class="section-title">📩 Get In Touch</h1>
+                <span class="contact-pill">
+                    <i class="fas fa-bolt" aria-hidden="true"></i> Fast Response • Events, Mixtapes &amp; Web Builds
+                </span>
+                <h1 class="section-title"><span aria-hidden="true">📩</span> Get In Touch</h1>
                 <p class="hero-subtitle">
-                    Ready for your DJ event, website, or creative project?
-                    Let's make it happen!
+                    Booking a live set, ordering a custom mixtape, or building a website? Drop your brief and let's make it happen.
                 </p>
             </div>
         </div>
     </section>
 
     <!-- ================= CONTACT SECTION ================= -->
-    <section class="section-padding container fade">
-        <div class="contact-grid">
+    <section class="contact-section section-padding container fade">
+        <div class="contact-grid contact-grid--refined">
 
             <!-- CONTACT FORM -->
             <div class="contact-form-card card">
                 <div class="card-header">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Send Message</h3>
-                    <p>Get personalized response within 24 hours</p>
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    <h2>Send a Direct Message</h2>
+                    <p>Typical reply within 24 hours—or message on WhatsApp for quick bookings.</p>
                 </div>
 
-                <form id="contactForm">
+                <form id="contactForm" novalidate>
                     <div class="form-row">
                         <div class="form-group">
-                            <label><i class="fas fa-user"></i> Full Name</label>
-                            <input type="text" name="name" id="name" placeholder="Your name" required>
+                            <label for="name"><i class="fas fa-user" aria-hidden="true"></i> Full Name</label>
+                            <input type="text" name="name" id="name" placeholder="Your name" autocomplete="name" required>
                         </div>
                         <div class="form-group">
-                            <label><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" name="email" id="email" placeholder="your@email.com" required>
+                            <label for="email"><i class="fas fa-envelope" aria-hidden="true"></i> Email Address</label>
+                            <input type="email" name="email" id="email" placeholder="your@email.com"
+                                autocomplete="email" required>
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="topic"><i class="fas fa-sliders" aria-hidden="true"></i> What Do You Need?</label>
+                        <select name="topic" id="topic">
+                            <option value="Event DJ Booking">Event DJ Booking</option>
+                            <option value="Website / Web App">Website / Web App</option>
+                            <option value="Custom Mixtape">Custom Mixtape</option>
+                            <option value="General / Collaboration">General / Collaboration</option>
+                        </select>
+                    </div>
+
                     <div class="form-group full-width">
-                        <label><i class="fas fa-comment"></i> Message</label>
-                        <textarea name="message" id="message" rows="6"
-                            placeholder="Tell me about your project, event, or question..." required></textarea>
+                        <label for="message"><i class="fas fa-comment-dots" aria-hidden="true"></i> Project or Event Details</label>
+                        <textarea name="message" id="message" rows="5"
+                            placeholder="Share your date, location, vibe/genre, or website features and timeline..." required></textarea>
                     </div>
 
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary btn-full">
-                            <i class="fas fa-paper-plane"></i> Send Message
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message
                         </button>
                     </div>
                 </form>
 
-                <div id="formFeedback" class="form-feedback" style="display: none;"></div>
+                <div id="formFeedback" class="form-feedback" aria-live="polite" style="display: none;"></div>
             </div>
 
             <!-- CONTACT INFO -->
             <div class="contact-info">
                 <div class="contact-card card">
-                    <h3><i class="fas fa-phone"></i> Quick Contact</h3>
+                    <h3><i class="fas fa-address-card" aria-hidden="true"></i> Direct Channels</h3>
 
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
+                    <div class="channel-box">
+                        <span class="channel-icon" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+                        <div class="channel-meta">
                             <h4>Email</h4>
-                            <a href="mailto:Iwuchukwuchinosom@gmail.com" class="contact-link"
-                                data-copy="Iwuchukwuchinosom@gmail.com">
+                            <a href="mailto:Iwuchukwuchinosom@gmail.com" class="contact-link">
                                 Iwuchukwuchinosom@gmail.com
                             </a>
                         </div>
+                        <button type="button" class="copy-btn" data-copy-text="Iwuchukwuchinosom@gmail.com">
+                            Copy
+                        </button>
                     </div>
 
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
+                    <div class="channel-box">
+                        <span class="channel-icon" aria-hidden="true"><i class="fas fa-phone"></i></span>
+                        <div class="channel-meta">
                             <h4>Phone</h4>
-                            <a href="tel:+2349021368638" class="contact-link" data-copy="09021368638">
+                            <a href="tel:+2349021368638" class="contact-link">
                                 0902 136 8638
                             </a>
                         </div>
+                        <button type="button" class="copy-btn" data-copy-text="09021368638">
+                            Copy
+                        </button>
                     </div>
 
-                    <div class="contact-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <div>
+                    <div class="channel-box">
+                        <span class="channel-icon" aria-hidden="true"><i class="fab fa-whatsapp"></i></span>
+                        <div class="channel-meta">
                             <h4>WhatsApp</h4>
-                            <a href="https://wa.me/2349021368638" target="_blank" class="contact-link whatsapp">
-                                Message on WhatsApp
+                            <a href="https://wa.me/2349021368638" target="_blank" rel="noopener noreferrer"
+                                class="contact-link whatsapp">
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
                             </a>
                         </div>
                     </div>
@@ -129,14 +343,14 @@
 
                 <!-- SOCIAL PROOF -->
                 <div class="testimonials card">
-                    <h3><i class="fas fa-star"></i> What Clients Say</h3>
+                    <h3><i class="fas fa-star" aria-hidden="true"></i> Client Feedback</h3>
                     <div class="testimonial">
-                        <p>"DJ Igniter transformed our wedding! 5⭐"</p>
-                        <span>— Sarah M.</span>
+                        <p>"DJ Igniter kept the dancefloor locked all night—zero dead air and clean transitions."</p>
+                        <span>— Sarah M., Event Client</span>
                     </div>
                     <div class="testimonial">
-                        <p>"Professional DJ + amazing developer!"</p>
-                        <span>— TechCorp CEO</span>
+                        <p>"Fast turnaround, sharp design, and easy communication from day one to launch."</p>
+                        <span>— TechCorp Team</span>
                     </div>
                 </div>
             </div>
@@ -144,163 +358,112 @@
         </div>
     </section>
 
-    <!-- ================= FLOATING CHAT ================= -->
-    <div class="float" id="chatToggle">
-        <i class="fas fa-comments"></i>
-        <span class="float-label">Live Chat</span>
-    </div>
+    <!-- ================= FLOATING AI CHAT ================= -->
+    <button type="button" class="float" id="chatToggle" aria-label="Open AI assistant chat">
+        <i class="fas fa-robot" aria-hidden="true"></i>
+        <span class="float-label">Ask AI</span>
+    </button>
 
     <!-- ================= NOTIFICATION ================= -->
-    <div id="notification" class="notification" style="display: none;"></div>
+    <div id="notification" class="notification" aria-live="polite" style="display: none;"></div>
 
     <!-- FOOTER -->
     <footer class="footer fade">
         <div class="container">
-            <p>© 2026 DJ Igniter Studios | Let's Create Something Amazing</p>
+            <p>© 2026 DJ Igniter Studios | Events, Mixtapes &amp; Web Craft</p>
         </div>
     </footer>
+
+    <!-- ================= BACK TO TOP ================= -->
+    <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
 
     <!-- AUDIO -->
     <audio id="clickSound" preload="auto">
         <source src="click.mp3" type="audio/mpeg">
     </audio>
-    <audio id="successSound" preload="auto">
-        <source src="success.mp3" type="audio/mpeg">
-    </audio>
 
+    <script src="js/utils.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/command-palette.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/studio-fallbacks.js"></script>
     <script src="script.js"></script>
     <script>
-        // ================= CONTACT FORM HANDLER =================
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('contactForm');
-            if (form) {
-                form.addEventListener('submit', handleContactSubmit);
-            }
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".copy-btn").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    const value = btn.getAttribute("data-copy-text") || "";
+                    if (!value) return;
 
-            // Copy to clipboard functionality
-            document.querySelectorAll('[data-copy]').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    copyToClipboard(this.dataset.copy);
+                    const restore = function () {
+                        const prev = btn.textContent;
+                        btn.textContent = "Copied!";
+                        setTimeout(function () {
+                            btn.textContent = prev;
+                        }, 1600);
+                    };
+
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(value).then(restore).catch(restore);
+                    } else {
+                        restore();
+                    }
                 });
             });
 
-            // Set min date to tomorrow for any date inputs
-            const dateInputs = document.querySelectorAll('input[type="date"]');
-            dateInputs.forEach(input => {
-                const tomorrow = new Date();
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                input.min = tomorrow.toISOString().split('T')[0];
-            });
+            const form = document.getElementById("contactForm");
+            const feedback = document.getElementById("formFeedback");
+            if (form && feedback) {
+                form.addEventListener("submit", function (event) {
+                    const nameInput = document.getElementById("name");
+                    const emailInput = document.getElementById("email");
+                    const messageInput = document.getElementById("message");
+                    const topicInput = document.getElementById("topic");
+
+                    const nameVal = nameInput ? nameInput.value.trim() : "";
+                    const emailVal = emailInput ? emailInput.value.trim() : "";
+                    const messageVal = messageInput ? messageInput.value.trim() : "";
+                    const topicVal = topicInput ? topicInput.value : "General";
+
+                    if (!nameVal || !emailVal || !messageVal) {
+                        event.preventDefault();
+                        feedback.className = "form-feedback error";
+                        feedback.style.display = "block";
+                        feedback.textContent = "Please fill in your name, email, and message before sending.";
+                        return;
+                    }
+
+                    // If external contact.js hasn't already hijacked submission cleanly, provide helpful confirmation
+                    if (!form.dataset.handledByContactJs) {
+                        event.preventDefault();
+                        const waText = encodeURIComponent(
+                            "Hi DJ Igniter, I'm " + nameVal + " (" + emailVal + ") regarding: " + topicVal + ". " + messageVal
+                        );
+                        feedback.className = "form-feedback success";
+                        feedback.style.display = "block";
+                        feedback.innerHTML =
+                            "<div>Message noted for <strong>" +
+                            topicVal +
+                            "</strong>. Want an even faster reply?</div>" +
+                            '<div class="contact-feedback-actions">' +
+                            '<a href="https://wa.me/2349021368638?text=' +
+                            waText +
+                            '" target="_blank" rel="noopener noreferrer" class="btn btn-primary">' +
+                            '<i class="fab fa-whatsapp" aria-hidden="true"></i> Send via WhatsApp</a>' +
+                            '<a href="booking.html" class="btn btn-secondary">' +
+                            '<i class="fas fa-calendar-check" aria-hidden="true"></i> Open Booking Page</a>' +
+                            "</div>";
+                        form.reset();
+                    }
+                });
+            }
         });
-
-        async function handleContactSubmit(e) {
-            e.preventDefault();
-
-            const formData = {
-                name: document.getElementById('name').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                message: document.getElementById('message').value.trim()
-            };
-
-            if (!validateContactForm(formData)) return;
-
-            showLoading();
-
-            // Simulate API delay
-            setTimeout(() => {
-                // Save to localStorage for admin panel
-                const messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
-                messages.push({
-                    ...formData,
-                    timestamp: new Date().toISOString(),
-                    id: 'M' + Date.now()
-                });
-                localStorage.setItem('contactMessages', JSON.stringify(messages));
-
-                showSuccess(formData);
-                form.reset();
-                playSound('successSound');
-                showNotification('Message sent! Response within 24h.');
-            }, 1500);
-        }
-
-        function validateContactForm(data) {
-            if (data.name.length < 2) {
-                showError('Name must be at least 2 characters');
-                return false;
-            }
-            if (!data.email.includes('@') || !data.email.includes('.')) {
-                showError('Please enter valid email');
-                return false;
-            }
-            if (data.message.length < 10) {
-                showError('Message must be at least 10 characters');
-                return false;
-            }
-            return true;
-        }
-
-        function showLoading() {
-            const feedback = document.getElementById('formFeedback');
-            feedback.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            feedback.className = 'form-feedback loading';
-            feedback.style.display = 'block';
-        }
-
-        function showSuccess(data) {
-            const feedback = document.getElementById('formFeedback');
-            feedback.innerHTML = `
-                <i class="fas fa-check-circle"></i>
-                <strong>✅ Message Sent Successfully!</strong><br>
-                <small>Hi ${data.name}, we'll reply to ${data.email} within 24 hours!</small>
-            `;
-            feedback.className = 'form-feedback success';
-        }
-
-        function showError(message) {
-            const feedback = document.getElementById('formFeedback');
-            feedback.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-            feedback.className = 'form-feedback error';
-            feedback.style.display = 'block';
-            setTimeout(() => feedback.style.display = 'none', 5000);
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = event.target.innerHTML;
-                event.target.innerHTML = '✅ Copied!';
-                event.target.style.color = '#00ff88';
-                event.target.style.fontWeight = '600';
-
-                setTimeout(() => {
-                    event.target.innerHTML = originalText;
-                    event.target.style.color = '';
-                    event.target.style.fontWeight = '';
-                }, 2000);
-
-                showNotification('Copied to clipboard!');
-            }).catch(() => {
-                showNotification('Copy failed - please select manually');
-            });
-        }
-
-        function playSound(id) {
-            const audio = document.getElementById(id);
-            if (audio) {
-                audio.currentTime = 0;
-                audio.play().catch(() => { });
-            }
-        }
-
-        function showNotification(message) {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.className = 'notification success show';
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 4000);
-        }
     </script>
 </body>
 
