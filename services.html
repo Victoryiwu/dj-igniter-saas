@@ -6,35 +6,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="DJ Igniter Services - Events, Web Development, Mixtapes | Book Professional Services">
+        content="DJ Igniter Services - Event DJ Sets, Web Development & Mixtape Production">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        referrerpolicy="no-referrer">
+    <link rel="icon" href="images/logo.jpg">
 </head>
 
 <body>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Services</span>
+    </nav>
+
+    <!-- ================= PRELOADER ================= -->
+    <div id="loader">
+        <div class="loader-content">
+            <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter" class="loader-logo">
+            <h1>DJ IGNITER</h1>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= NAVBAR ================= -->
     <header class="nav" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="logo.jpg" alt="DJ Igniter Logo" class="logo-img">
+                <img src="images/placeholder.webp" data-src="images/logo.jpg" alt="DJ Igniter Logo" class="logo-img">
                 <h2>DJ Igniter</h2>
             </div>
-            <nav>
+
+            <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+
+            <nav aria-label="Primary Navigation">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="services.html" class="active" aria-current="page">Services</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="assistant.html">Assistant</a></li>
                     <li><a href="booking.html" class="cta-nav btn-primary">Book Now</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+
+            <button type="button" class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle navigation menu"
+                aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
     </header>
 
@@ -42,15 +72,14 @@
     <section class="services-hero fade">
         <div class="container">
             <div class="hero-content">
-                <h1 class="section-title">🎧 My Services</h1>
+                <h1 class="section-title"><span aria-hidden="true">🎧</span> Studio Services</h1>
                 <p class="hero-subtitle">
-                    Professional DJ services + premium web development.
-                    One creative delivering two worlds of excellence.
+                    Live DJ performances, custom mixtapes, and modern web development—built with energy, structure, and care.
                 </p>
                 <div class="service-stats">
-                    <span>250+ Events</span>
-                    <span>50+ Websites</span>
-                    <span>4.9⭐ Rating</span>
+                    <span>500+ Events &amp; Sets</span>
+                    <span>50+ Web Builds</span>
+                    <span>4.9<span aria-hidden="true">⭐</span> Rating</span>
                 </div>
             </div>
         </div>
@@ -63,46 +92,43 @@
 
                 <!-- DJ EVENTS -->
                 <div class="service-card card" data-service="dj">
-                    <div class="service-icon-large">🎧</div>
+                    <div class="service-icon-large" aria-hidden="true">🎧</div>
                     <h3>Event DJ Services</h3>
-                    <p>High-energy performances for weddings, parties, corporate events, clubs</p>
+                    <p>High-energy sets for weddings, birthdays, private parties, corporate events, and nightlife</p>
                     <div class="service-meta">
                         <span class="service-price">From ₦800k</span>
-                        <span class="service-rating">⭐ 5.0 (248)</span>
+                        <span class="service-rating"><span aria-hidden="true">⭐</span> 5.0</span>
                     </div>
                     <div class="service-actions">
-                        <a href="event-dj.html" class="btn btn-primary">View DJ Services</a>
-                        <a href="event-dj.html" class="btn btn-secondary">Book DJ</a>
+                        <a href="event-dj.html" class="btn btn-primary">Explore DJ Sets</a>
                     </div>
                 </div>
 
                 <!-- WEB DEVELOPMENT -->
                 <div class="service-card card" data-service="web">
-                    <div class="service-icon-large">💻</div>
+                    <div class="service-icon-large" aria-hidden="true">💻</div>
                     <h3>Web Development</h3>
-                    <p>Fast, responsive, modern websites. Like this very site!</p>
+                    <p>Fast, responsive landing pages, business sites, and web apps with clean UI and booking flows</p>
                     <div class="service-meta">
                         <span class="service-price">From ₦300k</span>
-                        <span class="service-rating">⭐ 5.0 (52)</span>
+                        <span class="service-rating"><span aria-hidden="true">⭐</span> 5.0</span>
                     </div>
                     <div class="service-actions">
-                        <a href="web-design.html" class="btn btn-primary">View Web Services</a>
-                        <a href="web-design.html" class="btn btn-secondary">Build Website</a>
+                        <a href="programming.html" class="btn btn-primary">Explore Web Builds</a>
                     </div>
                 </div>
 
                 <!-- MIXTAPE PRODUCTION -->
                 <div class="service-card card" data-service="mix">
-                    <div class="service-icon-large">🎵</div>
+                    <div class="service-icon-large" aria-hidden="true">🎵</div>
                     <h3>Mixtape Production</h3>
-                    <p>Professional mixing, mastering, custom track selection</p>
+                    <p>Curated track selection, smooth mixing, and balanced audio across Afrobeats, hip-hop, and party vibes</p>
                     <div class="service-meta">
                         <span class="service-price">From ₦150k</span>
-                        <span class="service-rating">⭐ 4.9 (98)</span>
+                        <span class="service-rating"><span aria-hidden="true">⭐</span> 4.9</span>
                     </div>
                     <div class="service-actions">
-                        <a href="mixtape.html" class="btn btn-primary">View Production</a>
-                        <a href="mixtape.html" class="btn btn-secondary">Order Mix</a>
+                        <a href="mixtape.html" class="btn btn-primary">Explore Mixtapes</a>
                     </div>
                 </div>
 
@@ -115,24 +141,24 @@
         <div class="container">
             <div class="highlights-grid">
                 <div class="highlight-item">
-                    <div class="highlight-icon">⚡</div>
-                    <h3>Fast Delivery</h3>
-                    <p>Websites in 7-21 days. DJ bookings instantly confirmed.</p>
+                    <div class="highlight-icon" aria-hidden="true">⚡</div>
+                    <h3>Clear Turnaround</h3>
+                    <p>Web builds typically run 7–21 days, mixtapes 3–7 days, and event dates lock in fast.</p>
                 </div>
                 <div class="highlight-item">
-                    <div class="highlight-icon">🔒</div>
-                    <h3>Secure Payments</h3>
-                    <p>Paystack, Flutterwave, bank transfer. 100% secure.</p>
+                    <div class="highlight-icon" aria-hidden="true">🔒</div>
+                    <h3>Flexible Checkout</h3>
+                    <p>Paystack, Flutterwave, bank transfer, or direct booking coordination.</p>
                 </div>
                 <div class="highlight-item">
-                    <div class="highlight-icon">⭐</div>
-                    <h3>5-Star Service</h3>
-                    <p>250+ happy clients. 4.9⭐ average rating.</p>
+                    <div class="highlight-icon" aria-hidden="true">⭐</div>
+                    <h3>Consistent Quality</h3>
+                    <p>Focused on crowd energy, smooth transitions, and clean, responsive interfaces.</p>
                 </div>
                 <div class="highlight-item">
-                    <div class="highlight-icon">📞</div>
-                    <h3>24/7 Support</h3>
-                    <p>Ava AI assistant + WhatsApp + email support.</p>
+                    <div class="highlight-icon" aria-hidden="true">📞</div>
+                    <h3>Easy Communication</h3>
+                    <p>Ask Ava anytime, reach out on WhatsApp, or send a direct brief.</p>
                 </div>
             </div>
         </div>
@@ -143,7 +169,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Service Comparison</h2>
-                <p class="section-subtitle">Everything included at each price point</p>
+                <p class="section-subtitle">Quick side-by-side look at starting rates, pacing, and inclusions</p>
             </div>
 
             <div class="comparison-table-container">
@@ -164,28 +190,28 @@
                             <td>₦150k</td>
                         </tr>
                         <tr>
-                            <td>Delivery Time</td>
-                            <td>Instant</td>
-                            <td>7-21 days</td>
-                            <td>3-7 days</td>
+                            <td>Typical Timeline</td>
+                            <td>Date-based</td>
+                            <td>7–21 days</td>
+                            <td>3–7 days</td>
                         </tr>
                         <tr>
-                            <td>Custom Work</td>
-                            <td>✅ Playlist</td>
-                            <td>✅ Design</td>
-                            <td>✅ Tracklist</td>
+                            <td>Customization</td>
+                            <td>✅ Crowd &amp; setlist</td>
+                            <td>✅ Layout &amp; features</td>
+                            <td>✅ Vibe &amp; runtime</td>
                         </tr>
                         <tr>
-                            <td>Revisions</td>
-                            <td>✅ On-site</td>
-                            <td>✅ 2 rounds</td>
-                            <td>✅ 2 rounds</td>
+                            <td>Revisions / Cueing</td>
+                            <td>✅ Live &amp; prep</td>
+                            <td>✅ Included rounds</td>
+                            <td>✅ Included rounds</td>
                         </tr>
                         <tr>
-                            <td>Support</td>
-                            <td>✅ 24/7</td>
-                            <td>✅ 30 days</td>
-                            <td>✅ 14 days</td>
+                            <td>Follow-Up</td>
+                            <td>✅ Event support</td>
+                            <td>✅ Launch check-in</td>
+                            <td>✅ File delivery</td>
                         </tr>
                     </tbody>
                 </table>
@@ -198,13 +224,13 @@
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Get Started?</h2>
-                <p>Choose your service and book instantly</p>
+                <p>Pick a package, compare pricing, or lock in your booking</p>
                 <div class="cta-buttons">
                     <a href="booking.html" class="btn btn-primary btn-large">
-                        <i class="fas fa-calendar-check"></i> Instant Booking
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i> Instant Booking
                     </a>
                     <a href="pricing.html" class="btn btn-secondary btn-large">
-                        <i class="fas fa-tag"></i> Detailed Pricing
+                        <i class="fas fa-tag" aria-hidden="true"></i> Detailed Pricing
                     </a>
                 </div>
             </div>
@@ -214,59 +240,70 @@
     <!-- ================= FOOTER ================= -->
     <footer class="footer fade">
         <div class="container">
-            <p>© 2026 DJ Igniter Studios | Professional Services for Creative Projects</p>
+            <p>© 2026 DJ Igniter Studios | Event DJ, Mixtapes &amp; Web Development</p>
         </div>
     </footer>
 
-    <!-- ================= FLOATING CHAT ================= -->
-    <div class="float" id="chatToggle">
-        <i class="fas fa-comments"></i>
-        <span class="float-label">Ask About Services</span>
-    </div>
+    <!-- ================= BACK TO TOP ================= -->
+    <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
 
+    <!-- ================= FLOATING CHAT ================= -->
+    <button type="button" class="float" id="chatToggle" aria-label="Ask Ava assistant">
+        <i class="fas fa-robot" aria-hidden="true"></i>
+        <span class="float-label">Ask Ava</span>
+    </button>
+
+    <script src="js/utils.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/command-palette.js"></script>
+    <script src="js/studio-fallbacks.js"></script>
     <script src="script.js"></script>
     <script>
-        // ================= SERVICE INTERACTIONS =================
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px) scale(1.02)';
-                card.style.boxShadow = '0 25px 50px rgba(0,0,0,0.25)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
-                card.style.boxShadow = '0 15px 35px rgba(0,0,0,0.1)';
-            });
-        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const prefersReducedMotion =
+                window.matchMedia &&
+                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-        // Service filter (hover effect)
-        document.querySelectorAll('[data-service]').forEach(card => {
-            card.addEventListener('click', () => {
-                const service = card.dataset.service;
-                // Add active class for visual feedback
-                document.querySelectorAll('.service-card').forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
+            const serviceCards = document.querySelectorAll(".service-card");
+            serviceCards.forEach((card) => {
+                if (!prefersReducedMotion) {
+                    card.addEventListener("mouseenter", () => {
+                        card.style.transform = "translateY(-6px)";
+                    });
+                    card.addEventListener("mouseleave", () => {
+                        card.style.transform = "translateY(0)";
+                    });
+                }
 
-                // Scroll to booking with service preselected
-                const params = new URLSearchParams({ service: service.toUpperCase() });
-                window.open(`booking.html?${params}`, '_blank');
+                card.addEventListener("click", () => {
+                    serviceCards.forEach((c) => c.classList.remove("active"));
+                    card.classList.add("active");
+                });
             });
-        });
 
-        // Table row highlights
-        document.querySelectorAll('.comparison-table tbody tr').forEach((row, index) => {
-            row.style.opacity = '0';
-            row.style.transform = 'translateX(-50px)';
-            setTimeout(() => {
-                row.style.transition = 'all 0.6s ease';
-                row.style.opacity = '1';
-                row.style.transform = 'translateX(0)';
-            }, index * 150);
+            document.querySelectorAll(".comparison-table tbody tr").forEach((row, index) => {
+                if (!prefersReducedMotion) {
+                    row.style.opacity = "0";
+                    row.style.transform = "translateX(-24px)";
+                    setTimeout(() => {
+                        row.style.transition = "opacity 0.45s ease, transform 0.45s ease";
+                        row.style.opacity = "1";
+                        row.style.transform = "translateX(0)";
+                    }, index * 90);
+                }
 
-            row.addEventListener('mouseenter', () => {
-                row.style.background = 'rgba(255, 215, 0, 0.1)';
-            });
-            row.addEventListener('mouseleave', () => {
-                row.style.background = 'transparent';
+                row.addEventListener("mouseenter", () => {
+                    row.style.background = "rgba(255, 215, 0, 0.08)";
+                });
+                row.addEventListener("mouseleave", () => {
+                    row.style.background = "transparent";
+                });
             });
         });
     </script>
